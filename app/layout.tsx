@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "./components/ui/Navbar";
 import { Urbanist } from "next/font/google";
 import FooterTop from "./components/footer/footer_top";
+import FooterBottom from "./components/footer/footer_bottom";
 
 const urbanist = Urbanist({
   subsets: ["latin"],
@@ -39,6 +40,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <FooterTop/>
+        <FooterBottom />
       </body>
     </html>
   );
