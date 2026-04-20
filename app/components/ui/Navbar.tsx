@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { IoMenu } from "react-icons/io5";
-import { onest } from "@/app/fonts/fonts";
+import { onest, urbanist } from "@/app/fonts/fonts";
 import { useState } from "react";
 
 
@@ -57,7 +57,7 @@ export default function Navbar() {
     </div>
     
                 {
-                  open&& <div className=" bg-black rounded-md p-4 flex flex-col gap-3 text-white">
+                  open&& <div className={`bg-black rounded-md p-4 flex flex-col gap-3 text-white ${urbanist.className} md:hidden absolute top-16 right-4 w-48 z-10`}>
                     <button className="w-full sm:w-auto text-white">Contact Us</button>
                     <button
                       className="w-full sm:w-auto"
