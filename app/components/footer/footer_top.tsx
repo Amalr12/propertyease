@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { IoIosSend } from "react-icons/io";
 import { LuMailPlus } from "react-icons/lu";
-import { onest, urbanist } from "@/app/fonts/fonts";
+import { onest } from "@/app/fonts/fonts";
 
 export default function FooterTop() {
     return (
