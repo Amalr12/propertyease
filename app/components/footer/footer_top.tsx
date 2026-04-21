@@ -1,10 +1,41 @@
-
+"use client";
 import Image from "next/image";
 import { IoIosSend } from "react-icons/io";
 import { LuMailPlus } from "react-icons/lu";
 import { onest } from "@/app/fonts/fonts";
+// import { useRef } from "react";
+import emailjs from '@emailjs/browser';
+import { useRef } from "react";
+import { useState } from "react"
 
 export default function FooterTop() {
+     const form = useRef<HTMLFormElement | null>(null);
+
+    const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        if (form.current) {
+            emailjs
+                .sendForm(
+                    "service_15x2ykg",
+                    "template_lue537e",
+                    form.current,
+                    "iPVPorUqcP7DOHyWO"
+                )
+                .then(
+                    (result) => {
+                        console.log("SUCCESS!", result.text);
+                        if(result.text == "OK") {
+                            alert("Email sent successfully!");
+                            form.current?.reset();
+                        }
+                    },
+                    (error) => {
+                        console.log("FAILED...", error.text);
+                    }
+                );
+        }
+    };
     return (
         <div className="bg-black p-10 grid md:grid-cols-2 ">
             <div className="flex flex-col gap-5">
@@ -22,12 +53,24 @@ export default function FooterTop() {
                         Propertyease
                     </h1>
                 </div>
+<form
+  ref={form}
+  onSubmit={sendEmail}
+  className="flex justify-center items-center bg-black rounded-md w-70 border p-2">
+  <LuMailPlus className="text-2xl text-gray-400" />
 
-                <div className="flex justify-center items-center bg-black rounded-md  w-70 border p-2">
-                    <LuMailPlus className="text-2xl text-gray-400" />
-                    <input type="text" placeholder="Enter Your Email" className={`${onest.className} text-gray-400 text-center bg-black border-none focus:outline-none`} />
-                    <button>   <IoIosSend className="text-2xl text-white" /></button>
-                </div>
+  <input
+    type="email"
+    name="user_email"   // ✅ REQUIRED
+    placeholder="Enter Your Email"
+    required
+    className={`${onest.className} text-gray-400 text-center bg-black border-none focus:outline-none`}
+  />
+
+  <button type="submit">
+    <IoIosSend className="text-2xl text-white" />
+  </button>
+</form>
             </div>
             <div className={`grid md:grid-cols-3 text-white ${onest.className}`}>
                 <div className="">
