@@ -1,0 +1,49 @@
+import { onest, urbanist } from "@/app/fonts/fonts";
+export default function AboutUs() {
+    return (
+       <>
+            <div className={`${onest.className}  text-center mt-20 px-4 md:px-20 lg:px-40 z-10`} style={{fontWeight: 500,fontSize: "1.2rem"}}>
+                Our story is one of continuous growth and evolution. We started as a small team with big dreams, determined to create a real estate platform that transcended the ordinary. Over the years, we've expanded our reach, forged valuable partnerships, and gained the trust of countless clients.
+              </div>
+
+            <div className="grid md:grid-cols-3 gap-6 m-px-4 m-10 px-20 ">
+                <div className="bg-gray-900 rounded-xl p-5 space-y-2">
+                    <h1 className={`${urbanist.className} text-white *:`} style={{fontWeight:"600",fontSize:"1.5rem"}}>200+</h1>
+                    <p className={`${onest.className} text-gray-300 `} style={{fontWeight: 400,fontSize: "1rem"}}>Happy Customers</p>
+                </div>
+                <div className="bg-gray-900 rounded-xl p-5 space-y-2">
+                    <h1 className={`${urbanist.className} text-white *:`} style={{fontWeight:"600",fontSize:"1.5rem"}}>10k+</h1>
+                    <p className={`${onest.className} text-gray-300 `} style={{fontWeight: 400,fontSize: "1rem"}}>Properties for Clients</p>
+                </div>
+                <div className="bg-gray-900 rounded-xl p-5 space-y-2 ">
+                    <h1 className={`${urbanist.className} text-white *:`} style={{fontWeight:"600",fontSize:"1.5rem"}}>16+</h1>
+                    <p className={`${onest.className} text-gray-300 `} style={{fontWeight: 400,fontSize: "1rem"}}>Years of Experience</p>
+                </div>
+            </div>
+
+          
+            <div className="grid md:grid-cols-[1fr_4fr_1fr]">
+                <div></div>
+                <div>
+                      <div className="flex min-h-[10vh] md:min-h-[60vh]  mt-10 mb-10 p-5 justify-center rounded-[4rem] relative overflow-hidden" style={{
+        backgroundImage: "url('/pexels-mart-production-7415129 1.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}>
+                        <div className="absolute inset-0 bg-linear-to-b from-black/80 to-transparent"></div>
+
+      <div className="relative z-10 p-5">
+        <h1 className={`${onest.className}   mt-10  z-10`} style={{fontWeight: 500,fontSize: "1.3rem",color:"white"}}>
+            We believe every good deal is founded on a great partnership. Our partnerships are built on trust, honesty and committed collaboration – many of them standing strong for decades.
+        </h1>
+
+      </div>
+            </div>
+                </div>
+                <div></div>
+
+            </div>
+
+       </>
+    );
+}
