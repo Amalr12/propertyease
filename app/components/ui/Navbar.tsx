@@ -4,7 +4,6 @@ import { IoMenu } from "react-icons/io5";
 import { onest, urbanist } from "@/app/fonts/fonts";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-import { IoIosTransgender } from "react-icons/io";
 
 
 
@@ -70,7 +69,7 @@ export default function Navbar() {
       </button>
 
       <button
-        className="bg-gradient-to-r from-orange-500 to-yellow-500 px-4 py-2 rounded"
+        className="bg-linear-to-r from-orange-500 to-yellow-500 px-4 py-2 rounded"
         onClick={() => setOpen(false)}
       >
         Available Properties
