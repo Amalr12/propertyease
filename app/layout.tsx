@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/ui/Navbar";
 import { Urbanist } from "next/font/google";
+import FooterTop from "./components/footer/footer_top";
+import FooterBottom from "./components/footer/footer_bottom";
 
 const urbanist = Urbanist({
   subsets: ["latin"],
@@ -37,6 +39,8 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col {urbanist.className}">
         <Navbar />
         {children}
+        <FooterTop/>
+        <FooterBottom />
       </body>
     </html>
   );
