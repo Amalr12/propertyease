@@ -7,6 +7,8 @@ import { FiChevronDown } from "react-icons/fi";
 import { IoCubeSharp, IoSearch } from "react-icons/io5";
 import { MdDateRange, MdPriceChange } from "react-icons/md";
 import { RiBuilding2Line } from "react-icons/ri";
+import { properties } from "@/app/data/properties";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const districts = [
   "Ernakulam",
@@ -28,12 +30,44 @@ export default function Hero() {
   const [open3, setOpen3] = useState(false);
   const [open4, setOpen4] = useState(false);
   const [open5, setOpen5] = useState(false);
+  const router = useRouter();
+  const [searchText, setSearchText] = useState("");
+  const [distsSelected, distsSetSelected] = useState("");
+  const [bhkSelected, bhkSetSelected] = useState("");
+  const [priceSelected, priceSetSelected] = useState("");
+  const [sizeSelected, sizeSetSelected] = useState("");
+  const [yearSelected, yearSetSelected] = useState("");
+  type FilterType = {
+    district: string;
+    bhk: string;
+    price: string;
+    size: string;
+    year: string;
+  };
 
-  const [distsSelected, distsSetSelected] = useState("Select District");
-  const [bhkSelected, bhkSetSelected] = useState("Select BHK");
-  const [priceSelected, priceSetSelected] = useState("Select Price");
-  const [sizeSelected, sizeSetSelected] = useState("Select Size");
-  const [yearSelected, yearSetSelected] = useState("Select Year");
+    const searchParams = useSearchParams();
+
+const districtParam = searchParams.get("district") || "";
+const bhk = searchParams.get("bhk") || "";
+const price = searchParams.get("price") || "";
+const size = searchParams.get("size") || "";
+const year = searchParams.get("year") || "";
+
+
+const activeDistrict =
+  searchText || distsSelected || districtParam;
+
+const filtered = properties.filter((item) => {
+  return (
+    (!activeDistrict ||
+      item.district.toLowerCase().includes(activeDistrict.toLowerCase())) &&
+    (!bhk || item.bhk === bhk) &&
+    (!price || item.price === price) &&
+    (!size || item.size === size) &&
+    (!year || item.year === year)
+  );
+});
+
   return (
     <>
       <div className="flex min-h-[70vh] md:min-h-screen pt-30  justify-center rounded-b-[4rem] rounded-t-none " style={{
@@ -55,194 +89,222 @@ export default function Hero() {
             <Image className="" src="/brokage.png" alt="Logo" width={180} height={150} />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-[1fr_4fr_1fr] gap-4 mt-10 justify-center">
-            <div></div>
-            <div className="bg-black/90 rounded-t-xl rounded-b-none p-2 sm:p-3 grid grid-cols-1 sm:grid-cols-[8fr_2fr] gap-2 sm:gap-3 shadow-lg">
-              <input type="text" placeholder="Search For a Location" className="bg-black rounded-xl text-white outline-none px-2 sm:px-4 py-2 text-sm sm:text-base"
-              />
+           <div className="  grid grid-cols-1 md:grid-cols-[1fr_4fr_1fr] gap-4 mt-10 pt-50 justify-center">
+                              <div></div>
+                              <div className="bg-black/90 rounded-t-xl rounded-b-none p-2 sm:p-3 grid grid-cols-1 sm:grid-cols-[8fr_2fr] gap-2 sm:gap-3 shadow-lg">
+                                  <input  value={searchText}
+                          onChange={(e) => setSearchText(e.target.value)} type="text" placeholder="Search For a Location" className="bg-black rounded-xl text-white outline-none px-2 sm:px-4 py-2 text-sm sm:text-base"
+                                  />
+          
+                                  <button onClick={() => {
+    const queryObj: Record<string, string> = {};
 
-              <button className="bg-linear-to-r from-orange-500 to-yellow-500 text-white px-3 sm:px-4 py-2 rounded-lg flex items-center justify-center sm:justify-start gap-1 sm:gap-2 text-sm sm:text-base">
-                <IoSearch className="text-white text-lg sm:text-xl" /> <span className=" sm:inline">Find Property</span>
-              </button>
-            </div>
-            <div></div>
-          </div>
+    if (searchText) {
+      queryObj.district = searchText;
+    } else if (distsSelected) {
+      queryObj.district = distsSelected;
+    }
 
-          <div className="grid md:grid-cols-[1fr_8fr_1fr]   justify-center">
-            <div></div>
-            <div className=" bg-black/90 rounded-xl p-3 flex flex-wrap md:flex-nowrap gap-3 shadow-xl">
+    if (bhkSelected) queryObj.bhk = bhkSelected;
+    if (priceSelected) queryObj.price = priceSelected;
+    if (sizeSelected) queryObj.size = sizeSelected;
+    if (yearSelected) queryObj.year = yearSelected;
 
+    const query = new URLSearchParams(queryObj).toString();
 
-              <div className="flex items-center gap-2 bg-black px-4 py-2 rounded-lg border border-gray-700 flex-1">
-                <span ><FaLocationDot className="text-xl text-gray-300" /></span>
-                <div className="relative w-full max-w-xs">
-
-
-                  <div
-                    onClick={() => setOpen(!open)}
-                    className="flex items-center justify-between bg-black text-white px-4 py-2 "
-                  >
-                    <span className="text-gray-300 text-sm">{distsSelected}</span>
-                    <FiChevronDown
-                      className={`transition-transform ${open ? "rotate-180" : ""}`}
-                    />
-                  </div>
-
-                  {/* Dropdown List */}
-                  {open && (
-                    <div className="absolute left-0 w-full mt-2 bg-black text-white rounded-lg shadow-lg border  border-gray-700 z-50">
-                      {districts.map((district, index) => (
-                        <div
-                          key={index}
-                          onClick={() => {
-                            distsSetSelected(district);
-                            setOpen(false);
-                          }}
-                          className="px-4 py-2 hover:bg-gray-800 cursor-pointer text-sm"
-                        >
-                          {district}
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              <div className="flex items-center gap-2 bg-black px-4 py-1 rounded-lg border border-gray-700 flex-1">
-                <span><RiBuilding2Line className="text-xl text-gray-300" /></span>
-                <div className="relative w-full max-w-xs">
-
-                  {/* Button */}
-                  <div
-                    onClick={() => setOpen2(!open2)}
-                    className="flex items-center justify-between bg-black text-white px-4 py-2 cursor-pointer "
-                  >
-                    <span className="text-gray-300 text-sm">{bhkSelected}</span>
-                    <FiChevronDown
-                      className={`transition-transform ${open ? "rotate-180" : ""}`}
-                    />
-                  </div>
-
-                  {/* Dropdown List */}
-                  {open2 && (
-                    <div className="absolute left-0 w-full mt-2 bg-black text-white rounded-lg shadow-lg border border-gray-700 z-50">
-                      {bhkOptions.map((bhkoptions, index) => (
-                        <div
-                          key={index}
-                          onClick={() => {
-                            bhkSetSelected(bhkoptions);
-                            setOpen(false);
-                          }}
-                          className="px-4 py-2 hover:bg-gray-800 cursor-pointer text-sm"
-                        >
-                          {bhkoptions}
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              <div className="flex items-center gap-2 bg-black px-4 py-1 rounded-lg border border-gray-700 flex-1">
-                <span><RiBuilding2Line className="text-xl text-gray-300" /></span>
-                <div className="relative w-full max-w-xs">
-
-
-                  <div
-                    onClick={() => setOpen3(!open3)}
-                    className="flex items-center justify-between bg-black text-white px-4 py-2 "
-                  >
-                    <span className="text-gray-300 text-sm">{priceSelected}</span>
-                    <FiChevronDown
-                      className={`transition-transform ${open ? "rotate-180" : ""}`}
-                    />
-                  </div>
-                  {open3 && (
-                    <div className="absolute left-0 w-full mt-2 bg-black text-white rounded-lg shadow-lg border border-gray-700 z-50">
-                      {priceOptions.map((priceoption, index) => (
-                        <div
-                          key={index}
-                          onClick={() => {
-                            priceSetSelected(priceoption);
-                            setOpen3(false);
-                          }}
-                          className="px-4 py-2 hover:bg-gray-800 cursor-pointer text-sm"
-                        >
-                          {priceoption}
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
-
-
-
-              <div className="flex items-center gap-2 bg-black px-4 py-2 rounded-lg border border-gray-700 flex-1">
-                <span><IoCubeSharp className="text-xl text-gray-300" /></span>
-                <div className="relative w-full max-w-xs">
-                  <div
-                    onClick={() => setOpen4(!open4)}
-                    className="flex items-center justify-between bg-black text-white px-4 py-2 "
-                  >
-                    <span className="text-gray-300 text-sm">{sizeSelected}</span>
-                    <FiChevronDown
-                      className={`transition-transform ${open4 ? "rotate-180" : ""}`}
-                    />
-                  </div>
-                  {open4 && (
-                    <div className="absolute left-0 w-full mt-2 bg-black text-white rounded-lg shadow-lg border border-gray-700 z-50">
-                      {sizeOptions.map((sizeoption, index) => (
-                        <div
-                          key={index}
-                          onClick={() => {
-                            sizeSetSelected(sizeoption);
-                            setOpen4(false);
-                          }}
-                          className="px-4 py-2 hover:bg-gray-800 cursor-pointer text-sm"
-                        >
-                          {sizeoption}
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              <div className="flex items-center gap-2 bg-black px-4 py-2 rounded-lg border border-gray-700 flex-1">
-                <span><MdDateRange className="text-xl text-gray-300" /></span>
-                <div className="relative w-full max-w-xs">
-                  <div
-                    onClick={() => setOpen5(!open5)}
-                    className="flex items-center justify-between bg-black text-white px-4 py-2 "
-                  >
-                    <span className="text-gray-300 text-sm">{yearSelected}</span>
-                    <FiChevronDown
-                      className={`transition-transform ${open5 ? "rotate-180" : ""}`}
-                    />
-                  </div>
-                  {open5 && (
-                    <div className="absolute left-0 w-full mt-2 bg-black text-white rounded-lg shadow-lg border border-gray-700 z-50">
-                      {yearOptions.map((yearoption, index) => (
-                        <div
-                          key={index}
-                          onClick={() => {
-                            yearSetSelected(yearoption);
-                            setOpen5(false);
-                          }}
-                          className="px-4 py-2 hover:bg-gray-800 cursor-pointer text-sm"
-                        >
-                          {yearoption}
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
-
-            </div>
-            <div></div>
-          </div>
+    router.push(`/property?${query}`);
+  }} className="bg-linear-to-r from-orange-500 to-yellow-500 text-white px-3 sm:px-4 py-2 rounded-lg flex items-center justify-center sm:justify-start gap-1 sm:gap-2 text-sm sm:text-base">
+                                      <IoSearch className="text-white text-lg sm:text-xl" /> <span className=" sm:inline">Find Property</span>
+                                  </button>
+                              </div>
+                              <div></div>
+                          </div>
+          
+                           <div className="grid md:grid-cols-[1fr_8fr_1fr]   justify-center">
+                                    <div></div>
+                                    <div className=" bg-black/90 rounded-xl p-3 flex flex-wrap md:flex-nowrap gap-3 shadow-xl">
+                        
+                        
+                                      <div className="flex items-center gap-2 bg-black px-4 py-2 rounded-lg border border-gray-700 flex-1">
+                                        <span ><FaLocationDot className="text-xl text-gray-300" /></span>
+                                        <div className="relative w-full max-w-xs">
+                        
+                        
+                                          <div
+                                            onClick={() => setOpen(!open)}
+                                            className="flex items-center justify-between bg-black text-white px-4 py-2 "
+                                          >
+                                            <span className="text-gray-300 text-sm">
+                                              {distsSelected || "Select District"}
+                                            </span>
+                                            <FiChevronDown
+                                              className={`transition-transform ${open ? "rotate-180" : ""}`}
+                                            />
+                                          </div>
+                        
+                                          {/* Dropdown List */}
+                                          {open && (
+                                            <div className="absolute left-0 w-full mt-2 bg-black text-white rounded-lg shadow-lg border  border-gray-700 z-50">
+                                              {districts.map((district, index) => (
+                                                <div
+                                                  key={index}
+                                                  onClick={() => {
+                                                    distsSetSelected(district);
+                                                    setOpen(false);
+                                                  }}
+                                                  className="px-4 py-2 hover:bg-gray-800 cursor-pointer text-sm"
+                                                >
+                                                  {district}
+                                                </div>
+                                              ))}
+                                            </div>
+                                          )}
+                                        </div>
+                                      </div>
+                        
+                                      <div className="flex items-center gap-2 bg-black px-4 py-1 rounded-lg border border-gray-700 flex-1">
+                                        <span><RiBuilding2Line className="text-xl text-gray-300" /></span>
+                                        <div className="relative w-full max-w-xs">
+                        
+                                          {/* Button */}
+                                          <div
+                                            onClick={() => setOpen2(!open2)}
+                                            className="flex items-center justify-between bg-black text-white px-4 py-2 cursor-pointer "
+                                          >
+                                            <span className="text-gray-300 text-sm">
+                                              {bhkSelected || "Select BHK"}
+                                            </span>
+                                            <FiChevronDown
+                                              className={`transition-transform ${open2 ? "rotate-180" : ""}`}
+                                            />
+                                          </div>
+                        
+                                          {/* Dropdown List */}
+                                          {open2 && (
+                                            <div className="absolute left-0 w-full mt-2 bg-black text-white rounded-lg shadow-lg border border-gray-700 z-50">
+                                              {bhkOptions.map((bhkoptions, index) => (
+                                                <div
+                                                  key={index}
+                                                  onClick={() => {
+                                                    bhkSetSelected(bhkoptions);
+                                                    setOpen2(false);
+                                                  }}
+                                                  className="px-4 py-2 hover:bg-gray-800 cursor-pointer text-sm"
+                                                >
+                                                  {bhkoptions}
+                                                </div>
+                                              ))}
+                                            </div>
+                                          )}
+                                        </div>
+                                      </div>
+                        
+                                      <div className="flex items-center gap-2 bg-black px-4 py-1 rounded-lg border border-gray-700 flex-1">
+                                        <span><RiBuilding2Line className="text-xl text-gray-300" /></span>
+                                        <div className="relative w-full max-w-xs">
+                        
+                        
+                                          <div
+                                            onClick={() => setOpen3(!open3)}
+                                            className="flex items-center justify-between bg-black text-white px-4 py-2 "
+                                          >
+                                            <span className="text-gray-300 text-sm">
+                                              {priceSelected || "Select Price"}
+                                            </span>
+                                            <FiChevronDown
+                                              className={`transition-transform ${open3 ? "rotate-180" : ""}`}
+                                            />
+                                          </div>
+                                          {open3 && (
+                                            <div className="absolute left-0 w-full mt-2 bg-black text-white rounded-lg shadow-lg border border-gray-700 z-50">
+                                              {priceOptions.map((priceoption, index) => (
+                                                <div
+                                                  key={index}
+                                                  onClick={() => {
+                                                    priceSetSelected(priceoption);
+                                                    setOpen3(false);
+                                                  }}
+                                                  className="px-4 py-2 hover:bg-gray-800 cursor-pointer text-sm"
+                                                >
+                                                  {priceoption}
+                                                </div>
+                                              ))}
+                                            </div>
+                                          )}
+                                        </div>
+                                      </div>
+                        
+                        
+                        
+                                      <div className="flex items-center gap-2 bg-black px-4 py-2 rounded-lg border border-gray-700 flex-1">
+                                        <span><IoCubeSharp className="text-xl text-gray-300" /></span>
+                                        <div className="relative w-full max-w-xs">
+                                          <div
+                                            onClick={() => setOpen4(!open4)}
+                                            className="flex items-center justify-between bg-black text-white px-4 py-2 "
+                                          >
+                                            <span className="text-gray-300 text-sm">
+                                              {sizeSelected || "Select Size"}
+                                            </span>
+                                            <FiChevronDown
+                                              className={`transition-transform ${open4 ? "rotate-180" : ""}`}
+                                            />
+                                          </div>
+                                          {open4 && (
+                                            <div className="absolute left-0 w-full mt-2 bg-black text-white rounded-lg shadow-lg border border-gray-700 z-50">
+                                              {sizeOptions.map((sizeoption, index) => (
+                                                <div
+                                                  key={index}
+                                                  onClick={() => {
+                                                    sizeSetSelected(sizeoption);
+                                                    setOpen4(false);
+                                                  }}
+                                                  className="px-4 py-2 hover:bg-gray-800 cursor-pointer text-sm"
+                                                >
+                                                  {sizeoption}
+                                                </div>
+                                              ))}
+                                            </div>
+                                          )}
+                                        </div>
+                                      </div>
+                        
+                                      <div className="flex items-center gap-2 bg-black px-4 py-2 rounded-lg border border-gray-700 flex-1">
+                                        <span><MdDateRange className="text-xl text-gray-300" /></span>
+                                        <div className="relative w-full max-w-xs">
+                                          <div
+                                            onClick={() => setOpen5(!open5)}
+                                            className="flex items-center justify-between bg-black text-white px-4 py-2 "
+                                          >
+                                            <span className="text-gray-300 text-sm">
+                                              {yearSelected || "Select Year"}
+                                            </span>
+                                            <FiChevronDown
+                                              className={`transition-transform ${open5 ? "rotate-180" : ""}`}
+                                            />
+                                          </div>
+                                          {open5 && (
+                                            <div className="absolute left-0 w-full mt-2 bg-black text-white rounded-lg shadow-lg border border-gray-700 z-50">
+                                              {yearOptions.map((yearoption, index) => (
+                                                <div
+                                                  key={index}
+                                                  onClick={() => {
+                                                    yearSetSelected(yearoption);
+                                                    setOpen5(false);
+                                                  }}
+                                                  className="px-4 py-2 hover:bg-gray-800 cursor-pointer text-sm"
+                                                >
+                                                  {yearoption}
+                                                </div>
+                                              ))}
+                                            </div>
+                                          )}
+                                        </div>
+                                      </div>
+                        
+                                    </div>
+                                    <div></div>
+                                  </div>
 
         </main>
 
