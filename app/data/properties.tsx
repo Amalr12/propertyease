@@ -8,6 +8,7 @@ export type PropertyType = {
   price: string;
   size: string;
   year: string;
+  slug: string;
   image: string;
   bathrooms: number | string;
   status?: string;
@@ -23,6 +24,7 @@ export const properties: PropertyType[] = [
     type: "Villa",
     bhk: "3 BHK",
     bathrooms: 3,
+     slug: "/property/villa-thrissur",
     price: "50 Lakh - 1 Crore",
     size: "1000 - 2000 sqft",
     year: "2010 - 2020",
@@ -42,6 +44,7 @@ export const properties: PropertyType[] = [
     size: "500 - 1000 sqft",
     year: "2000 - 2010",
     image: "/cardimage2.png",
+    slug: "/property/apartment-thrissur",
     lat: 10.5300,
     lng: 76.2100,
   },
@@ -52,6 +55,7 @@ export const properties: PropertyType[] = [
     type: "Plot",
     bhk: "-",
     bathrooms: "-",
+    slug: "/property/plot-thrissur",
     price: "Below 50 Lakh",
     size: "2000+ sqft",
     year: "-",
@@ -70,6 +74,7 @@ export const properties: PropertyType[] = [
     bathrooms: 4,
     price: "1 Crore - 2 Crore",
     size: "2000+ sqft",
+    slug: "/property/villa-ernakulam",
     year: "After 2020",
     image: "/cardimage4.png",
     status: "Verified",
@@ -84,6 +89,7 @@ export const properties: PropertyType[] = [
     bhk: "2 BHK",
     bathrooms: 2,
     price: "50 Lakh - 1 Crore",
+    slug: "/property/apartment-ernakulam",
     size: "1000 - 2000 sqft",
     year: "2010 - 2020",
     image: "/cardimage1.png",
@@ -98,6 +104,7 @@ export const properties: PropertyType[] = [
     bhk: "-",
     bathrooms: "-",
     price: "1 Crore - 2 Crore",
+    slug: "/property/plot-ernakulam",
     size: "2000+ sqft",
     year: "-",
     image: "/cardimage2.png",
@@ -118,6 +125,7 @@ export const properties: PropertyType[] = [
     year: "After 2020",
     image: "/cardimage3.png",
     status: "Verified",
+    slug: "/property/apartment-trivandrum",
     lat: 8.5241,
     lng: 76.9366,
   },
@@ -132,6 +140,7 @@ export const properties: PropertyType[] = [
     size: "Below 500 sqft",
     year: "2000 - 2010",
     image: "/cardimage4.png",
+    slug: "/property/flat-trivandrum",
     lat: 8.5200,
     lng: 76.9300,
   },
@@ -146,40 +155,13 @@ export const properties: PropertyType[] = [
     size: "2000+ sqft",
     year: "-",
     image: "/cardimage3.png",
+    slug: "/property/plot-trivandrum",
     lat: 8.5300,
     lng: 76.9400,
   },
 
   // 🔵 KOZHIKODE
-  {
-    id: 10,
-    district: "Kozhikode",
-    title: "Beachside Villa",
-    type: "Villa",
-    bhk: "3 BHK",
-    bathrooms: 3,
-    price: "1 Crore - 2 Crore",
-    size: "2000+ sqft",
-    year: "After 2020",
-    image: "/cardimage1.png",
-    status: "Verified",
-    lat: 11.2588,
-    lng: 75.7804,
-  },
-  {
-    id: 11,
-    district: "Kozhikode",
-    title: "2 BHK Apartment",
-    type: "Apartment",
-    bhk: "2 BHK",
-    bathrooms: 2,
-    price: "50 Lakh - 1 Crore",
-    size: "1000 - 2000 sqft",
-    year: "2010 - 2020",
-    image: "/cardimage2.png",
-    lat: 11.2600,
-    lng: 75.7700,
-  },
+  
 
   // 🔵 KANNUR
   {
@@ -190,8 +172,10 @@ export const properties: PropertyType[] = [
     bhk: "4 BHK",
     bathrooms: 4,
     price: "1 Crore - 2 Crore",
+    slug: "/property/villa-kannur",
     size: "2000+ sqft",
     year: "After 2020",
+   
     image: "/cardimage3.png",
     lat: 11.8745,
     lng: 75.3704,
@@ -204,6 +188,7 @@ export const properties: PropertyType[] = [
     bhk: "-",
     bathrooms: "-",
     price: "Below 50 Lakh",
+    slug: "/property/plot-kannur",
     size: "2000+ sqft",
     year: "-",
     image: "/images/kannur2.jpg",
@@ -224,6 +209,7 @@ export const properties: PropertyType[] = [
     year: "2010 - 2020",
     image: "/cardimage4.png",
     status: "Verified",
+    slug: "/property/villa-kollam",
     lat: 8.8932,
     lng: 76.6141,
   },
@@ -240,5 +226,6 @@ export const properties: PropertyType[] = [
     image: "/cardimage2.png",
     lat: 8.8900,
     lng: 76.6200,
+    slug: "/property/apartment-kollam",
   },
 ];

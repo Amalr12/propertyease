@@ -7,7 +7,7 @@ import { IoCubeSharp, IoSearch } from "react-icons/io5";
 import { MdDateRange } from "react-icons/md";
 import { RiBuilding2Line, RiMap2Line } from "react-icons/ri";
 import { useRouter, useSearchParams } from "next/navigation";
-import { properties } from "@/app/data/properties";
+import { properties } from "@/app/data/each-properties-data";
 import FilterSidebar from "../../ui/Filter";
 import { PropertyCard } from "./PropertyCard";
 import { BiGridAlt } from "react-icons/bi";
