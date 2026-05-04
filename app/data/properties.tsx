@@ -1,0 +1,231 @@
+
+export type PropertyType = {
+  id: number;
+  district: string;
+  title: string;
+  type: string;
+  bhk: string;
+  price: string;
+  size: string;
+  year: string;
+  slug: string;
+  image: string;
+  bathrooms: number | string;
+  status?: string;
+  lat:number;
+  lng:number;
+};
+export const properties: PropertyType[] = [
+  // 🔵 THRISSUR
+  {
+    id: 1,
+    district: "Thrissur",
+    title: "Luxury 3 BHK Villa",
+    type: "Villa",
+    bhk: "3 BHK",
+    bathrooms: 3,
+     slug: "/property/villa-thrissur",
+    price: "50 Lakh - 1 Crore",
+    size: "1000 - 2000 sqft",
+    year: "2010 - 2020",
+    image: "/cardimage1.png",
+    status: "Verified",
+    lat: 10.5276,
+    lng: 76.2144,
+  },
+  {
+    id: 2,
+    district: "Thrissur",
+    title: "2 BHK Apartment",
+    type: "Apartment",
+    bhk: "2 BHK",
+    bathrooms: 2,
+    price: "Below 50 Lakh",
+    size: "500 - 1000 sqft",
+    year: "2000 - 2010",
+    image: "/cardimage2.png",
+    slug: "/property/apartment-thrissur",
+    lat: 10.5300,
+    lng: 76.2100,
+  },
+  {
+    id: 3,
+    district: "Thrissur",
+    title: "Residential Plot in Thrissur",
+    type: "Plot",
+    bhk: "-",
+    bathrooms: "-",
+    slug: "/property/plot-thrissur",
+    price: "Below 50 Lakh",
+    size: "2000+ sqft",
+    year: "-",
+    image: "/cardimage3.png",
+    lat: 10.5200,
+    lng: 76.2200,
+  },
+
+  // 🔵 ERNAKULAM
+  {
+    id: 4,
+    district: "Ernakulam",
+    title: "Premium 4 BHK Villa",
+    type: "Villa",
+    bhk: "4 BHK",
+    bathrooms: 4,
+    price: "1 Crore - 2 Crore",
+    size: "2000+ sqft",
+    slug: "/property/villa-ernakulam",
+    year: "After 2020",
+    image: "/cardimage4.png",
+    status: "Verified",
+    lat: 9.9312,
+    lng: 76.2673,
+  },
+  {
+    id: 5,
+    district: "Ernakulam",
+    title: "2 BHK Apartment near Infopark",
+    type: "Apartment",
+    bhk: "2 BHK",
+    bathrooms: 2,
+    price: "50 Lakh - 1 Crore",
+    slug: "/property/apartment-ernakulam",
+    size: "1000 - 2000 sqft",
+    year: "2010 - 2020",
+    image: "/cardimage1.png",
+    lat: 9.9350,
+    lng: 76.2700,
+  },
+  {
+    id: 6,
+    district: "Ernakulam",
+    title: "Land Plot in Kochi",
+    type: "Plot",
+    bhk: "-",
+    bathrooms: "-",
+    price: "1 Crore - 2 Crore",
+    slug: "/property/plot-ernakulam",
+    size: "2000+ sqft",
+    year: "-",
+    image: "/cardimage2.png",
+    lat: 9.9280,
+    lng: 76.2600,
+  },
+
+  // 🔵 TRIVANDRUM
+  {
+    id: 7,
+    district: "Trivandrum",
+    title: "Sea View Apartment",
+    type: "Apartment",
+    bhk: "3 BHK",
+    bathrooms: 3,
+    price: "1 Crore - 2 Crore",
+    size: "1000 - 2000 sqft",
+    year: "After 2020",
+    image: "/cardimage3.png",
+    status: "Verified",
+    slug: "/property/apartment-trivandrum",
+    lat: 8.5241,
+    lng: 76.9366,
+  },
+  {
+    id: 8,
+    district: "Trivandrum",
+    title: "Budget 1 BHK Flat",
+    type: "Apartment",
+    bhk: "1 BHK",
+    bathrooms: 1,
+    price: "Below 50 Lakh",
+    size: "Below 500 sqft",
+    year: "2000 - 2010",
+    image: "/cardimage4.png",
+    slug: "/property/flat-trivandrum",
+    lat: 8.5200,
+    lng: 76.9300,
+  },
+  {
+    id: 9,
+    district: "Trivandrum",
+    title: "Residential Plot",
+    type: "Plot",
+    bhk: "-",
+    bathrooms: "-",
+    price: "Below 50 Lakh",
+    size: "2000+ sqft",
+    year: "-",
+    image: "/cardimage3.png",
+    slug: "/property/plot-trivandrum",
+    lat: 8.5300,
+    lng: 76.9400,
+  },
+
+  // 🔵 KOZHIKODE
+  
+
+  // 🔵 KANNUR
+  {
+    id: 12,
+    district: "Kannur",
+    title: "4 BHK Villa",
+    type: "Villa",
+    bhk: "4 BHK",
+    bathrooms: 4,
+    price: "1 Crore - 2 Crore",
+    slug: "/property/villa-kannur",
+    size: "2000+ sqft",
+    year: "After 2020",
+   
+    image: "/cardimage3.png",
+    lat: 11.8745,
+    lng: 75.3704,
+  },
+  {
+    id: 13,
+    district: "Kannur",
+    title: "Plot for Sale",
+    type: "Plot",
+    bhk: "-",
+    bathrooms: "-",
+    price: "Below 50 Lakh",
+    slug: "/property/plot-kannur",
+    size: "2000+ sqft",
+    year: "-",
+    image: "/images/kannur2.jpg",
+    lat: 11.8700,
+    lng: 75.3600,
+  },
+
+  // 🔵 KOLLAM
+  {
+    id: 14,
+    district: "Kollam",
+    title: "Lake View Villa",
+    type: "Villa",
+    bhk: "3 BHK",
+    bathrooms: 3,
+    price: "50 Lakh - 1 Crore",
+    size: "1000 - 2000 sqft",
+    year: "2010 - 2020",
+    image: "/cardimage4.png",
+    status: "Verified",
+    slug: "/property/villa-kollam",
+    lat: 8.8932,
+    lng: 76.6141,
+  },
+  {
+    id: 15,
+    district: "Kollam",
+    title: "1 BHK Apartment",
+    type: "Apartment",
+    bhk: "1 BHK",
+    bathrooms: 1,
+    price: "Below 50 Lakh",
+    size: "Below 500 sqft",
+    year: "2000 - 2010",
+    image: "/cardimage2.png",
+    lat: 8.8900,
+    lng: 76.6200,
+    slug: "/property/apartment-kollam",
+  },
+];

@@ -8,7 +8,7 @@ export default function Values() {
         <>
             <div className="relative pb-10 pt-0 *: bg-white overflow-hidden">
                 <h1 className={`${onest.className} absolute top-0 
-              text-transparent pointer-events-none select-none `} style={{ fontWeight: 500, fontSize: "20rem", WebkitTextStroke: "2px rgba(0,0,0,0.2)", color: "transparent" }}>
+              text-transparent pointer-events-none select-none max-w-screen`} style={{ fontWeight: 500, fontSize: "20rem", WebkitTextStroke: "2px rgba(0,0,0,0.2)", color: "transparent" }}>
                     Values
                 </h1>
                 <div className="relative z-10 grid md:grid-cols-[2fr_4fr] mx-10 mt-50">

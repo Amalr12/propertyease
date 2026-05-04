@@ -4,6 +4,7 @@ import { IoMenu } from "react-icons/io5";
 import { onest, urbanist } from "@/app/fonts/fonts";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 
 
@@ -11,11 +12,12 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
+
   const isHomePage = pathname === "/";
-  const isTranparentnav = 
-  pathname.startsWith("/") || pathname.startsWith("/contact")  ? "bg-transparent " : "bg-black/80 backdrop-blur-sm"; 
+  const isContactPage = pathname === "/contact";
+  const isTransparentnav = isHomePage || isContactPage;
   return (
-    <nav className="px-4 py-5 absolute top-5 left-0 w-full z-50">
+    <nav className={`px-4 py-5 absolute top-5 left-0 w-full z-50  ${isHomePage ? "bg-transparent" : "bg-black"} transition-colors duration-300`}>
   <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-4">
 
     {/* Top Row */}
@@ -46,17 +48,17 @@ export default function Navbar() {
     <div
       className={`${onest.className} hidden md:flex items-center gap-4 text-white`}
     >
-      <button>Contact Us</button>
+     <Link href={"/contact"}> <button className="border border-white text-white bg-linear-to-r from-orange-500 to-yellow-500  hover:text-black px-4 py-2 rounded">Contact Us</button></Link>
 
-      <button
+      {/* <button
         className={`px-4 py-2 rounded ${
-          isTranparentnav
+          isTransparentnav
             ? "bg-transparent border text-white"
             : "bg-linear-to-r from-orange-500 to-yellow-500 text-white"
         }`}
       >
         Available Properties
-      </button>
+      </button> */}
     </div>
   </div>
 
