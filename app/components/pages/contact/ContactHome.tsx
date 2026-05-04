@@ -22,7 +22,7 @@ export default function ContactHome() {
                 <div className="relative z-10 w-full mt-50 max-w-6xl mx-auto px-4 md:px-10 pt-24 sm:pt-28 md:pt-32">
 
                     <h1
-                        className={`${urbanist.className} 
+                       style={{fontWeight:"600"}} className={`${urbanist.className} 
       text-white 
       text-2xl sm:text-3xl md:text-6xl lg:text-5xl 
       font-semibold 

@@ -1,4 +1,5 @@
 import { onest, urbanist } from "@/app/fonts/fonts";
+import Link from "next/link";
 export default function AboutUs() {
     return (
         <>
@@ -36,7 +37,7 @@ export default function AboutUs() {
                             <h1 className={`${onest.className}   mt-2  z-10`} style={{ fontWeight: 500, fontSize: "1.3rem", color: "white" }}>
                                 We believe every good deal is founded on a great partnership. Our partnerships are built on trust, honesty and committed collaboration – many of them standing strong for decades.
                             </h1>
-                            <button className={`bg-linear-to-r from-orange-500 to-yellow-500 text-white px-4 py-2 rounded mt-5 ${onest.className}`} style={{ fontWeight: 500, fontSize: "1rem" }}>   Available Properties</button>
+                           <Link href={"/property"}> <button className={`bg-linear-to-r from-orange-500 to-yellow-500 text-white px-4 py-2 rounded mt-5 ${onest.className}`} style={{ fontWeight: 500, fontSize: "1rem" }}>   Available Properties</button></Link>
                              
                          
 

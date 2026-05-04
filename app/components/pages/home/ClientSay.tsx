@@ -1,6 +1,7 @@
 "use client";
 import { onest, urbanist } from "@/app/fonts/fonts";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { FaStar } from "react-icons/fa";
@@ -292,9 +293,11 @@ export default function ClientSay() {
                     </div>
                     <div className="m-2">
 
-                        <button className={`bg-linear-to-r from-orange-500 to-yellow-500 text-white px-4 py-2 rounded mt-5 ${onest.className}`}>
-                            Explore Properties
-                        </button>
+                        <Link href={"/property"}>
+                            <button className={`bg-linear-to-r from-orange-500 to-yellow-500 text-white px-4 py-2 rounded mt-5 ${onest.className}`}>
+                                Explore Properties
+                            </button>
+                        </Link>
 
                     </div>
                 </div>

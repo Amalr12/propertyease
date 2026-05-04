@@ -22,20 +22,22 @@ export default function Navbar() {
 
     {/* Top Row */}
     <div className="flex items-center justify-between">
-      <div className="flex items-center">
-        <Image src="/icon.png" alt="Logo" width={35} height={35} />
-        <h1
-          className={onest.className}
-          style={{
-            fontWeight: 700,
-            color: "white",
-            fontSize: "1.5rem",
-            marginLeft: "0.5rem",
-          }}
-        >
-          Propertyease
-        </h1>
-      </div>
+      <Link href={"/"}>
+        <div className="flex items-center">
+          <Image src="/icon.png" alt="Logo" width={35} height={35} />
+          <h1
+            className={onest.className}
+            style={{
+              fontWeight: 700,
+              color: "white",
+              fontSize: "1.5rem",
+              marginLeft: "0.5rem",
+            }}
+          >
+            Propertyease
+          </h1>
+        </div>
+      </Link>
 
       {/* Menu Icon */}
       <IoMenu
