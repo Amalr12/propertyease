@@ -17,7 +17,7 @@ export default function Navbar() {
   const isContactPage = pathname === "/contact";
   const isTransparentnav = isHomePage || isContactPage;
   return (
-    <nav className={`px-4 py-5 absolute top-5 left-0 w-full z-50  ${isHomePage ? "bg-transparent" : "bg-black"} transition-colors duration-300`}>
+    <nav className={`px-4 py-5 absolute top-5 left-0 w-full z-50  ${isHomePage || isContactPage? "bg-transparent" : "bg-black"} transition-colors duration-300`}>
   <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-4">
 
     {/* Top Row */}
@@ -66,9 +66,11 @@ export default function Navbar() {
   {open && (
     <div className="absolute top-full left-0 w-full bg-black text-white flex flex-col items-center gap-4 py-6 md:hidden shadow-lg">
       
-      <button onClick={() => setOpen(false)}>
-        Contact Us
-      </button>
+     <Link href={"/contact"}>
+        <button className="border border-white text-white bg-linear-to-r from-orange-500 to-yellow-500  hover:text-black px-4 py-2 rounded" onClick={() => setOpen(false)}>
+          Contact Us
+        </button>
+     </Link>
 
       <button
         className="bg-linear-to-r from-orange-500 to-yellow-500 px-4 py-2 rounded"
