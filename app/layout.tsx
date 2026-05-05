@@ -5,6 +5,8 @@ import Navbar from "./components/ui/Navbar";
 import { Urbanist } from "next/font/google";
 import FooterTop from "./components/footer/footer_top";
 import FooterBottom from "./components/footer/footer_bottom";
+import Script from "next/script";
+
 
 const urbanist = Urbanist({
   subsets: ["latin"],
@@ -27,15 +29,20 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
+  
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
+    
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}   
     >
+       
+      
+
       <body className="min-h-full flex flex-col {urbanist.className}">
         <Navbar />
         {children}

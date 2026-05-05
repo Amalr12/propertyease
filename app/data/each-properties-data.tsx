@@ -2,6 +2,7 @@ export interface Review {
   user: string;
   rating: number;
   comment: string;
+   onClose: any;
 }
 
 export interface PropertyDetails {
@@ -16,7 +17,7 @@ export interface PropertyDetails {
   size: string;
   year: string;
   status?: "Verified";
-
+ 
   image: string; // ✅ added (for card)
 
   images: string[];
@@ -28,7 +29,7 @@ export interface PropertyDetails {
 
   nearby: { place: string; distance: string }[]; // ✅ FIXED
 
-  reviews: {user: string, rating: number, comment: string}[];
+  reviews: { user: string, rating: number, comment: string }[];
 }
 
 export const properties: PropertyDetails[] = [
