@@ -19,7 +19,7 @@ import { AnyARecord } from "dns";
 import { onest } from "@/app/fonts/fonts";
 
 
-interface Props extends PropertyDetails {onClose: () => void; }
+interface Props extends PropertyDetails { onClose: () => void; }
 
 export default function PropertyHeroSection({
     onClose,
@@ -36,11 +36,12 @@ export default function PropertyHeroSection({
     highlights,
     amenities,
     considerations,
-    floorPlan, nearby, reviews
+    floorPlan, nearby, reviews,
 }: Props) {
     const [currentIndex, setCurrentIndex] = useState(0);
-   
+
     const [modalStatus, setModalStatus] = useState(false)
+    const [enquiryModal, setEnquiryModal] = useState(false)
 
     type VisitType = "Live Visit" | "VR Visit" | "consultation";
 
@@ -50,6 +51,8 @@ export default function PropertyHeroSection({
         phone: "",
         date: "",
         time: "",
+        message: "",
+        email:""
     });
     const handleChange = (e: any) => {
         setFormData({
@@ -61,10 +64,11 @@ export default function PropertyHeroSection({
     const sendToWhatsApp = () => {
         const phoneNumber = "919072337174";
 
-        let message = `Hello, I want to schedule a visit.\n\n`;
+        let message = `Hello, I want to schedule a visit .\n\n`;
         message += `Visit Type: ${visitType}\n`;
         message += `Name: ${formData.name}\n`;
         message += `Phone: ${formData.phone}\n`;
+         message += `Message: ${formData.message}\n`;
 
         if (visitType !== "consultation") {
             message += `Date: ${formData.date}\n`;
@@ -95,9 +99,9 @@ export default function PropertyHeroSection({
 
     return (
         <>
-            <div className="bg-gray-100 relative p-4 mt-20 md:mt-50">
+            <div className="bg-gray-100 relative p-4 mt-20 md:mt-50 ">
                 <Link href="/property"><div className="flex justify-start items-center text-xl"><MdKeyboardArrowLeft /> <h1 className="">Back to Listings</h1></div></Link>
-                <div className="grid grid-cols-1 md:grid-cols-[4fr_1fr]  lg:grid-cols-[4fr_2fr] gap-2 items-start p-5">
+                <div className="grid grid-cols-1 md:grid-cols-[4fr_1fr]  lg:grid-cols-[4fr_2fr] gap-2 items-start p-5 ">
                     <div className="">
                         <div className="relative w-full rounded-xl overflow-hidden">
 
@@ -302,7 +306,7 @@ export default function PropertyHeroSection({
                                 Estimated EMI: ₹25K/month
                             </p>
 
-                            <button className="w-full mt-4 bg-linear-to-r from-orange-500 to-yellow-500 py-2 rounded-lg">
+                            <button onClick={() => setEnquiryModal(true)} className="w-full mt-4 bg-linear-to-r from-orange-500 to-yellow-500 py-2 rounded-lg">
                                 Send Enquiry
                             </button>
 
@@ -441,7 +445,6 @@ export default function PropertyHeroSection({
                                 {visitType && (
                                     <div>
 
-                                        {/* BACK */}
                                         <p
                                             onClick={() => setVisitType(null)}
                                             className="text-orange-800 items-start flex text-sm mb-4 cursor-pointer"
@@ -514,6 +517,71 @@ export default function PropertyHeroSection({
 
                     </div>
                 </div >}
+            {enquiryModal && (
+                <div className="absolute inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center">
+
+                    <div className="bg-black text-white w-54 max-w-md p-6 rounded-2xl relative">
+                        <button
+                            onClick={() => setEnquiryModal(false)}
+                            className="absolute top-4 flex justify-end text-xl"
+                        >
+                            ✕
+                        </button>
+                        <div className="flex justify-center mb-4">
+                            <div className="bg-orange-500/20 p-4 rounded-full">
+                                <FaRegCalendar className="text-2xl text-orange-500" />
+                            </div>
+                        </div>
+                        <div className="text-center mb-6">
+                            <h2 className="text-xl font-semibold">Enquire Now</h2>
+                            <p className="text-gray-400 text-sm mt-1">
+                                Send your questions about this property
+                            </p>
+                        </div>
+                        <input
+                            type="text"
+                                            name="name"
+                                            placeholder="Your Name"
+                                            value={formData.name}
+                                            onChange={handleChange}
+                            className="w-full bg-gray-800 p-3 rounded-lg mb-3"
+                        />
+
+                        <div className="flex gap-2 mb-3">
+                            <input
+                                type="text"
+                                            name="phone"
+                                            placeholder="+91 00000 00000"
+                                            value={formData.phone}
+                                            onChange={handleChange}
+                                className="w-1/2 bg-gray-800 p-3 rounded-lg"
+                            />
+                            <input
+                                type="email"
+                                placeholder="name@email.com"
+                                value={formData.email}
+                                            onChange={handleChange}
+                                className="w-1/2 bg-gray-800 p-3 rounded-lg"
+                            />
+                        </div>
+
+                        <textarea
+                            placeholder="Message (optional)"
+                               value={formData.message}
+                                            onChange={handleChange}
+                            className="w-full bg-gray-800 p-3 rounded-lg mb-4"
+                        />
+
+                        <button onClick={sendToWhatsApp} className="w-full py-3 rounded-lg bg-linear-to-r from-orange-500 to-yellow-500 font-medium">
+                            Submit Inquiry
+                        </button>
+
+                        <p className="text-xs text-gray-400 mt-3 text-center">
+                            By clicking submit, you agree to our Terms & Privacy Policy
+                        </p>
+                    </div>
+                </div>
+            )}
 
 
         </>

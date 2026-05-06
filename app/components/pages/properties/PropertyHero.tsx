@@ -31,8 +31,8 @@ const yearOptions = ["Before 2000", "2000 - 2010", "2010 - 2020", "After 2020"];
 
 
 export default function PropertyHero() {
-  const [selectedProperty, setSelectedProperty] = useState<any>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedProperty, setSelectedProperty] = useState<any>(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const [open, setOpen] = useState(false);
     const [open2, setOpen2] = useState(false);
     const [open3, setOpen3] = useState(false);
@@ -77,16 +77,17 @@ export default function PropertyHero() {
             (!year || item.year === year)
         );
     });
+    const [view, setView] = useState<"card" | "map">("card");
     const [filters, setFilters] = useState({});
     const [cardview, setCardview] = useState(true);
     const [mapview, setMapview] = useState(false);
     const handleOpenModal = (property: any) => {
-    setSelectedProperty(property);
-    setIsModalOpen(true);
-  };
+        setSelectedProperty(property);
+        setIsModalOpen(true);
+    };
     return (
         <>
-            <div className="w-100  pt-10 ">
+            <div className="w-100 relative pt-10 ">
                 <div className="flex flex-col  min-h-[40vh] md:min-h-screen pt-30   " style={{
                     backgroundImage: "url('/propertybg.png')",
 
@@ -323,7 +324,7 @@ export default function PropertyHero() {
                     </div>
                 </div>
 
-                <div className="max-w-6xl mx-auto p-5 flex justify-between items-center relative">
+                <div className="max-w-6xl mx-auto p-5 flex justify-between items-center">
 
                     <h1 className="text-2xl font-bold mb-5">
                         Properties in {activeDistrict || "All Locations"}
@@ -342,33 +343,21 @@ export default function PropertyHero() {
 
                         {/* 🔹 View Toggle */}
                         <div className="flex items-center gap-2 bg-black/90 py-2 rounded-lg">
+                           
+                                <button
+                                    onClick={() => setView("card")}
+                                    className={`px-4 py-3 rounded ${view === "card" ? "bg-orange-500 text-white" : "text-gray-300"}`}
+                                >
+                                     <BiGridAlt className="text-2xl sm:text-xl" />
+                                </button>
 
-                            {/* Grid View */}
-                            <button
-                                type="button"
-                                onClick={() => {
-                                    setCardview(true);
-                                    setMapview(false);
-                                }}
-                                className={`p-2 sm:p-3 rounded transition ${cardview ? "bg-orange-500 text-white" : "text-gray-300"
-                                    }`}
-                            >
-                                <BiGridAlt className="text-lg sm:text-xl" />
-                            </button>
-
-                            {/* Map View */}
-                            <button
-                                type="button"
-                                onClick={() => {
-                                    setCardview(false);
-                                    setMapview(true);
-
-                                }}
-                                className={`p-2 sm:p-3 rounded transition ${mapview ? "bg-orange-500 text-white" : "text-gray-300"
-                                    }`}
-                            >
-                                <RiMap2Line className="text-lg sm:text-xl" />
-                            </button>
+                                <button
+                                    onClick={() => setView("map")}
+                                    className={`px-4 py-3 rounded ${view === "map" ? "bg-orange-500 text-white" : "text-gray-300"}`}
+                                >
+                                     <RiMap2Line className="text-2xl sm:text-xl" />
+                                </button>
+                          
                         </div>
                     </div>
 
@@ -382,29 +371,33 @@ export default function PropertyHero() {
                 {/* LEFT FILTER */}
                 <FilterSidebar filters={filters} setFilters={setFilters} />
 
-                {/* RIGHT CARDS */}
-                {cardview &&
-
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 ">
+                {view === "card" ? (
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         {filtered.length > 0 ? (
                             filtered.map((item) => (
-                                <PropertyCard key={item.id} property={item}     onScheduleClick={handleOpenModal}/>
+                                <PropertyCard
+                                    key={item.id}
+                                    property={item}
+                                    onScheduleClick={handleOpenModal}
+                                />
                             ))
                         ) : (
                             <p>No properties found</p>
                         )}
-                    </div>}
+                    </div>
+                ) : (
+                    <div className="w-full h-150">
+                        <PropertyMap properties={filtered} />
+                    </div>
+                )}
 
-                {
-                    mapview && <PropertyMap />
-                }
+
                 {isModalOpen && selectedProperty && (
-        <ScheduleVist 
-          {...selectedProperty} 
-          onClose={() => setIsModalOpen(false)} 
-          
-        />
-      )}
+                    <ScheduleVist
+                        {...selectedProperty}
+                        onClose={() => setIsModalOpen(false)}
+                    />
+                )}
             </div>
         </>
     );

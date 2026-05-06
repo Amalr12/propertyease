@@ -3,6 +3,8 @@ export interface Review {
   rating: number;
   comment: string;
    onClose: any;
+   lat:number;
+   lng:number
 }
 
 export interface PropertyDetails {
@@ -26,7 +28,8 @@ export interface PropertyDetails {
   considerations: string[]; // ✅ required
   amenities: string[];
   floorPlan: string;
-
+  lat:number;
+  lng:number;
   nearby: { place: string; distance: string }[]; // ✅ FIXED
 
   reviews: { user: string, rating: number, comment: string }[];
@@ -46,6 +49,9 @@ export const properties: PropertyDetails[] = [
     year: "2020",
     status: "Verified",
     image: "/cardimage1.png",
+
+    lat: 10.5276,
+    lng: 76.2144,
 
     overview: "Premium villa in peaceful area of Thrissur.",
     highlights: ["Prime location", "Modern design"],
@@ -79,12 +85,15 @@ export const properties: PropertyDetails[] = [
     year: "2015",
     image: "/cardimage2.png",
 
+    lat: 10.5200,
+    lng: 76.2100,
+
     overview: "Affordable apartment near city center.",
     highlights: ["Budget friendly", "Good connectivity"],
     considerations: ["Older building", "Limited parking"],
     amenities: ["Lift", "Parking"],
 
-    images: ["/cardimage2.png"],
+    images: ["/cardimage2.png", "/cardimage1.png", "/cardimage4.png"],
     floorPlan: "/floorplan2.png",
 
     nearby: [
@@ -110,12 +119,15 @@ export const properties: PropertyDetails[] = [
     status: "Verified",
     image: "/cardimage3.png",
 
+    lat: 10.0159,
+    lng: 76.3419,
+
     overview: "Luxury villa near Infopark.",
     highlights: ["IT hub nearby", "High ROI"],
     considerations: ["Premium pricing", "Maintenance cost"],
     amenities: ["Pool", "Gym", "Security"],
 
-    images: ["/cardimage3.png"],
+    images: ["/cardimage3.png", "/cardimage2.png", "/cardimage1.png"],
     floorPlan: "/floorplan3.png",
 
     nearby: [
@@ -140,12 +152,15 @@ export const properties: PropertyDetails[] = [
     year: "-",
     image: "/cardimage4.png",
 
+    lat: 10.0300,
+    lng: 76.3200,
+
     overview: "Prime land for construction.",
     highlights: ["Corner plot", "Wide road"],
     considerations: ["Developing area", "No immediate construction"],
     amenities: ["Water", "Electricity"],
 
-    images: ["/cardimage4.png"],
+    images: ["/cardimage4.png", "/cardimage1.png", "/cardimage2.png"],
     floorPlan: "/floor4.png",
 
     nearby: [
