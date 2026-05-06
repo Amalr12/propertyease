@@ -1,6 +1,6 @@
 "use client";
 import { onest, urbanist } from "@/app/fonts/fonts";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { FaLocationDot } from "react-icons/fa6";
 import { FiChevronDown } from "react-icons/fi";
 import { IoCubeSharp, IoSearch } from "react-icons/io5";
@@ -31,6 +31,7 @@ const yearOptions = ["Before 2000", "2000 - 2010", "2010 - 2020", "After 2020"];
 
 
 export default function PropertyHero() {
+    const [sortOrder, setSortOrder] = useState<"low" | "high">("low");
     const [selectedProperty, setSelectedProperty] = useState<any>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [open, setOpen] = useState(false);
@@ -41,7 +42,7 @@ export default function PropertyHero() {
     const router = useRouter();
     const [searchText, setSearchText] = useState("");
 
-    const [selectedBHK, setSelectedBHK] = useState("");
+
     const [distsSelected, distsSetSelected] = useState("");
     const [bhkSelected, bhkSetSelected] = useState("");
     const [priceSelected, priceSetSelected] = useState("");
@@ -78,13 +79,87 @@ export default function PropertyHero() {
         );
     });
     const [view, setView] = useState<"card" | "map">("card");
-    const [filters, setFilters] = useState({});
-    const [cardview, setCardview] = useState(true);
-    const [mapview, setMapview] = useState(false);
+
+
     const handleOpenModal = (property: any) => {
         setSelectedProperty(property);
         setIsModalOpen(true);
     };
+    const [filters, setFilters] = useState({
+        types: [] as string[],
+        bhk: "",
+        price: 200,
+        amenities: [] as string[],
+    });
+
+    // 🔥 FILTER LOGIC
+    const finalProperties = useMemo(() => {
+        let data = properties.filter((p) => {
+
+            // 🔍 DISTRICT SEARCH
+            if (
+                activeDistrict &&
+                !p.district.toLowerCase().includes(activeDistrict.toLowerCase())
+            ) {
+                return false;
+            }
+
+            // 🏠 TYPE FILTER
+            if (filters.types.length && !filters.types.includes(p.type)) {
+                return false;
+            }
+
+            // 🛏️ BHK
+            if (filters.bhk && p.bhk !== filters.bhk) {
+                return false;
+            }
+
+            // 💰 PRICE (sidebar range)
+            const priceValue = parseInt(p.price.replace(/[^0-9]/g, ""));
+            if (filters.price && priceValue > filters.price * 100000) {
+                return false;
+            }
+
+            // 🎯 DROPDOWN FILTERS (top bar)
+            if (bhk && p.bhk !== bhk) return false;
+            if (price && p.price !== price) return false;
+            if (size && p.size !== size) return false;
+            if (year && p.year !== year) return false;
+
+            // 🧩 AMENITIES
+            if (
+                filters.amenities.length &&
+                !filters.amenities.every((a) => p.amenities.includes(a))
+            ) {
+                return false;
+            }
+
+            return true;
+        });
+
+        // 🔽 SORTING
+       const getNumericPrice = (price: string) => {
+  const value = parseFloat(price.replace(/[^0-9.]/g, ""));
+
+  if (price.includes("Cr")) {
+    return value * 100; // 1 Cr = 100 Lakh
+  }
+
+  return value; // already in Lakh
+};
+
+     data.sort((a, b) => {
+  const priceA = getNumericPrice(a.price);
+  const priceB = getNumericPrice(b.price);
+
+  return sortOrder === "low"
+    ? priceA - priceB
+    : priceB - priceA;
+});
+
+        return data;
+    }, [properties, activeDistrict, filters, bhk, price, size, year, sortOrder]);
+
     return (
         <>
             <div className="w-100 relative pt-10 ">
@@ -333,9 +408,10 @@ export default function PropertyHero() {
 
                         {/* 🔹 Sort Dropdown */}
                         <div className="w-full sm:w-auto bg-black/90 rounded-lg text-white px-3 py-5 sm:px-4 sm:py-3">
-                            <select
-                                className="w-full bg-transparent outline-none text-sm sm:text-base text-gray-300 cursor-pointer"
-                            >
+                           <select
+  value={sortOrder}
+  onChange={(e) => setSortOrder(e.target.value as "low" | "high")}
+>
                                 <option value="low">Price: Low to High</option>
                                 <option value="high">Price: High to Low</option>
                             </select>
@@ -343,21 +419,21 @@ export default function PropertyHero() {
 
                         {/* 🔹 View Toggle */}
                         <div className="flex items-center gap-2 bg-black/90 py-2 rounded-lg">
-                           
-                                <button
-                                    onClick={() => setView("card")}
-                                    className={`px-4 py-3 rounded ${view === "card" ? "bg-orange-500 text-white" : "text-gray-300"}`}
-                                >
-                                     <BiGridAlt className="text-2xl sm:text-xl" />
-                                </button>
 
-                                <button
-                                    onClick={() => setView("map")}
-                                    className={`px-4 py-3 rounded ${view === "map" ? "bg-orange-500 text-white" : "text-gray-300"}`}
-                                >
-                                     <RiMap2Line className="text-2xl sm:text-xl" />
-                                </button>
-                          
+                            <button
+                                onClick={() => setView("card")}
+                                className={`px-4 py-3 rounded ${view === "card" ? "bg-orange-500 text-white" : "text-gray-300"}`}
+                            >
+                                <BiGridAlt className="text-2xl sm:text-xl" />
+                            </button>
+
+                            <button
+                                onClick={() => setView("map")}
+                                className={`px-4 py-3 rounded ${view === "map" ? "bg-orange-500 text-white" : "text-gray-300"}`}
+                            >
+                                <RiMap2Line className="text-2xl sm:text-xl" />
+                            </button>
+
                         </div>
                     </div>
 
@@ -374,7 +450,7 @@ export default function PropertyHero() {
                 {view === "card" ? (
                     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         {filtered.length > 0 ? (
-                            filtered.map((item) => (
+                            finalProperties.map((item) => (
                                 <PropertyCard
                                     key={item.id}
                                     property={item}
@@ -387,7 +463,7 @@ export default function PropertyHero() {
                     </div>
                 ) : (
                     <div className="w-full h-150">
-                        <PropertyMap properties={filtered} />
+                        <PropertyMap properties={finalProperties} />
                     </div>
                 )}
 
