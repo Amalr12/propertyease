@@ -13,7 +13,7 @@ export default function LocationCard({ type, title, description }: LocationCardP
     return (
         <>
             <div>
-                <div className={`${urbanist.className} bg-[#0c0c0c] text-white rounded-2xl p-6 md:p-8 flex flex-col justify-between m-4`}>
+                <div className={`${urbanist.className} bg-[#0c0c0c] text-white rounded-2xl p-6 md:p-6 flex flex-col justify-between m-3`}>
 
                     <div>
                         <p className="text-gray-400 text-sm mb-2">{type}</p>

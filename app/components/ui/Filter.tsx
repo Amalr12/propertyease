@@ -1,5 +1,7 @@
 "use client";
+import { onest } from "@/app/fonts/fonts";
 import { useState, useEffect } from "react";
+import { CiFilter } from "react-icons/ci";
 
 export default function FilterSidebar({ filters, setFilters }: any) {
     const bhkOptions = ["1 BHK", "2 BHK", "3 BHK", "4 BHK"];
@@ -13,30 +15,37 @@ export default function FilterSidebar({ filters, setFilters }: any) {
     }, [filters]);
 
     return (
-        <div className="bg-[#0c0c0c] text-white p-5 rounded-2xl space-y-6">
+        <div className={`bg-[#0c0c0c] text-white p-5 rounded-2xl space-y-4 ${onest.className}`}>
 
-            {/* RESET */}
-            <button
-                onClick={() => {
-                    const reset = {
-                        types: [],
-                        bhk: "",
-                        price: 200,
-                        amenities: [],
-                    };
-                    setLocalFilters(reset);
-                    setFilters(reset);
-                }}
-            >
-                Reset
-            </button>
+            <div className="flex justify-between items-center">
+                <div className="text-xl flex items-center justify-around">
+                    <CiFilter className="text-orange-500" />
+                    <h1 >Smart Filters</h1>
+                </div>
 
+
+                <button
+                    onClick={() => {
+                        const reset = {
+                            types: [],
+                            bhk: "",
+                            price: 200,
+                            amenities: [],
+                        };
+                        setLocalFilters(reset);
+                        setFilters(reset);
+                    }}
+                >
+                    Reset
+                </button>
+
+            </div>
             {/* TYPE */}
             <div>
                 <p>Property Type</p>
                 {["Apartment", "Villa", "Plot"].map((type) => (
-                    <label key={type} className="block">
-                        <input
+                    <label key={type} className="flex text-gray-500 items-center justify-around">
+                        <input className="bg-gray-500 m-2"
                             type="checkbox"
                             checked={localFilters.types.includes(type)}
                             onChange={() =>
@@ -55,8 +64,8 @@ export default function FilterSidebar({ filters, setFilters }: any) {
 
             {/* PRICE */}
             <div>
-                <p>Max Price</p>
-                <input
+                <p> Price Range (Lakhs)</p>
+                <input className="w-full"
                     type="range"
                     min="25"
                     max="200"
@@ -74,7 +83,7 @@ export default function FilterSidebar({ filters, setFilters }: any) {
             {/* BHK */}
             <div>
                 <p>Bedrooms</p>
-                <div className="flex gap-2 flex-wrap">
+                <div className="flex gap-2 flex-wrap  text-gray-500 ">
                     {bhkOptions.map((b) => (
                         <button
                             key={b}
@@ -97,8 +106,9 @@ export default function FilterSidebar({ filters, setFilters }: any) {
             <div>
                 <p>Amenities</p>
                 {["Parking", "Pool", "Gym", "Park"].map((item) => (
-                    <label key={item} className="block">
+                    <label key={item} className="flex  text-gray-500 items-center justify-around">
                         <input
+                        className="m-2"
                             type="checkbox"
                             checked={localFilters.amenities.includes(item)}
                             onChange={() =>
@@ -118,7 +128,7 @@ export default function FilterSidebar({ filters, setFilters }: any) {
             {/* ✅ APPLY BUTTON */}
             <button
                 onClick={() => setFilters(localFilters)}
-                className="w-full bg-gradient-to-r from-orange-500 to-yellow-500 py-2 rounded-lg font-semibold"
+                className="w-full bg-linear-to-r from-orange-500 to-yellow-500 py-2 rounded-lg font-semibold"
             >
                 Apply Filters
             </button>

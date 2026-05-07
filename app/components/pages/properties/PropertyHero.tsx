@@ -138,31 +138,31 @@ export default function PropertyHero() {
         });
 
         // 🔽 SORTING
-       const getNumericPrice = (price: string) => {
-  const value = parseFloat(price.replace(/[^0-9.]/g, ""));
+        const getNumericPrice = (price: string) => {
+            const value = parseFloat(price.replace(/[^0-9.]/g, ""));
 
-  if (price.includes("Cr")) {
-    return value * 100; // 1 Cr = 100 Lakh
-  }
+            if (price.includes("Cr")) {
+                return value * 100; // 1 Cr = 100 Lakh
+            }
 
-  return value; // already in Lakh
-};
+            return value; // already in Lakh
+        };
 
-     data.sort((a, b) => {
-  const priceA = getNumericPrice(a.price);
-  const priceB = getNumericPrice(b.price);
+        data.sort((a, b) => {
+            const priceA = getNumericPrice(a.price);
+            const priceB = getNumericPrice(b.price);
 
-  return sortOrder === "low"
-    ? priceA - priceB
-    : priceB - priceA;
-});
+            return sortOrder === "low"
+                ? priceA - priceB
+                : priceB - priceA;
+        });
 
         return data;
     }, [properties, activeDistrict, filters, bhk, price, size, year, sortOrder]);
 
     return (
         <>
-            <div className="w-100 relative pt-10 ">
+            <div className={`w-100 relative pt-10 ${onest.className}`} >
                 <div className="flex flex-col  min-h-[40vh] md:min-h-screen pt-30   " style={{
                     backgroundImage: "url('/propertybg.png')",
 
@@ -399,32 +399,43 @@ export default function PropertyHero() {
                     </div>
                 </div>
 
-                <div className="max-w-6xl mx-auto p-5 flex justify-between items-center">
-
-                    <h1 className="text-2xl font-bold mb-5">
-                        Properties in {activeDistrict || "All Locations"}
-                    </h1>
-                    <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 mt-5">
+                <div className="max-w-6xl mx-auto p-5 md:flex block justify-between items-center ">
+<div>
+    
+                        <h1 className="md:text-4xl text-xl font-bold mb-5" style={{fontSize:"1.8rem",fontWeight:"600"}}>
+                            Properties in {activeDistrict || "All Locations"}
+                        </h1>
+                         <h2>{finalProperties.length} Properties Found</h2>
+</div>
+                   
+                    <div className="md:flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 mt-5 text-center">
 
                         {/* 🔹 Sort Dropdown */}
-                        <div className="w-full sm:w-auto bg-black/90 rounded-lg text-white px-3 py-5 sm:px-4 sm:py-3">
-                           <select
-  value={sortOrder}
-  onChange={(e) => setSortOrder(e.target.value as "low" | "high")}
->
-                                <option value="low">Price: Low to High</option>
-                                <option value="high">Price: High to Low</option>
+                        <div className="w-full mb-2  sm:w-auto bg-black/90 rounded-lg text-white px-3 py-5 sm:px-5 overflow-hidden text-center">
+                           
+                            <select
+                                value={sortOrder}
+                                onChange={(e) => setSortOrder(e.target.value as "low" | "high")}
+                                className="md:w-full bg-transparent text-white outline-none text-sm sm:text-base truncate pr-8"
+                            >
+                                <option value="low" className="text-black text:sm">
+                                    Price: Low to High
+                                </option>
+
+                                <option value="high" className="text-black text:sm">
+                                    Price: High to Low
+                                </option>
                             </select>
                         </div>
 
                         {/* 🔹 View Toggle */}
-                        <div className="flex items-center gap-2 bg-black/90 py-2 rounded-lg">
+                        <div className="flex  gap-2 bg-black/90 py-3 rounded-lg justify-center">
 
                             <button
                                 onClick={() => setView("card")}
                                 className={`px-4 py-3 rounded ${view === "card" ? "bg-orange-500 text-white" : "text-gray-300"}`}
                             >
-                                <BiGridAlt className="text-2xl sm:text-xl" />
+                                <BiGridAlt className="text-2xl sm:text-xl " />
                             </button>
 
                             <button

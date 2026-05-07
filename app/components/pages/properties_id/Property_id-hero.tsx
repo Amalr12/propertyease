@@ -5,8 +5,8 @@ import Link from "next/link";
 import { useState } from "react";
 import { AiOutlineThunderbolt } from "react-icons/ai";
 import { BiRectangle } from "react-icons/bi";
-import { FaBath, FaBed, FaPhoneVolume, FaRegStar, FaRulerCombined, FaStar } from "react-icons/fa";
-import { MdKeyboardArrowLeft, MdOutlineVerified } from "react-icons/md";
+import { FaBath, FaBed, FaPhoneVolume, FaRegStar, FaRulerCombined, FaStar, FaUser } from "react-icons/fa";
+import { MdEmail, MdKeyboardArrowLeft, MdOutlineVerified } from "react-icons/md";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import Featured from "../home/Featured";
 import { ImCancelCircle } from "react-icons/im";
@@ -16,7 +16,7 @@ import { IoVideocam } from "react-icons/io5";
 import { FiPhoneCall } from "react-icons/fi";
 import { useRouter } from "next/navigation";
 import { AnyARecord } from "dns";
-import { onest } from "@/app/fonts/fonts";
+import { onest, urbanist } from "@/app/fonts/fonts";
 
 
 interface Props extends PropertyDetails { onClose: () => void; }
@@ -52,7 +52,7 @@ export default function PropertyHeroSection({
         date: "",
         time: "",
         message: "",
-        email:""
+        email: ""
     });
     const handleChange = (e: any) => {
         setFormData({
@@ -68,7 +68,7 @@ export default function PropertyHeroSection({
         message += `Visit Type: ${visitType}\n`;
         message += `Name: ${formData.name}\n`;
         message += `Phone: ${formData.phone}\n`;
-         message += `Message: ${formData.message}\n`;
+        message += `Message: ${formData.message}\n`;
 
         if (visitType !== "consultation") {
             message += `Date: ${formData.date}\n`;
@@ -102,7 +102,7 @@ export default function PropertyHeroSection({
             <div className="bg-gray-100 relative p-4 mt-20 md:mt-50 ">
                 <Link href="/property"><div className="flex justify-start items-center text-xl"><MdKeyboardArrowLeft /> <h1 className="">Back to Listings</h1></div></Link>
                 <div className="grid grid-cols-1 md:grid-cols-[4fr_1fr]  lg:grid-cols-[4fr_2fr] gap-2 items-start p-5 ">
-                    <div className="">
+                    <div className="space-y-10">
                         <div className="relative w-full rounded-xl overflow-hidden">
 
                             <Image
@@ -118,19 +118,15 @@ export default function PropertyHeroSection({
                             <div className=" flex justify-between z-50">
                                 <button
                                     onClick={prevImage}
-                                    className="text-2xl left-2 sm:left-4 top-1/2 -translate-y-1/2 
-                   bg-black/50 hover:bg-black/70 
-                   p-2 sm:p-3 rounded-full text-black  sm:text-base"
+                                    className="text-2xl left-2 sm:left-4 top-1/2 -translate-y-1/2  bg-black/50 hover:bg-black/70 
+ p-2 sm:p-3 rounded-full text-black  sm:text-base"
                                 >
                                     ◀
                                 </button>
 
 
                                 <button
-                                    onClick={nextImage}
-                                    className="text-black right-2 sm:right-4 top-1/2 -translate-y-1/2 
-                   bg-black/50 hover:bg-black/70 
-                   p-2 sm:p-3 rounded-full  text-2xl sm:text-base"
+                                    onClick={nextImage} className="text-black right-2 sm:right-4 top-1/2 -translate-y-1/2  bg-black/50 hover:bg-black/70  p-2 sm:p-3 rounded-full  text-2xl sm:text-base"
                                 >
                                     ▶
                                 </button>
@@ -138,7 +134,7 @@ export default function PropertyHeroSection({
 
                         </div>
                         <div className="mt-4 px-2 sm:px-4 p-5">
-                            <div className="flex flex-col sm:flex-row gap-3 sm:gap-2 scrollbar-hide sm:pb-2 sm:overflow-x-auto snap-x snap-mandatory">
+                            <div className="flex flex-col sm:flex-row gap-3  sm:gap-2 scrollbar-hide sm:pb-2 sm:overflow-x-auto snap-x snap-mandatory">
                                 {images.map((img, index) => (
                                     <Image
                                         key={index}
@@ -159,7 +155,7 @@ export default function PropertyHeroSection({
                                 ))}
                             </div>
                         </div>
-                        <div className="bg-black text-white rounded-xl mt-6 p-6 sm:p-6">
+                        <div className={`bg-black text-white rounded-xl mt-6 p-6 sm:p-6 ${urbanist.className}` }>
                             <div className="grid md:grid-cols-4 sm:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 text-center divide-x divide-gray-700">
                                 <div className="flex flex-col justify-center">
                                     <FaBed className="text-orange-500 text-2xl mx-auto mb-2" />
@@ -186,15 +182,15 @@ export default function PropertyHeroSection({
                             </div>
                         </div>
 
-                        <div className="p-5">
-                            <h1 className="text-2xl font-bold mt-5">Property Overview </h1>
+                        <div className={`mt-4 ${urbanist.className} space-y-2`}>
+                            <h1 className={`text-2xl font-bold mt-5 ${urbanist.className}`} style={{fontWeight:"700",fontStyle:"bold"}}>Property Overview </h1>
                             <p>{overview}</p>
                         </div>
-                        <div className="grid md:grid-cols-2 gap-6 p-5">
+                        <div className={`grid md:grid-cols-2 gap-6 mt-3 mb-4 ${urbanist.className}`}>
                             <div>
-                                <h1 className="text-xl font-bold mb-4">Key Highlights</h1>
+                                <h1 className={`text-xl font-bold mb-4 ${urbanist.className}`} style={{fontWeight:"700",fontStyle:"bold"}}>Key Highlights</h1>
                                 {highlights?.map((item, index) => (
-                                    <div key={index} className="  p-4  flex justify-start gap-3 items-center">
+                                    <div key={index} className=" mt-2 flex justify-start gap-3 items-center">
                                         <MdOutlineVerified className="text-xl text-orange-300 items-center" />
                                         <h2 className="font-semibold ">{item}</h2>
 
@@ -202,9 +198,9 @@ export default function PropertyHeroSection({
                                 ))}
                             </div>
                             <div>
-                                <h1 className="text-xl font-bold mb-4">Why Consider This Property?</h1>
+                                <h1 className={`text-xl font-bold mb-4 ${urbanist.className} `} style={{fontWeight:"700",fontStyle:"bold"}}>Why Consider This Property?</h1>
                                 {considerations?.map((item, index) => (
-                                    <div key={index} className="  p-4  flex justify-start gap-3 items-center">
+                                    <div key={index} className="  mt-2 flex justify-start gap-3 items-center">
                                         <MdOutlineVerified className="text-xl text-orange-300 items-center" />
                                         <h2 className="font-semibold ">{item}</h2>
 
@@ -213,9 +209,9 @@ export default function PropertyHeroSection({
                             </div>
 
                         </div>
-                        <div className="p-5">
-                            <h1 className="text-xl font-bold mb-4">World-class Amenities</h1>
-                            <div className="grid md:grid-cols-3 gap-4 p-5">
+                        <div className="mt-5">
+                            <h1 className={`text-xl font-bold mb-4 ${urbanist.className}`} style={{fontWeight:"700",fontStyle:"bold"}}>World-class Amenities</h1>
+                            <div className="grid md:grid-cols-3 gap-4 mt-3">
                                 {amenities?.map((item, index) => (
                                     <div key={index} className=" bg-[#0c0c0c] text-white rounded p-4  flex justify-center gap-3 items-center">
                                         <MdOutlineVerified className="text-xl text-orange-300 items-center" />
@@ -226,23 +222,25 @@ export default function PropertyHeroSection({
                         </div>
                         <div className="p-5 flex items-center justify-center relative">
 
-                            <div className="p-5">
-                                <TransformWrapper>
-                                    <TransformComponent>
-                                        <Image
-                                            src={floorPlan}
-                                            alt="floorplan"
-                                            width={650}
-                                            height={550}
-                                            className="rounded-lg"
-                                        />
-                                    </TransformComponent>
-                                </TransformWrapper>
-                            </div>
+
+                            <TransformWrapper>
+                                <TransformComponent>
+                                    <Image
+                                        src={floorPlan}
+                                        alt="floorplan"
+                                        width={650}
+                                        height={550}
+                                        className="w-full sm:w-17.5 sm:h-40rem md:w-20 md:h-15 lg:w-22.5 lg:h-17.5
+          h-32  aspect-3/2 object-cover block rounded-xl cursor-pointer 
+          border-2 transition-all duration-200 hover:scale-105 sm:snap-center "
+                                    />
+                                </TransformComponent>
+                            </TransformWrapper>
+
 
                         </div>
-                        <div className="p-5">
-                            <h1 className="text-2xl font-bold mt-5">Location & Connectivity</h1>
+                        <div className="mt-5">
+                            <h1 className={`text-xl font-bold mb-4 ${urbanist.className}`} style={{fontWeight:"700",fontStyle:"bold"}}>Location & Connectivity</h1>
                             <div className="grid md:grid-cols-2 gap-4 mt-4">
                                 {nearby.map((item, index) => (
                                     <div key={index} className="bg-[#0c0c0c] text-white rounded-xl p-4 flex justify-between  items-center gap-3 ">
@@ -260,8 +258,8 @@ export default function PropertyHeroSection({
                             </div>
 
                         </div>
-                        <div className="p-4 sm:p-5">
-                            <h1 className="text-xl sm:text-2xl font-bold mt-5 mb-6">User Reviews</h1>
+                        <div className=" sm:p-5 mt-5">
+                            <h1 className={`text-xl font-bold mb-4 ${urbanist.className} font-xl `} style={{fontWeight:"700",fontStyle:"bold"}}>User Reviews</h1>
                             {reviews.map((item, index) => (
                                 <div key={index} className="bg-[#0c0c0c] text-white rounded-xl p-4 sm:p-5 mt-4 mb-4 shadow-lg hover:shadow-xl transition-all">
                                     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 sm:gap-0 mb-4 sm:mb-2">
@@ -297,7 +295,7 @@ export default function PropertyHeroSection({
                         </div>
 
                     </div>
-                    <div className={`${onest.className} space-y-3`}>
+                    <div className={`${onest.className} space-y-3 `}>
 
                         <div className="bg-black text-white rounded-xl p-6 shadow-lg ">
                             <p className="text-gray-400 text-sm">PROPERTY PRICE</p>
@@ -323,8 +321,10 @@ export default function PropertyHeroSection({
                         <div className="bg-black text-white rounded-xl p-6 shadow-lg mt-5">
                             <h2 className="font-semibold mb-4">Listed by Agent</h2>
 
-                            <div className="flex items-center gap-3">
-                                <div className="w-12 h-12 border-2 border-orange-500 rounded-full"></div>
+                            <div className="flex items-center  gap-2r gap-3">
+                                 <div className="flex items-center justify-center w-10 h-10 border border-yellow-600 rounded-full mb-3">
+                                                                 <FaUser className="text-yellow-500 text-lg" />
+                                                             </div>
                                 <div>
                                     <p className="font-medium">Rahul Menon</p>
                                     <p className="text-xs text-gray-400">
@@ -338,9 +338,11 @@ export default function PropertyHeroSection({
                                 📞 +91 98765 43210
                             </button>
 
-                            <button className="w-full mt-3 bg-gray-800 py-2 rounded-lg">
-                                ✉ Email Agent
-                            </button>
+                            <Link href={"mailto:amaldaspr1998@gmail.com?subject=Property%20Inquiry&body=Hi,%20I%20am%20interested%20in%20this%20property."}>
+                                <button className="w-full mt-3 bg-gray-800 py-2 rounded-lg">
+                                    ✉ Email Agent
+                                </button>
+                            </Link>
                         </div>
                     </div>
 
@@ -540,35 +542,35 @@ export default function PropertyHeroSection({
                         </div>
                         <input
                             type="text"
-                                            name="name"
-                                            placeholder="Your Name"
-                                            value={formData.name}
-                                            onChange={handleChange}
+                            name="name"
+                            placeholder="Your Name"
+                            value={formData.name}
+                            onChange={handleChange}
                             className="w-full bg-gray-800 p-3 rounded-lg mb-3"
                         />
 
                         <div className="flex gap-2 mb-3">
                             <input
                                 type="text"
-                                            name="phone"
-                                            placeholder="+91 00000 00000"
-                                            value={formData.phone}
-                                            onChange={handleChange}
+                                name="phone"
+                                placeholder="+91 00000 00000"
+                                value={formData.phone}
+                                onChange={handleChange}
                                 className="w-1/2 bg-gray-800 p-3 rounded-lg"
                             />
                             <input
                                 type="email"
                                 placeholder="name@email.com"
                                 value={formData.email}
-                                            onChange={handleChange}
+                                onChange={handleChange}
                                 className="w-1/2 bg-gray-800 p-3 rounded-lg"
                             />
                         </div>
 
                         <textarea
                             placeholder="Message (optional)"
-                               value={formData.message}
-                                            onChange={handleChange}
+                            value={formData.message}
+                            onChange={handleChange}
                             className="w-full bg-gray-800 p-3 rounded-lg mb-4"
                         />
 

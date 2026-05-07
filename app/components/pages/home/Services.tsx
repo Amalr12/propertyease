@@ -9,7 +9,7 @@ export default function Services() {
     return (
         <>
             <div className="space-y-4 m-5  ps-10 pe-20" >
-                <h1 className={` mb-2 ${onest.className}`} style={{ fontWeight: "500", fontSize: "1.8rem" }}>Elevate Your Real Estate Experience</h1>
+                <h1 className={` mb-2 ${urbanist.className}`} style={{ fontWeight: "500", fontSize: "1.8rem" }}>Elevate Your Real Estate Experience</h1>
                 <p className={`text-gray-400  ${onest.className}`} style={{ fontWeight: "400", fontSize: "1rem" }}>Welcome to Estatein, where your real estate aspirations meet expert guidance. Explore our comprehensive range of services, each designed to cater to your unique needs and dreams.</p>
             </div>
             <div className=" m-0 bg-black">

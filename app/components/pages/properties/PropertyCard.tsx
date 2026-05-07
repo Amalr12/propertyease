@@ -47,7 +47,7 @@ export function PropertyCard({ property, onScheduleClick }: { property: any, onS
         window.open(url, "_blank");
     };
     return (
-        <div className="bg-[#0c0c0c]  relative text-white rounded-2xl overflow-hidden shadow-lg w-full max-w-sm">
+        <div className={`bg-[#0c0c0c]  relative text-white rounded-2xl  overflow-hidden shadow-lg w-full max-w-sm ${onest.className}`}>
 
             {/* HEADER */}
             <div className="flex justify-between items-center p-3">
@@ -67,13 +67,13 @@ export function PropertyCard({ property, onScheduleClick }: { property: any, onS
                     className="w-full h-56 object-cover"
                 />
 
-                <div className="absolute bottom-3 left-3 bg-orange-500 px-3 py-1 rounded-full text-sm font-semibold">
+                <div className="absolute bottom-3 left-3 bg-orange-500 px-3 py-1 mt-5 rounded-full text-sm font-semibold">
                     {property.price}
                 </div>
             </div>
 
             {/* CONTENT */}
-            <div className="p-4 space-y-3">
+            <div className="p-4 space-y-3 mt-10">
 
                 <h2 className="text-lg font-semibold">{property.title}</h2>
 
@@ -101,7 +101,7 @@ export function PropertyCard({ property, onScheduleClick }: { property: any, onS
                     </button>
 
                     <Link href={`/property/${property.slug}`}>
-                        <button className="flex-1 bg-linear-to-r from-orange-500 to-yellow-500 py-2 px-4 rounded-lg text-black font-semibold">
+                        <button className="flex-1 bg-linear-to-r from-orange-500 to-yellow-500 py-2 px-4 rounded-lg text-white font-semibold">
                             Details
                         </button>
                     </Link>
