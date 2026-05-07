@@ -19,7 +19,7 @@ import { AnyARecord } from "dns";
 import { onest, urbanist } from "@/app/fonts/fonts";
 
 
-interface Props extends PropertyDetails { onClose: () => void; }
+interface Props extends PropertyDetails { onClose?: () => void; }
 
 export default function PropertyHeroSection({
     onClose,
