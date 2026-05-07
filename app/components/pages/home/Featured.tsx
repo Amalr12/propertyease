@@ -104,12 +104,12 @@ export default function Featured() {
                 <div className="grid md:grid-cols-[4fr_1fr] justify-between items-start sm:items-center gap-6 sm:gap-0 m-10">
                     <div>
                         <h1
-                            className={` ${urbanist.className} font-medium text-xl sm:text-2xl md:text-3xl lg:text-4xl `} style={{ fontWeight: "600", fontStyle: "semibold" }}
+                           className={` mb-2 ${urbanist.className}`} style={{ fontWeight: "500", fontSize: "1.8rem" }}
                         >
                             Featured Properties
                         </h1>
                         <p
-                            className={`text-gray-400 ${onest.className} font-normal text-sm sm:text-base md:text-lg`}
+                           className={`text-gray-400  ${onest.className}`} style={{ fontWeight: "400", fontSize: "1rem" }}
                         >
                             Discover our handpicked selection of exceptional properties, each offering unique features and unparalleled value.
                         </p>
@@ -128,7 +128,7 @@ export default function Featured() {
                 {currentItems.map((item) => (
                     <div
                         key={item.id}
-                        className={`bg-[#0c0c0c]  sm:p-4 md:p-5 rounded-xl  sm:m-3  ${onest.className} flex flex-col h-full`}
+                        className={`bg-[#0c0c0c] p-2 sm:p-4 md:p-5 rounded-xl  sm:m-3  ${onest.className} flex flex-col h-full`}
                     >
                         <div>
                             <img
