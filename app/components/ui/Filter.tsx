@@ -1,91 +1,135 @@
 "use client";
-import { useState } from "react";
+import { onest } from "@/app/fonts/fonts";
+import { useState, useEffect } from "react";
+import { CiFilter } from "react-icons/ci";
 
-export default function FilterSidebar({ filters, setFilters }: { filters: any; setFilters: React.Dispatch<React.SetStateAction<any>> }) {
-    const [selectedBHK, setSelectedBHK] = useState("");
+export default function FilterSidebar({ filters, setFilters }: any) {
+    const bhkOptions = ["1 BHK", "2 BHK", "3 BHK", "4 BHK"];
 
-    const bhkOptions = ["1BHK", "2BHK", "3BHK", "4BHK", "5BHK"];
+    // 🔥 LOCAL STATE (temporary selections)
+    const [localFilters, setLocalFilters] = useState(filters);
+
+    // keep in sync when reset from parent
+    useEffect(() => {
+        setLocalFilters(filters);
+    }, [filters]);
 
     return (
-        <div className="bg-[#0c0c0c] text-white p-5 rounded-2xl  w-10rem space-y-6 shadow-lg">
+        <div className={`bg-[#0c0c0c] text-white p-5 rounded-2xl space-y-4 ${onest.className}`}>
 
-            {/* Title */}
             <div className="flex justify-between items-center">
-                <h2 className="font-semibold text-lg">Smart Filters</h2>
+                <div className="text-xl flex items-center justify-around">
+                    <CiFilter className="text-orange-500" />
+                    <h1 >Smart Filters</h1>
+                </div>
+
+
                 <button
-                    onClick={() => setFilters({})}
-                    className="text-sm text-gray-400"
+                    onClick={() => {
+                        const reset = {
+                            types: [],
+                            bhk: "",
+                            price: 200,
+                            amenities: [],
+                        };
+                        setLocalFilters(reset);
+                        setFilters(reset);
+                    }}
                 >
                     Reset
                 </button>
+
+            </div>
+            {/* TYPE */}
+            <div>
+                <p>Property Type</p>
+                {["Apartment", "Villa", "Plot"].map((type) => (
+                    <label key={type} className="flex text-gray-500 items-center justify-around">
+                        <input className="bg-gray-500 m-2"
+                            type="checkbox"
+                            checked={localFilters.types.includes(type)}
+                            onChange={() =>
+                                setLocalFilters((prev: any) => ({
+                                    ...prev,
+                                    types: prev.types.includes(type)
+                                        ? prev.types.filter((t: string) => t !== type)
+                                        : [...prev.types, type],
+                                }))
+                            }
+                        />{" "}
+                        {type}
+                    </label>
+                ))}
             </div>
 
-            {/* Property Type */}
+            {/* PRICE */}
             <div>
-                <p className="text-sm mb-2 text-gray-400">Property Type</p>
-                <div className="space-y-2">
-                    {["Apartment", "Villa", "Plot"].map((type) => (
-                        <label key={type} className="flex items-center gap-2 text-sm">
-                            <input type="checkbox" className="accent-orange-500" />
-                            {type}
-                        </label>
-                    ))}
-                </div>
-            </div>
-
-            {/* Price */}
-            <div>
-                <p className="text-sm mb-2 text-gray-400">Price Range</p>
-                <input
+                <p> Price Range (Lakhs)</p>
+                <input className="w-full"
                     type="range"
                     min="25"
                     max="200"
-                    className="w-full accent-orange-500"
+                    value={localFilters.price}
                     onChange={(e) =>
-                        setFilters((prev: any) => ({ ...prev, price: e.target.value }))
+                        setLocalFilters((prev: any) => ({
+                            ...prev,
+                            price: Number(e.target.value),
+                        }))
                     }
                 />
-                <div className="flex justify-between text-xs text-gray-400">
-                    <span>₹25L</span>
-                    <span>₹200L+</span>
-                </div>
+                <p>{localFilters.price} Lakh</p>
             </div>
 
-            {/* Bedrooms */}
+            {/* BHK */}
             <div>
-                <p className="text-sm mb-2 text-gray-400">Bedrooms</p>
-                <div className="flex flex-wrap gap-2">
-                    {bhkOptions.map((bhk) => (
+                <p>Bedrooms</p>
+                <div className="flex gap-2 flex-wrap  text-gray-500 ">
+                    {bhkOptions.map((b) => (
                         <button
-                            key={bhk}
-                            onClick={() => {
-                                setSelectedBHK(bhk);
-                                setFilters((prev: any) => ({ ...prev, bhk }));
-                            }}
-                            className={`px-3 py-1 rounded-lg text-sm ${selectedBHK === bhk
-                                    ? "bg-white text-black"
-                                    : "bg-gray-800"
+                            key={b}
+                            onClick={() =>
+                                setLocalFilters((prev: any) => ({
+                                    ...prev,
+                                    bhk: b,
+                                }))
+                            }
+                            className={`px-3 py-1 rounded ${localFilters.bhk === b ? "bg-white text-black" : "bg-gray-700"
                                 }`}
                         >
-                            {bhk}
+                            {b}
                         </button>
                     ))}
                 </div>
             </div>
 
-            {/* Amenities */}
+            {/* AMENITIES */}
             <div>
-                <p className="text-sm mb-2 text-gray-400">Amenities</p>
+                <p>Amenities</p>
                 {["Parking", "Pool", "Gym", "Park"].map((item) => (
-                    <label key={item} className="flex items-center gap-2 text-sm">
-                        <input type="checkbox" className="accent-orange-500" />
+                    <label key={item} className="flex  text-gray-500 items-center justify-around">
+                        <input
+                        className="m-2"
+                            type="checkbox"
+                            checked={localFilters.amenities.includes(item)}
+                            onChange={() =>
+                                setLocalFilters((prev: any) => ({
+                                    ...prev,
+                                    amenities: prev.amenities.includes(item)
+                                        ? prev.amenities.filter((a: string) => a !== item)
+                                        : [...prev.amenities, item],
+                                }))
+                            }
+                        />{" "}
                         {item}
                     </label>
                 ))}
             </div>
 
-            {/* Apply Button */}
-            <button className="w-full bg-linear-to-r from-orange-500 to-yellow-500 py-2 rounded-lg font-semibold">
+            {/* ✅ APPLY BUTTON */}
+            <button
+                onClick={() => setFilters(localFilters)}
+                className="w-full bg-linear-to-r from-orange-500 to-yellow-500 py-2 rounded-lg font-semibold"
+            >
                 Apply Filters
             </button>
         </div>

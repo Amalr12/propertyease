@@ -13,7 +13,7 @@ export default function Values() {
                 </h1>
                 <div className="relative z-10 grid md:grid-cols-[2fr_4fr] mx-10 mt-50">
                     <div className="p-5">
-                        <h1 className={`${onest.className}`} style={{ fontWeight: 500, fontSize: "1.8rem" }} >Our Values</h1>
+                        <h1 className={`${urbanist.className}`} style={{ fontWeight: 500, fontSize: "1.8rem" }} >Our Values</h1>
                         <h1 className={`${onest.className}`} style={{ fontWeight: 500, fontSize: "1rem" }}>Our story is one of continuous growth and evolution. We started as a small team with big dreams, determined to create a real estate platform that transcended the ordinary.</h1>
                     </div>
                     <div className="bg-[#0c0c0c] text-white rounded-2xl p-10 max-w-6xl mx-auto">

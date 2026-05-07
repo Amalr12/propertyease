@@ -1,6 +1,6 @@
 "use client";
 import { onest, urbanist } from "@/app/fonts/fonts";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { FaLocationDot } from "react-icons/fa6";
 import { FiChevronDown } from "react-icons/fi";
 import { IoCubeSharp, IoSearch } from "react-icons/io5";
@@ -12,6 +12,7 @@ import FilterSidebar from "../../ui/Filter";
 import { PropertyCard } from "./PropertyCard";
 import { BiGridAlt } from "react-icons/bi";
 import PropertyMap from "./Propertymap";
+import ScheduleVist from "../../ui/ScheduleVisit";
 
 
 const districts = [
@@ -30,6 +31,9 @@ const yearOptions = ["Before 2000", "2000 - 2010", "2010 - 2020", "After 2020"];
 
 
 export default function PropertyHero() {
+    const [sortOrder, setSortOrder] = useState<"low" | "high">("low");
+    const [selectedProperty, setSelectedProperty] = useState<any>(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const [open, setOpen] = useState(false);
     const [open2, setOpen2] = useState(false);
     const [open3, setOpen3] = useState(false);
@@ -38,7 +42,7 @@ export default function PropertyHero() {
     const router = useRouter();
     const [searchText, setSearchText] = useState("");
 
-    const [selectedBHK, setSelectedBHK] = useState("");
+
     const [distsSelected, distsSetSelected] = useState("");
     const [bhkSelected, bhkSetSelected] = useState("");
     const [priceSelected, priceSetSelected] = useState("");
@@ -74,12 +78,91 @@ export default function PropertyHero() {
             (!year || item.year === year)
         );
     });
-    const [filters, setFilters] = useState({});
-    const [cardview, setCardview] = useState(true);
-    const [mapview, setMapview] = useState(false);
+    const [view, setView] = useState<"card" | "map">("card");
+
+
+    const handleOpenModal = (property: any) => {
+        setSelectedProperty(property);
+        setIsModalOpen(true);
+    };
+    const [filters, setFilters] = useState({
+        types: [] as string[],
+        bhk: "",
+        price: 200,
+        amenities: [] as string[],
+    });
+
+    // 🔥 FILTER LOGIC
+    const finalProperties = useMemo(() => {
+        let data = properties.filter((p) => {
+
+            // 🔍 DISTRICT SEARCH
+            if (
+                activeDistrict &&
+                !p.district.toLowerCase().includes(activeDistrict.toLowerCase())
+            ) {
+                return false;
+            }
+
+            // 🏠 TYPE FILTER
+            if (filters.types.length && !filters.types.includes(p.type)) {
+                return false;
+            }
+
+            // 🛏️ BHK
+            if (filters.bhk && p.bhk !== filters.bhk) {
+                return false;
+            }
+
+            // 💰 PRICE (sidebar range)
+            const priceValue = parseInt(p.price.replace(/[^0-9]/g, ""));
+            if (filters.price && priceValue > filters.price * 100000) {
+                return false;
+            }
+
+            // 🎯 DROPDOWN FILTERS (top bar)
+            if (bhk && p.bhk !== bhk) return false;
+            if (price && p.price !== price) return false;
+            if (size && p.size !== size) return false;
+            if (year && p.year !== year) return false;
+
+            // 🧩 AMENITIES
+            if (
+                filters.amenities.length &&
+                !filters.amenities.every((a) => p.amenities.includes(a))
+            ) {
+                return false;
+            }
+
+            return true;
+        });
+
+        // 🔽 SORTING
+        const getNumericPrice = (price: string) => {
+            const value = parseFloat(price.replace(/[^0-9.]/g, ""));
+
+            if (price.includes("Cr")) {
+                return value * 100; // 1 Cr = 100 Lakh
+            }
+
+            return value; // already in Lakh
+        };
+
+        data.sort((a, b) => {
+            const priceA = getNumericPrice(a.price);
+            const priceB = getNumericPrice(b.price);
+
+            return sortOrder === "low"
+                ? priceA - priceB
+                : priceB - priceA;
+        });
+
+        return data;
+    }, [properties, activeDistrict, filters, bhk, price, size, year, sortOrder]);
+
     return (
         <>
-            <div className="w-100 relative pt-10 ">
+            <div className={`w-100 relative pt-10 ${onest.className}`} >
                 <div className="flex flex-col  min-h-[40vh] md:min-h-screen pt-30   " style={{
                     backgroundImage: "url('/propertybg.png')",
 
@@ -316,51 +399,52 @@ export default function PropertyHero() {
                     </div>
                 </div>
 
-                <div className="max-w-6xl mx-auto p-5 flex justify-between items-center">
-
-                    <h1 className="text-2xl font-bold mb-5">
-                        Properties in {activeDistrict || "All Locations"}
-                    </h1>
-                    <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 mt-5">
+                <div className="max-w-6xl mx-auto p-5 md:flex block justify-between items-center ">
+<div>
+    
+                        <h1 className="md:text-4xl text-xl font-bold mb-5" style={{fontSize:"1.8rem",fontWeight:"600"}}>
+                            Properties in {activeDistrict || "All Locations"}
+                        </h1>
+                         <h2>{finalProperties.length} Properties Found</h2>
+</div>
+                   
+                    <div className="md:flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 mt-5 text-center">
 
                         {/* 🔹 Sort Dropdown */}
-                        <div className="w-full sm:w-auto bg-black/90 rounded-lg text-white px-3 py-5 sm:px-4 sm:py-3">
+                        <div className="w-full mb-2  sm:w-auto bg-black/90 rounded-lg text-white px-3 py-5 sm:px-5 overflow-hidden text-center">
+                           
                             <select
-                                className="w-full bg-transparent outline-none text-sm sm:text-base text-gray-300 cursor-pointer"
+                                value={sortOrder}
+                                onChange={(e) => setSortOrder(e.target.value as "low" | "high")}
+                                className="md:w-full bg-transparent text-white outline-none text-sm sm:text-base truncate pr-8"
                             >
-                                <option value="low">Price: Low to High</option>
-                                <option value="high">Price: High to Low</option>
+                                <option value="low" className="text-black text:sm">
+                                    Price: Low to High
+                                </option>
+
+                                <option value="high" className="text-black text:sm">
+                                    Price: High to Low
+                                </option>
                             </select>
                         </div>
 
                         {/* 🔹 View Toggle */}
-                        <div className="flex items-center gap-2 bg-black/90 py-2 rounded-lg">
+                        <div className="flex  gap-2 bg-black/90 py-3 rounded-lg justify-center">
 
-                            {/* Grid View */}
                             <button
-                                type="button"
-                                onClick={() => {
-                                    setCardview(true);
-                                    setMapview(false);
-                                }}
-                                className={`p-2 sm:p-3 rounded transition ${cardview ? "bg-orange-500 text-white" : "text-gray-300"
-                                    }`}
+                                onClick={() => setView("card")}
+                                className={`px-4 py-3 rounded ${view === "card" ? "bg-orange-500 text-white" : "text-gray-300"}`}
                             >
-                                <BiGridAlt className="text-lg sm:text-xl" />
+                                <BiGridAlt className="text-2xl sm:text-xl " />
                             </button>
 
-                            {/* Map View */}
                             <button
-                                type="button"
-                                onClick={() => {
-                                    setCardview(false);
-                                    setMapview(true);
-                                }}
-                                className={`p-2 sm:p-3 rounded transition ${mapview ? "bg-orange-500 text-white" : "text-gray-300"
-                                    }`}
+                                onClick={() => setView("map")}
+                                className={`px-4 py-3 rounded ${view === "map" ? "bg-orange-500 text-white" : "text-gray-300"}`}
                             >
-                                <RiMap2Line className="text-lg sm:text-xl" />
+                                <RiMap2Line className="text-2xl sm:text-xl" />
                             </button>
+
                         </div>
                     </div>
 
@@ -369,27 +453,38 @@ export default function PropertyHero() {
                 </div>
 
             </div>
-            <div className="grid md:grid-cols-[2fr_4fr] gap-4 p-5 max-w-6xl mx-auto ">
+            <div className="grid md:grid-cols-[2fr_4fr] gap-4 p-5 max-w-6xl mx-auto relative">
 
                 {/* LEFT FILTER */}
                 <FilterSidebar filters={filters} setFilters={setFilters} />
 
-                {/* RIGHT CARDS */}
-                {cardview &&
-
+                {view === "card" ? (
                     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         {filtered.length > 0 ? (
-                            filtered.map((item) => (
-                                <PropertyCard key={item.id} property={item} />
+                            finalProperties.map((item) => (
+                                <PropertyCard
+                                    key={item.id}
+                                    property={item}
+                                    onScheduleClick={handleOpenModal}
+                                />
                             ))
                         ) : (
                             <p>No properties found</p>
                         )}
-                    </div>}
+                    </div>
+                ) : (
+                    <div className="w-full h-150">
+                        <PropertyMap properties={finalProperties} />
+                    </div>
+                )}
 
-                {
-                    mapview && <PropertyMap />
-                }
+
+                {isModalOpen && selectedProperty && (
+                    <ScheduleVist
+                        {...selectedProperty}
+                        onClose={() => setIsModalOpen(false)}
+                    />
+                )}
             </div>
         </>
     );

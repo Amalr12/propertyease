@@ -99,31 +99,36 @@ export default function Featured() {
     return (
 
         <>
-            <div className="m-3 sm:m-5 ps-4 sm:ps-10 pe-4 sm:pe-20">
-                <h1
-                    className={` ${onest.className} font-medium text-xl sm:text-2xl md:text-3xl lg:text-4xl`}
-                >
-                    Featured Properties
-                </h1>
-                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-0">
-                    <p
-                        className={`text-gray-400 ${onest.className} font-normal text-sm sm:text-base md:text-lg`}
-                    >
-                        Discover our handpicked selection of exceptional properties, each offering unique features and unparalleled value.
-                    </p>
-                    <button
-                        className={`bg-linear-to-r from-orange-500 to-yellow-500 text-white rounded mt-3 sm:mt-5 px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 text-sm sm:text-base md:text-lg w-full sm:w-auto transition hover:opacity-90 ${onest.className}`}
-                        style={{ fontWeight: 500 }}
-                    >
-                        View All Properties
-                    </button>
+            <div className="m-3 sm:m-5   sm:pe-20">
+
+                <div className="grid md:grid-cols-[4fr_1fr] justify-between items-start sm:items-center gap-6 sm:gap-0 m-10">
+                    <div>
+                        <h1
+                           className={` mb-2 ${urbanist.className}`} style={{ fontWeight: "500", fontSize: "1.8rem" }}
+                        >
+                            Featured Properties
+                        </h1>
+                        <p
+                           className={`text-gray-400  ${onest.className}`} style={{ fontWeight: "400", fontSize: "1rem" }}
+                        >
+                            Discover our handpicked selection of exceptional properties, each offering unique features and unparalleled value.
+                        </p>
+                    </div>
+                    <div>
+                        <button
+                            className={`bg-linear-to-r from-orange-500 to-yellow-500 text-white rounded mt-3 sm:mt-5 px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 md:justify-end text-sm sm:text-base md:text-lg w-full sm:w-auto transition hover:opacity-90 ${onest.className}`}
+                            style={{ fontWeight: 500 }}
+                        >
+                            View All Properties
+                        </button>
+                    </div>
                 </div>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-2 sm:p-4 md:p-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-2 sm:p-4 md:p-5 m-10">
                 {currentItems.map((item) => (
                     <div
                         key={item.id}
-                        className={`bg-[#0c0c0c] p-3 sm:p-4 md:p-5 rounded-xl m-2 sm:m-3 md:m-5 ${onest.className} flex flex-col h-full`}
+                        className={`bg-[#0c0c0c] p-2 sm:p-4 md:p-5 rounded-xl  sm:m-3  ${onest.className} flex flex-col h-full`}
                     >
                         <div>
                             <img

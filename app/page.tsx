@@ -11,13 +11,15 @@ import ClientSay from "./components/pages/home/ClientSay";
 export default function Home() {
   return (
     <>
-      <Hero/>
-      <AboutUs/>
-      <Values/>
-      <Services/>
-      <WhyChooseUs/>
-      <Featured/>
-      <ClientSay/>
+     <div className="">
+        <Hero/>
+        <AboutUs/>
+        <Values/>
+        <Services/>
+        <WhyChooseUs/>
+        <Featured/>
+        <ClientSay/>
+     </div>
     </>
   );
 }
