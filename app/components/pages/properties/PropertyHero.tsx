@@ -162,7 +162,7 @@ export default function PropertyHero() {
 
     return (
         <>
-            <div className={`w-100 relative pt-10 ${onest.className}`} >
+            <div className={`w-full  relative pt-10 ${onest.className}`} >
                 <div className="flex flex-col  min-h-[40vh] md:min-h-screen pt-30   " style={{
                     backgroundImage: "url('/propertybg.png')",
 
@@ -400,19 +400,19 @@ export default function PropertyHero() {
                 </div>
 
                 <div className="max-w-6xl mx-auto p-5 md:flex block justify-between items-center ">
-<div>
-    
-                        <h1 className="md:text-4xl text-xl font-bold mb-5" style={{fontSize:"1.8rem",fontWeight:"600"}}>
+                    <div>
+
+                        <h1 className="md:text-4xl text-xl font-bold mb-5" style={{ fontSize: "1.8rem", fontWeight: "600" }}>
                             Properties in {activeDistrict || "All Locations"}
                         </h1>
-                         <h2>{finalProperties.length} Properties Found</h2>
-</div>
-                   
+                        <h2>{finalProperties.length} Properties Found</h2>
+                    </div>
+
                     <div className="md:flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 mt-5 text-center">
 
                         {/* 🔹 Sort Dropdown */}
                         <div className="w-full mb-2  sm:w-auto bg-black/90 rounded-lg text-white px-3 py-5 sm:px-5 overflow-hidden text-center">
-                           
+
                             <select
                                 value={sortOrder}
                                 onChange={(e) => setSortOrder(e.target.value as "low" | "high")}

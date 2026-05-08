@@ -115,7 +115,7 @@ export default function PropertyHeroSection({
                             />
 
 
-                            <div className=" flex justify-between z-50">
+                            <div className="absolute flex justify-between z-50">
                                 <button
                                     onClick={prevImage}
                                     className="text-2xl left-2 sm:left-4 top-1/2 -translate-y-1/2  bg-black/50 hover:bg-black/70 
@@ -133,7 +133,7 @@ export default function PropertyHeroSection({
                             </div>
 
                         </div>
-                        <div className="mt-4 px-2 sm:px-4 p-5">
+                        {/* <div className="mt-4 px-2 sm:px-4 p-5">
                             <div className="flex flex-col sm:flex-row gap-3  sm:gap-2 scrollbar-hide sm:pb-2 sm:overflow-x-auto snap-x snap-mandatory">
                                 {images.map((img, index) => (
                                     <Image
@@ -154,8 +154,48 @@ export default function PropertyHeroSection({
                                     />
                                 ))}
                             </div>
+                        </div> */}
+                        <div className="mt-4 px-3 sm:px-4 lg:px-5">
+
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+                                {images.map((img, index) => (
+                                    <div
+                                        key={index}
+                                        onClick={() => setCurrentIndex(index)}
+                                        className={`
+                    relative overflow-hidden rounded-xl cursor-pointer
+                    transition-all duration-300 group
+                    ${currentIndex === index
+                                                ? "ring-2 ring-orange-500 shadow-xl scale-[1.02]"
+                                                : "hover:shadow-lg hover:scale-[1.01]"
+                                            }
+                `}
+                                    >
+                                        <Image
+                                            src={img}
+                                            width={500}
+                                            height={300}
+                                            alt="thumbnail"
+                                            className={`
+                        w-full
+                        h-48 sm:h-52 md:h-56 lg:h-60
+                        object-cover
+                        transition-transform duration-300
+                        group-hover:scale-105
+                    `}
+                                        />
+
+                                        {/* ACTIVE OVERLAY */}
+                                        {currentIndex === index && (
+                                            <div className="absolute inset-0 bg-black/10"></div>
+                                        )}
+                                    </div>
+                                ))}
+
+                            </div>
                         </div>
-                        <div className={`bg-black text-white rounded-xl mt-6 p-6 sm:p-6 ${urbanist.className}` }>
+                        <div className={`bg-black text-white rounded-xl mt-6 p-6 sm:p-6 ${urbanist.className}`}>
                             <div className="grid md:grid-cols-4 sm:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 text-center divide-x divide-gray-700">
                                 <div className="flex flex-col justify-center">
                                     <FaBed className="text-orange-500 text-2xl mx-auto mb-2" />
@@ -183,12 +223,12 @@ export default function PropertyHeroSection({
                         </div>
 
                         <div className={`mt-4 ${urbanist.className} space-y-2`}>
-                            <h1 className={`text-2xl font-bold mt-5 ${urbanist.className}`} style={{fontWeight:"700",fontStyle:"bold"}}>Property Overview </h1>
+                            <h1 className={`text-2xl font-bold mt-5 ${urbanist.className}`} style={{ fontWeight: "700", fontStyle: "bold" }}>Property Overview </h1>
                             <p>{overview}</p>
                         </div>
                         <div className={`grid md:grid-cols-2 gap-6 mt-3 mb-4 ${urbanist.className}`}>
                             <div>
-                                <h1 className={`text-xl font-bold mb-4 ${urbanist.className}`} style={{fontWeight:"700",fontStyle:"bold"}}>Key Highlights</h1>
+                                <h1 className={`text-xl font-bold mb-4 ${urbanist.className}`} style={{ fontWeight: "700", fontStyle: "bold" }}>Key Highlights</h1>
                                 {highlights?.map((item, index) => (
                                     <div key={index} className=" mt-2 flex justify-start gap-3 items-center">
                                         <MdOutlineVerified className="text-xl text-orange-300 items-center" />
@@ -198,7 +238,7 @@ export default function PropertyHeroSection({
                                 ))}
                             </div>
                             <div>
-                                <h1 className={`text-xl font-bold mb-4 ${urbanist.className} `} style={{fontWeight:"700",fontStyle:"bold"}}>Why Consider This Property?</h1>
+                                <h1 className={`text-xl font-bold mb-4 ${urbanist.className} `} style={{ fontWeight: "700", fontStyle: "bold" }}>Why Consider This Property?</h1>
                                 {considerations?.map((item, index) => (
                                     <div key={index} className="  mt-2 flex justify-start gap-3 items-center">
                                         <MdOutlineVerified className="text-xl text-orange-300 items-center" />
@@ -210,7 +250,7 @@ export default function PropertyHeroSection({
 
                         </div>
                         <div className="mt-5">
-                            <h1 className={`text-xl font-bold mb-4 ${urbanist.className}`} style={{fontWeight:"700",fontStyle:"bold"}}>World-class Amenities</h1>
+                            <h1 className={`text-xl font-bold mb-4 ${urbanist.className}`} style={{ fontWeight: "700", fontStyle: "bold" }}>World-class Amenities</h1>
                             <div className="grid md:grid-cols-3 gap-4 mt-3">
                                 {amenities?.map((item, index) => (
                                     <div key={index} className=" bg-[#0c0c0c] text-white rounded p-4  flex justify-center gap-3 items-center">
@@ -240,7 +280,7 @@ export default function PropertyHeroSection({
 
                         </div>
                         <div className="mt-5">
-                            <h1 className={`text-xl font-bold mb-4 ${urbanist.className}`} style={{fontWeight:"700",fontStyle:"bold"}}>Location & Connectivity</h1>
+                            <h1 className={`text-xl font-bold mb-4 ${urbanist.className}`} style={{ fontWeight: "700", fontStyle: "bold" }}>Location & Connectivity</h1>
                             <div className="grid md:grid-cols-2 gap-4 mt-4">
                                 {nearby.map((item, index) => (
                                     <div key={index} className="bg-[#0c0c0c] text-white rounded-xl p-4 flex justify-between  items-center gap-3 ">
@@ -259,7 +299,7 @@ export default function PropertyHeroSection({
 
                         </div>
                         <div className=" sm:p-5 mt-5">
-                            <h1 className={`text-xl font-bold mb-4 ${urbanist.className} font-xl `} style={{fontWeight:"700",fontStyle:"bold"}}>User Reviews</h1>
+                            <h1 className={`text-xl font-bold mb-4 ${urbanist.className} font-xl `} style={{ fontWeight: "700", fontStyle: "bold" }}>User Reviews</h1>
                             {reviews.map((item, index) => (
                                 <div key={index} className="bg-[#0c0c0c] text-white rounded-xl p-4 sm:p-5 mt-4 mb-4 shadow-lg hover:shadow-xl transition-all">
                                     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 sm:gap-0 mb-4 sm:mb-2">
@@ -322,9 +362,9 @@ export default function PropertyHeroSection({
                             <h2 className="font-semibold mb-4">Listed by Agent</h2>
 
                             <div className="flex items-center  gap-2r gap-3">
-                                 <div className="flex items-center justify-center w-10 h-10 border border-yellow-600 rounded-full mb-3">
-                                                                 <FaUser className="text-yellow-500 text-lg" />
-                                                             </div>
+                                <div className="flex items-center justify-center w-10 h-10 border border-yellow-600 rounded-full mb-3">
+                                    <FaUser className="text-yellow-500 text-lg" />
+                                </div>
                                 <div>
                                     <p className="font-medium">Rahul Menon</p>
                                     <p className="text-xs text-gray-400">
@@ -354,7 +394,7 @@ export default function PropertyHeroSection({
                 <div id="dialog" aria-labelledby="dialog-title" className={`${onest.className} absolute  inset-0 max-h-none overflow-y-auto backdrop:bg-transparent z-50  bg-black/40 backdrop-blur-sm `}>
                     <div className="fixed inset-0 bg-gray-900/50 transition-opacity "></div>
                     <div className="flex min-h-full items-end justify-center p-4 text-center focus:outline-none sm:items-center sm:p-0">
-                        <div className="relative transform overflow-hidden rounded-lg bg-gray-800 text-left shadow-xl outline -outline-offset-1 outline-white/10 transition-all sm:w-full  sm:max-w-lg">
+                        <div className="relative transform overflow-hidden rounded-lg  text-left shadow-xl outline -outline-offset-1 outline-white/10 transition-all sm:w-full  sm:max-w-lg">
 
                             <div className="bg-black w-full max-w-md p-6 rounded-2xl text-white">
 
