@@ -54,40 +54,40 @@ export default function WhyChooseUs() {
                 <h1 className={` mb-2 ${urbanist.className}`} style={{ fontWeight: "500", fontSize: "1.8rem" }}>Why Choose Us?</h1>
                 <p className={`text-gray-400  ${onest.className}`} style={{ fontWeight: "400", fontSize: "1rem" }}>Discover the key advantages of investing with us.</p>
             </div>
-           
 
 
 
 
-          <div className="mx-10">
-                <div className="grid md:grid-cols-3 gap-6 p-5 ">
-    
+
+            <div className="mx-5">
+                <div className="grid md:grid-cols-3 gap-6 p-5 mx-10">
+
                     {currentItems.map((item, index) => (
                         <div key={index} className="bg-[#0c0c0c] rounded flex flex-col items-center justify-center p-2">
-    
+
                             <div className="flex items-center justify-center mb-3">
                                 <Image src={item.img} alt="" width={200} height={200} />
                             </div>
-    
-                          <div className="text-center p-2">
-                                <h1 className= {`text-white  ${onest.className}`} style={{ fontWeight: "400", fontSize: "1rem" }}>
+
+                            <div className="text-center p-2">
+                                <h1 className={`text-white  ${onest.className}`} style={{ fontWeight: "400", fontSize: "1rem" }}>
                                     {item.title}
                                 </h1>
-        
-                                <p className= {`text-gray-300  ${onest.className}`} style={{ fontWeight: "400", fontSize: "0.8rem" }}>
-                                    
+
+                                <p className={`text-gray-300  ${onest.className}`} style={{ fontWeight: "400", fontSize: "0.8rem" }}>
+
                                     {item.desc}
                                 </p>
-                          </div>
-    
+                            </div>
+
                         </div>
                     ))}
                 </div>
-                 <div className="bg-gray-300 h-1 w-full  me-5 ms-5"></div>
-          </div>
-           
+                <div className="bg-gray-300 h-1 w-full "></div>
+            </div>
 
-           <div className="flex items-center justify-between  m-10">
+
+            <div className="flex items-center justify-between  m-5">
                 <div><span>{currentPage + 1} of {totalPages}</span></div>
                 <div className="p-2  m-3 space-x-1">
                     <button className="hover:bg-black border border-gray-300 text-gray-400 p-3 rounded-full"
@@ -96,17 +96,17 @@ export default function WhyChooseUs() {
                     >
                         <FaArrowLeft />
                     </button>
-                    
+
                     <button className="hover:bg-black border border-gray-300 text-gray-400 p-3 rounded-full"
                         onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages - 1))}
                         disabled={currentPage === totalPages - 1}
                     >
                         <FaArrowRight />
                     </button>
-    
+
                 </div>
-           </div>
-           
+            </div>
+
         </>
     );
 }

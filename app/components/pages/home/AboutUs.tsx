@@ -7,16 +7,16 @@ export default function AboutUs() {
                 Our story is one of continuous growth and evolution. We started as a small team with big dreams, determined to create a real estate platform that transcended the ordinary. Over the years, we've expanded our reach, forged valuable partnerships, and gained the trust of countless clients.
             </div>
 
-            <div className="grid md:grid-cols-3 gap-6 m-px-4 m-10 px-20 ">
-                <div className="bg-[#0c0c0c] rounded-xl p-5 space-y-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-4 sm:px-8 lg:px-20 my-10 mt-2 m-10">
+                <div className="bg-[#0c0c0c] rounded-xl p-5 space-y-2 text-center sm:text-left">
                     <h1 className={`${urbanist.className} text-white *:`} style={{ fontWeight: "600", fontSize: "1.5rem" }}>200+</h1>
                     <p className={`${onest.className} text-gray-300 `} style={{ fontWeight: 400, fontSize: "1rem" }}>Happy Customers</p>
                 </div>
-                <div className="bg-[#0c0c0c] rounded-xl p-5 space-y-2">
+                <div className="bg-[#0c0c0c] rounded-xl p-5 space-y-2 text-center sm:text-left">
                     <h1 className={`${urbanist.className} text-white *:`} style={{ fontWeight: "600", fontSize: "1.5rem" }}>10k+</h1>
                     <p className={`${onest.className} text-gray-300 `} style={{ fontWeight: 400, fontSize: "1rem" }}>Properties for Clients</p>
                 </div>
-                <div className="bg-[#0c0c0c] rounded-xl p-5 space-y-2 ">
+                <div className="bg-[#0c0c0c] rounded-xl p-5 space-y-2 text-center sm:text-left">
                     <h1 className={`${urbanist.className} text-white *:`} style={{ fontWeight: "600", fontSize: "1.5rem" }}>16+</h1>
                     <p className={`${onest.className} text-gray-300 `} style={{ fontWeight: 400, fontSize: "1rem" }}>Years of Experience</p>
                 </div>
