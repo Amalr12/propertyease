@@ -44,7 +44,7 @@ export default function FilterSidebar({ filters, setFilters }: any) {
             <div>
                 <p>Property Type</p>
                 {["Apartment", "Villa", "Plot"].map((type) => (
-                    <label key={type} className="flex text-gray-500 items-center justify-around">
+                    <label key={type} className="flex text-gray-500 items-center ms-2">
                         <input className="bg-gray-500 m-2"
                             type="checkbox"
                             checked={localFilters.types.includes(type)}
@@ -106,7 +106,7 @@ export default function FilterSidebar({ filters, setFilters }: any) {
             <div>
                 <p>Amenities</p>
                 {["Parking", "Pool", "Gym", "Park"].map((item) => (
-                    <label key={item} className="flex  text-gray-500 items-center justify-around">
+                    <label key={item} className="flex  text-gray-500 items-center ms-2">
                         <input
                         className="m-2"
                             type="checkbox"
