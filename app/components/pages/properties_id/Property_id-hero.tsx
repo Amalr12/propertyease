@@ -168,6 +168,46 @@ export default function PropertyHeroSection({
                                     />
                                 ))}
                             </div>
+                        </div> */}
+                        <div className="mt-4 px-3 sm:px-4 lg:px-5">
+
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+                                {images.map((img, index) => (
+                                    <div
+                                        key={index}
+                                        onClick={() => setCurrentIndex(index)}
+                                        className={`
+                    relative overflow-hidden rounded-xl cursor-pointer
+                    transition-all duration-300 group
+                    ${currentIndex === index
+                                                ? "ring-2 ring-orange-500 shadow-xl scale-[1.02]"
+                                                : "hover:shadow-lg hover:scale-[1.01]"
+                                            }
+                `}
+                                    >
+                                        <Image
+                                            src={img}
+                                            width={500}
+                                            height={300}
+                                            alt="thumbnail"
+                                            className={`
+                        w-full
+                        h-48 sm:h-52 md:h-56 lg:h-60
+                        object-cover
+                        transition-transform duration-300
+                        group-hover:scale-105
+                    `}
+                                        />
+
+                                        {/* ACTIVE OVERLAY */}
+                                        {currentIndex === index && (
+                                            <div className="absolute inset-0 bg-black/10"></div>
+                                        )}
+                                    </div>
+                                ))}
+
+                            </div>
                         </div>
                         <div className={`bg-black text-white rounded-xl mt-6 p-6 sm:p-6 ${urbanist.className}`}>
                             <div className="grid md:grid-cols-4 sm:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 text-center divide-x divide-gray-700">
