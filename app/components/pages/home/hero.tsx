@@ -70,7 +70,7 @@ export default function Hero() {
 
   return (
     <>
-      <div className="flex min-h-[70vh] md:min-h-screen pt-30  justify-center rounded-b-[4rem] rounded-t-none " style={{
+      <div className="flex min-h-[60vh] md:min-h-screen pt-30  justify-center rounded-b-[4rem] rounded-t-none " style={{
         backgroundImage: "url('/homebg.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -89,7 +89,7 @@ export default function Hero() {
             <Image className="" src="/brokage.png" alt="Logo" width={180} height={150} />
           </div>
 
-          <div className="  grid grid-cols-1 md:grid-cols-[1fr_4fr_1fr] gap-4 mt-10 pt-50 justify-center">
+          <div className="  grid grid-cols-1 md:grid-cols-[1fr_4fr_1fr] gap-4 mt-5 pt-10  justify-center">
             <div></div>
             <div className="bg-black/90 rounded-t-xl rounded-b-none p-2 sm:p-3 grid grid-cols-1 sm:grid-cols-[8fr_2fr] gap-2 sm:gap-3 shadow-lg">
               <input value={searchText}
