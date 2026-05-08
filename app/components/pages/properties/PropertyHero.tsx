@@ -170,7 +170,7 @@ export default function PropertyHero() {
 
 
                 }}>
-                    <div className="absolute top-0 left-0 w-full   min-h-[40vh] md:min-h-screen bg-black/70 "></div>
+                    <div className="absolute top-0 left-0 w-full   min-h-[30vh] md:min-h-screen bg-black/30 "></div>
                     <div className={`${urbanist.className} space-y-4 text-4xl md:text-6xl font-medium z-10 p-10  flex flex-col gap-6 items-start justify-center`}>
                         <h1 className="">
                             Find Your Dream Property
@@ -181,7 +181,7 @@ export default function PropertyHero() {
                         </p>
                     </div>
 
-                    <div className="  grid grid-cols-1 md:grid-cols-[1fr_4fr_1fr] gap-4 mt-10 pt-50 justify-center">
+                    <div className="  grid grid-cols-1 md:grid-cols-[1fr_4fr_1fr] gap-4 mt-10 pt-20 justify-center">
                         <div></div>
                         <div className="bg-black/90 rounded-t-xl rounded-b-none p-2 sm:p-3 grid grid-cols-1 sm:grid-cols-[8fr_2fr] gap-2 sm:gap-3 shadow-lg">
                             <input value={searchText}
@@ -459,7 +459,7 @@ export default function PropertyHero() {
                 <FilterSidebar filters={filters} setFilters={setFilters} />
 
                 {view === "card" ? (
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div className="grid sm:grid-cols-3 lg:grid-cols-2 md:cols-2 grid-cols-1 gap-6">
                         {filtered.length > 0 ? (
                             finalProperties.map((item) => (
                                 <PropertyCard
