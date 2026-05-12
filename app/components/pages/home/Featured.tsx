@@ -99,9 +99,9 @@ export default function Featured() {
     return (
 
         <>
-            <div className="m-3 sm:m-5   sm:pe-20">
+            <div className=" sm:pe-20">
 
-                <div className="grid md:grid-cols-[4fr_1fr] justify-between items-start sm:items-center gap-6 sm:gap-0 m-10">
+                <div className="grid md:grid-cols-[4fr_1fr] justify-between items-start sm:items-center gap-6 sm:gap-0 m-5">
                     <div>
                         <h1
                            className={` mb-2 ${urbanist.className}`} style={{ fontWeight: "500", fontSize: "1.8rem" }}
@@ -116,7 +116,7 @@ export default function Featured() {
                     </div>
                     <div>
                         <button
-                            className={`bg-linear-to-r from-orange-500 to-yellow-500 text-white rounded mt-3 sm:mt-5 px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 md:justify-end text-sm sm:text-base md:text-lg w-full sm:w-auto transition hover:opacity-90 ${onest.className}`}
+                            className={`bg-linear-to-r from-orange-500 to-yellow-500 text-white  rounded px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 text-xs sm:text-sm md:text-base w-full sm:w-auto transition hover:opacity-90 mt-2 sm:mt-0 ${onest.className}`}
                             style={{ fontWeight: 500 }}
                         >
                             View All Properties
@@ -124,7 +124,7 @@ export default function Featured() {
                     </div>
                 </div>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 px-4 sm:px-6 lg:px-8 
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 px-4 sm:px-6 lg:px-8 
                 py-6 sm:py-8 md:py-10">
                 {currentItems.map((item) => (
                     <div
