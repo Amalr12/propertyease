@@ -159,16 +159,16 @@ export default function PropertyHeroSection({
 
                                         onClick={() => setCurrentIndex(index)}
                                         className={`w-full sm:w-[17.5rem] sm:h-[40rem] md:w-20 md:h-15 lg:w-[22.5rem] lg:h-[17.5rem]
-          h-32  aspect-3/2 object-cover block rounded-lg cursor-pointer 
-          border-2 transition-all duration-200 hover:scale-105 sm:snap-center
-          ${currentIndex === index
+                                                    h-32  aspect-3/2 object-cover block rounded-lg cursor-pointer 
+                                                    border-2 transition-all duration-200 hover:scale-105 sm:snap-center
+                                                    ${currentIndex === index
                                                 ? "border-orange-500 scale-105 shadow-lg ring-2 ring-orange-200"
                                                 : "border-transparent hover:border-gray-400 hover:shadow-md"
                                             }`}
                                     />
                                 ))}
                             </div>
-                        </div> */}
+                        </div>
                         <div className="mt-4 px-3 sm:px-4 lg:px-5">
 
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
