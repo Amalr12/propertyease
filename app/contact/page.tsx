@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function Contact() {
     return (
         <>
-           <div className="m-5">
+           <div className="">
                 <ContactHome/>
                 <LetsConnect/>
                 <OfficeLocation/>

@@ -163,14 +163,14 @@ export default function PropertyHero() {
     return (
         <>
             <div className={`w-full  relative pt-10 ${onest.className}`} >
-                <div className="flex flex-col  min-h-[40vh] md:min-h-screen pt-30   " style={{
+                <div className="flex flex-col relative sm:min-h-[60vh] lg:min-h-screen min-h-[40vh]  pt-30   " style={{
                     backgroundImage: "url('/propertybg.png')",
 
                     backgroundRepeat: "no-repeat",
 
 
                 }}>
-                    <div className="absolute top-0 left-0 w-full   min-h-[30vh] md:min-h-screen bg-black/30 "></div>
+                    <div className="absolute top-0 left-0 w-full   min-h-[30vh] md:min-h-screen bg-black/10 "></div>
                     <div className={`${urbanist.className} space-y-4 text-4xl md:text-6xl font-medium z-10 p-10  flex flex-col gap-6 items-start justify-center`}>
                         <h1 className="">
                             Find Your Dream Property
@@ -181,7 +181,7 @@ export default function PropertyHero() {
                         </p>
                     </div>
 
-                    <div className="  grid grid-cols-1 md:grid-cols-[1fr_4fr_1fr] gap-4 mt-10 pt-20 justify-center">
+                    <div className="  grid grid-cols-1 md:grid-cols-[1fr_4fr_1fr] gap-4 mt-10 pt-10 justify-center z-10">
                         <div></div>
                         <div className="bg-black/90 rounded-t-xl rounded-b-none p-2 sm:p-3 grid grid-cols-1 sm:grid-cols-[8fr_2fr] gap-2 sm:gap-3 shadow-lg">
                             <input value={searchText}
@@ -433,14 +433,14 @@ export default function PropertyHero() {
 
                             <button
                                 onClick={() => setView("card")}
-                                className={`px-4 py-3 rounded ${view === "card" ? "bg-orange-500 text-white" : "text-gray-300"}`}
+                                className={`px-4 py-3 rounded ${view === "card" ? " text-orange-500" : "text-gray-300"}`}
                             >
                                 <BiGridAlt className="text-2xl sm:text-xl " />
                             </button>
 
                             <button
                                 onClick={() => setView("map")}
-                                className={`px-4 py-3 rounded ${view === "map" ? "bg-orange-500 text-white" : "text-gray-300"}`}
+                                className={`px-4 py-3 rounded ${view === "map" ? " text-orange-500" : "text-gray-300"}`}
                             >
                                 <RiMap2Line className="text-2xl sm:text-xl" />
                             </button>

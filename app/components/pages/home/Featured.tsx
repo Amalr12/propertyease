@@ -124,7 +124,8 @@ export default function Featured() {
                     </div>
                 </div>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-2 sm:p-4 md:p-5 m-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 px-4 sm:px-6 lg:px-8 
+                py-6 sm:py-8 md:py-10">
                 {currentItems.map((item) => (
                     <div
                         key={item.id}
