@@ -105,34 +105,48 @@ export default function PropertyHeroSection({
                     <div className="space-y-10">
                         <div className="relative w-full rounded-xl overflow-hidden">
 
-                            <Image
-                                src={images[currentIndex]}
-                                alt="property"
-                                width={800}
-                                height={500}
-                                className="w-full h-auto object-cover rounded-xl"
-                                priority
-                            />
+    <Image
+        src={images[currentIndex]}
+        alt="property"
+        width={800}
+        height={500}
+        className="w-full h-auto object-cover rounded-xl"
+        priority
+    />
 
+    {/* BUTTONS OVER IMAGE */}
+    <div className="absolute inset-0 flex items-center justify-between px-3 sm:px-5 z-20">
 
-                            <div className=" flex justify-between z-50">
-                                <button
-                                    onClick={prevImage}
-                                    className="text-2xl left-2 sm:left-4 top-1/2 -translate-y-1/2  bg-black/50 hover:bg-black/70 
- p-2 sm:p-3 rounded-full text-black  sm:text-base"
-                                >
-                                    ◀
-                                </button>
+        <button
+            onClick={prevImage}
+            className="
+                bg-black/50 hover:bg-black/70
+                text-white
+                p-2 sm:p-3
+                rounded-full
+                transition
+                duration-200
+            "
+        >
+            ◀
+        </button>
 
+        <button
+            onClick={nextImage}
+            className="
+                bg-black/50 hover:bg-black/70
+                text-white
+                p-2 sm:p-3
+                rounded-full
+                transition
+                duration-200
+            "
+        >
+            ▶
+        </button>
 
-                                <button
-                                    onClick={nextImage} className="text-black right-2 sm:right-4 top-1/2 -translate-y-1/2  bg-black/50 hover:bg-black/70  p-2 sm:p-3 rounded-full  text-2xl sm:text-base"
-                                >
-                                    ▶
-                                </button>
-                            </div>
-
-                        </div>
+    </div>
+</div>
                         <div className="mt-4 px-2 sm:px-4 p-5">
                             <div className="flex flex-col sm:flex-row gap-3  sm:gap-2 scrollbar-hide sm:pb-2 sm:overflow-x-auto snap-x snap-mandatory">
                                 {images.map((img, index) => (
@@ -153,6 +167,46 @@ export default function PropertyHeroSection({
                                             }`}
                                     />
                                 ))}
+                            </div>
+                        </div> */}
+                        <div className="mt-4 px-3 sm:px-4 lg:px-5">
+
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+                                {images.map((img, index) => (
+                                    <div
+                                        key={index}
+                                        onClick={() => setCurrentIndex(index)}
+                                        className={`
+                    relative overflow-hidden rounded-xl cursor-pointer
+                    transition-all duration-300 group
+                    ${currentIndex === index
+                                                ? "ring-2 ring-orange-500 shadow-xl scale-[1.02]"
+                                                : "hover:shadow-lg hover:scale-[1.01]"
+                                            }
+                `}
+                                    >
+                                        <Image
+                                            src={img}
+                                            width={500}
+                                            height={300}
+                                            alt="thumbnail"
+                                            className={`
+                        w-full
+                        h-48 sm:h-52 md:h-56 lg:h-60
+                        object-cover
+                        transition-transform duration-300
+                        group-hover:scale-105
+                    `}
+                                        />
+
+                                        {/* ACTIVE OVERLAY */}
+                                        {currentIndex === index && (
+                                            <div className="absolute inset-0 bg-black/10"></div>
+                                        )}
+                                    </div>
+                                ))}
+
                             </div>
                         </div>
                         <div className={`bg-black text-white rounded-xl mt-6 p-6 sm:p-6 ${urbanist.className}`}>
@@ -220,23 +274,41 @@ export default function PropertyHeroSection({
                                 ))}
                             </div>
                         </div>
-                        <div className="p-5 flex items-center justify-center relative">
+                        <div className="p-3 sm:p-5 flex items-center justify-center relative w-full overflow-hidden">
 
-
-                            <TransformWrapper>
-                                <TransformComponent>
+                            <TransformWrapper
+                                initialScale={1}
+                                minScale={1}
+                                maxScale={4}
+                                centerOnInit
+                            >
+                                <TransformComponent
+                                    wrapperClass="w-full flex justify-center"
+                                    contentClass="w-full flex justify-center"
+                                >
                                     <Image
                                         src={floorPlan}
                                         alt="floorplan"
                                         width={650}
                                         height={550}
-                                        className="w-full sm:w-17.5 sm:h-40rem md:w-20 md:h-15 lg:w-22.5 lg:h-17.5
-          h-32  aspect-3/2 object-cover block rounded-xl cursor-pointer 
-          border-2 transition-all duration-200 hover:scale-105 sm:snap-center "
+                                        className="
+                    w-full
+                    max-w-[75]
+                    sm:max-w-[125]
+                    md:max-w-[162.5]
+                    lg:max-w-[187.5]
+                    h-auto
+                    object-contain
+                    rounded-xl
+                    cursor-pointer
+                    border border-gray-300
+                    shadow-lg
+                    transition-transform duration-300 hover:scale-[1.02]
+                "
+                                        priority
                                     />
                                 </TransformComponent>
                             </TransformWrapper>
-
 
                         </div>
                         <div className="mt-5">
@@ -354,7 +426,7 @@ export default function PropertyHeroSection({
                 <div id="dialog" aria-labelledby="dialog-title" className={`${onest.className} absolute  inset-0 max-h-none overflow-y-auto backdrop:bg-transparent z-50  bg-black/40 backdrop-blur-sm `}>
                     <div className="fixed inset-0 bg-gray-900/50 transition-opacity "></div>
                     <div className="flex min-h-full items-end justify-center p-4 text-center focus:outline-none sm:items-center sm:p-0">
-                        <div className="relative transform overflow-hidden rounded-lg bg-gray-800 text-left shadow-xl outline -outline-offset-1 outline-white/10 transition-all sm:w-full  sm:max-w-lg">
+                        <div className="relative transform overflow-hidden rounded-lg bg-gray-800 text-left shadow-xl outline -outline-offset-1 outline-white/10 transition-all ">
 
                             <div className="bg-black w-full max-w-md p-6 rounded-2xl text-white">
 

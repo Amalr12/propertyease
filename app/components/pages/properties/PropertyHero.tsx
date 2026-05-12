@@ -162,7 +162,7 @@ export default function PropertyHero() {
 
     return (
         <>
-            <div className={`w-100 relative pt-10 ${onest.className}`} >
+            <div className={`w-full  relative pt-10 ${onest.className}`} >
                 <div className="flex flex-col  min-h-[40vh] md:min-h-screen pt-30   " style={{
                     backgroundImage: "url('/propertybg.png')",
 
@@ -170,7 +170,7 @@ export default function PropertyHero() {
 
 
                 }}>
-                    <div className="absolute top-0 left-0 w-full   min-h-[40vh] md:min-h-screen bg-black/70 "></div>
+                    <div className="absolute top-0 left-0 w-full   min-h-[30vh] md:min-h-screen bg-black/30 "></div>
                     <div className={`${urbanist.className} space-y-4 text-4xl md:text-6xl font-medium z-10 p-10  flex flex-col gap-6 items-start justify-center`}>
                         <h1 className="">
                             Find Your Dream Property
@@ -181,7 +181,7 @@ export default function PropertyHero() {
                         </p>
                     </div>
 
-                    <div className="  grid grid-cols-1 md:grid-cols-[1fr_4fr_1fr] gap-4 mt-10 pt-50 justify-center">
+                    <div className="  grid grid-cols-1 md:grid-cols-[1fr_4fr_1fr] gap-4 mt-10 pt-20 justify-center">
                         <div></div>
                         <div className="bg-black/90 rounded-t-xl rounded-b-none p-2 sm:p-3 grid grid-cols-1 sm:grid-cols-[8fr_2fr] gap-2 sm:gap-3 shadow-lg">
                             <input value={searchText}
@@ -400,19 +400,19 @@ export default function PropertyHero() {
                 </div>
 
                 <div className="max-w-6xl mx-auto p-5 md:flex block justify-between items-center ">
-<div>
-    
-                        <h1 className="md:text-4xl text-xl font-bold mb-5" style={{fontSize:"1.8rem",fontWeight:"600"}}>
+                    <div>
+
+                        <h1 className="md:text-4xl text-xl font-bold mb-5" style={{ fontSize: "1.8rem", fontWeight: "600" }}>
                             Properties in {activeDistrict || "All Locations"}
                         </h1>
-                         <h2>{finalProperties.length} Properties Found</h2>
-</div>
-                   
+                        <h2>{finalProperties.length} Properties Found</h2>
+                    </div>
+
                     <div className="md:flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 mt-5 text-center">
 
                         {/* 🔹 Sort Dropdown */}
                         <div className="w-full mb-2  sm:w-auto bg-black/90 rounded-lg text-white px-3 py-5 sm:px-5 overflow-hidden text-center">
-                           
+
                             <select
                                 value={sortOrder}
                                 onChange={(e) => setSortOrder(e.target.value as "low" | "high")}
@@ -459,7 +459,7 @@ export default function PropertyHero() {
                 <FilterSidebar filters={filters} setFilters={setFilters} />
 
                 {view === "card" ? (
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div className="grid sm:grid-cols-3 lg:grid-cols-2 md:cols-2 grid-cols-1 gap-6">
                         {filtered.length > 0 ? (
                             finalProperties.map((item) => (
                                 <PropertyCard
