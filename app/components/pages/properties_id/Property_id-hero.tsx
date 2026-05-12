@@ -101,25 +101,25 @@ export default function PropertyHeroSection({
         <>
             <div className="bg-gray-100 relative p-4 mt-20 md:mt-50 ">
                 <Link href="/property"><div className="flex justify-start items-center text-xl"><MdKeyboardArrowLeft /> <h1 className="">Back to Listings</h1></div></Link>
-                <div className="grid grid-cols-1 md:grid-cols-[4fr_1fr]  lg:grid-cols-[4fr_2fr] gap-2 items-start p-5 ">
+                <div className="grid grid-cols-1 md:grid-cols-[4fr_1fr]  lg:grid-cols-[4fr_1fr] gap-4 items-start p-5 ">
                     <div className="space-y-10">
                         <div className="relative w-full rounded-xl overflow-hidden">
 
-    <Image
-        src={images[currentIndex]}
-        alt="property"
-        width={800}
-        height={500}
-        className="w-full h-auto object-cover rounded-xl"
-        priority
-    />
+                            <Image
+                                src={images[currentIndex]}
+                                alt="property"
+                                width={800}
+                                height={500}
+                                className="w-full h-auto object-cover rounded-xl"
+                                priority
+                            />
 
-    {/* BUTTONS OVER IMAGE */}
-    <div className="absolute inset-0 flex items-center justify-between px-3 sm:px-5 z-20">
+                            {/* BUTTONS OVER IMAGE */}
+                            <div className="absolute inset-0 flex items-center justify-between px-3 sm:px-5 z-20">
 
-        <button
-            onClick={prevImage}
-            className="
+                                <button
+                                    onClick={prevImage}
+                                    className="
                 bg-black/50 hover:bg-black/70
                 text-white
                 p-2 sm:p-3
@@ -127,13 +127,13 @@ export default function PropertyHeroSection({
                 transition
                 duration-200
             "
-        >
-            ◀
-        </button>
+                                >
+                                    ◀
+                                </button>
 
-        <button
-            onClick={nextImage}
-            className="
+                                <button
+                                    onClick={nextImage}
+                                    className="
                 bg-black/50 hover:bg-black/70
                 text-white
                 p-2 sm:p-3
@@ -141,34 +141,13 @@ export default function PropertyHeroSection({
                 transition
                 duration-200
             "
-        >
-            ▶
-        </button>
+                                >
+                                    ▶
+                                </button>
 
-    </div>
-</div>
-                        <div className="mt-4 px-2 sm:px-4 p-5">
-                            <div className="flex flex-col sm:flex-row gap-3  sm:gap-2 scrollbar-hide sm:pb-2 sm:overflow-x-auto snap-x snap-mandatory">
-                                {images.map((img, index) => (
-                                    <Image
-                                        key={index}
-                                        src={img}
-                                        width={200}
-                                        height={100}
-                                        alt="thumbnail"
-
-                                        onClick={() => setCurrentIndex(index)}
-                                        className={`w-full sm:w-[17.5rem] sm:h-[40rem] md:w-20 md:h-15 lg:w-[22.5rem] lg:h-[17.5rem]
-                                                    h-32  aspect-3/2 object-cover block rounded-lg cursor-pointer 
-                                                    border-2 transition-all duration-200 hover:scale-105 sm:snap-center
-                                                    ${currentIndex === index
-                                                ? "border-orange-500 scale-105 shadow-lg ring-2 ring-orange-200"
-                                                : "border-transparent hover:border-gray-400 hover:shadow-md"
-                                            }`}
-                                    />
-                                ))}
                             </div>
                         </div>
+                       
                         <div className="mt-4 px-3 sm:px-4 lg:px-5">
 
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -189,7 +168,7 @@ export default function PropertyHeroSection({
                                         <Image
                                             src={img}
                                             width={500}
-                                            height={300}
+                                            height={200}
                                             alt="thumbnail"
                                             className={`
                         w-full
@@ -213,22 +192,22 @@ export default function PropertyHeroSection({
                             <div className="grid md:grid-cols-4 sm:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 text-center divide-x divide-gray-700">
                                 <div className="flex flex-col justify-center">
                                     <FaBed className="text-orange-500 text-2xl mx-auto mb-2" />
-                                    <p className="text-orange-400 font-semibold text-lg sm:text-xl">{bhk}</p>
+                                    <p className="text-white font-semibold text-lg sm:text-xl">{bhk}</p>
                                     <p className="text-xs sm:text-sm text-gray-400 mt-1">Configuration</p>
                                 </div>
                                 <div className="flex flex-col justify-center">
                                     <FaBath className="text-orange-500 text-2xl mx-auto mb-2" />
-                                    <p className="text-orange-400 font-semibold text-lg sm:text-xl">{bathrooms}</p>
+                                    <p className="text-white font-semibold text-lg sm:text-xl">{bathrooms}</p>
                                     <p className="text-xs sm:text-sm text-gray-400 mt-1">Bathrooms</p>
                                 </div>
                                 <div className="flex flex-col justify-center">
                                     <BiRectangle className="text-orange-500 text-2xl mx-auto mb-2" />
-                                    <p className="text-orange-400 font-semibold text-lg sm:text-xl">{size}</p>
+                                    <p className="text-white font-semibold text-lg sm:text-xl">{size}</p>
                                     <p className="text-xs sm:text-sm text-gray-400 mt-1">Total Area</p>
                                 </div>
                                 <div className="flex flex-col justify-center">
                                     <AiOutlineThunderbolt className="text-orange-500 text-2xl mx-auto mb-2" />
-                                    <p className="text-orange-500 font-semibold text-lg sm:text-xl">
+                                    <p className="text-white font-semibold text-lg sm:text-xl">
                                         {status || "Available"}
                                     </p>
                                     <p className="text-xs sm:text-sm text-gray-400 mt-1">Status</p>
@@ -594,13 +573,19 @@ export default function PropertyHeroSection({
             {enquiryModal && (
                 <div className="absolute inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center">
 
-                    <div className="bg-black text-white w-54 max-w-md p-6 rounded-2xl relative">
-                        <button
-                            onClick={() => setEnquiryModal(false)}
-                            className="absolute top-4 flex justify-end text-xl"
-                        >
-                            ✕
-                        </button>
+                    <div className="bg-black w-full max-w-md p-6 rounded-2xl text-white relative">
+                    <div className="flex justify-end">
+                            <button
+                                onClick={() => setEnquiryModal(false)}
+                                className="absolute top-4 flex justify-end text-xl"
+                            >
+                                <ImCancelCircle
+                                        
+                                        className="text-xl cursor-pointer"
+                                    />
+                            </button>
+                    </div>
+                        
                         <div className="flex justify-center mb-4">
                             <div className="bg-orange-500/20 p-4 rounded-full">
                                 <FaRegCalendar className="text-2xl text-orange-500" />

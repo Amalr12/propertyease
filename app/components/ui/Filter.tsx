@@ -93,7 +93,7 @@ export default function FilterSidebar({ filters, setFilters }: any) {
                                     bhk: b,
                                 }))
                             }
-                            className={`px-3 py-1 rounded ${localFilters.bhk === b ? "bg-white text-black" : "bg-gray-700"
+                            className={`px-3 py-1 rounded ${localFilters.bhk === b ? "bg-orange-500 text-white" : "bg-gray-700"
                                 }`}
                         >
                             {b}
