@@ -147,8 +147,8 @@ export default function PropertyHeroSection({
 
                             </div>
                         </div>
-                       
-                        <div className="mt-4 px-3 sm:px-4 lg:px-5">
+
+                        <div className="mt-4 ">
 
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
 
@@ -172,7 +172,7 @@ export default function PropertyHeroSection({
                                             alt="thumbnail"
                                             className={`
                         w-full
-                        h-48 sm:h-52 md:h-56 lg:h-60
+                        h-30 sm:h-10 md:h-10 lg:h-10
                         object-cover
                         transition-transform duration-300
                         group-hover:scale-105
@@ -309,7 +309,7 @@ export default function PropertyHeroSection({
                             </div>
 
                         </div>
-                        <div className=" sm:p-5 mt-5">
+                        <div className=" mt-5">
                             <h1 className={`text-xl font-bold mb-4 ${urbanist.className}`}>User Reviews</h1>
                             {reviews.map((item, index) => (
                                 <div key={index} className="bg-[#0c0c0c] text-white rounded-xl p-4 sm:p-5 mt-4 mb-4 shadow-lg hover:shadow-xl transition-all">
@@ -574,18 +574,18 @@ export default function PropertyHeroSection({
                 <div className="absolute inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center">
 
                     <div className="bg-black w-full max-w-md p-6 rounded-2xl text-white relative">
-                    <div className="flex justify-end">
+                        <div className="flex justify-end">
                             <button
                                 onClick={() => setEnquiryModal(false)}
                                 className="absolute top-4 flex justify-end text-xl"
                             >
                                 <ImCancelCircle
-                                        
-                                        className="text-xl cursor-pointer"
-                                    />
+
+                                    className="text-xl cursor-pointer"
+                                />
                             </button>
-                    </div>
-                        
+                        </div>
+
                         <div className="flex justify-center mb-4">
                             <div className="bg-orange-500/20 p-4 rounded-full">
                                 <FaRegCalendar className="text-2xl text-orange-500" />
