@@ -19,7 +19,7 @@ export default function ContactHome() {
                 <div className="absolute inset-0 bg-linear-to-b from-black/80  to-transparent"></div>
 
                 {/* Content */}
-                <div className="relative z-10 w-full mt-10 md:mt-45 lg:mt-45 sm:mt-10 max-w-6xl mx-auto px-4 md:px-10 pt-24 sm:pt-28 md:pt-32">
+                <div className="relative z-10 w-full mt-10 md:mt-30 lg:mt-30 sm:mt-10 max-w-6xl mx-auto px-4 md:px-10 pt-24 sm:pt-28 md:pt-32">
 
                     <h1
                         style={{ fontWeight: "600" }} className={`${urbanist.className} 

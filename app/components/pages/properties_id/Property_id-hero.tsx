@@ -172,7 +172,7 @@ export default function PropertyHeroSection({
                                             alt="thumbnail"
                                             className={`
                         w-full
-                        h-30 sm:h-10 md:h-10 lg:h-10
+                        h-30 
                         object-cover
                         transition-transform duration-300
                         group-hover:scale-105
@@ -216,26 +216,26 @@ export default function PropertyHeroSection({
                         </div>
 
                         <div className={`mt-4 ${urbanist.className} space-y-2`}>
-                            <h1 className={`text-2xl font-bold mt-5 ${urbanist.className}`}>Property Overview </h1>
+                            <h1 className={`sm:text-2xl text-2xl lg:text-4xl md:text-4xl font-bold mt-5 ${urbanist.className}`}>Property Overview </h1>
                             <p>{overview}</p>
                         </div>
                         <div className={`grid md:grid-cols-2 gap-6 mt-3 mb-4 ${urbanist.className}`}>
                             <div>
-                                <h1 className={`text-xl font-bold mb-4 ${urbanist.className}`}>Key Highlights</h1>
+                                <h1 className={`text-sm md:text-xl font-bold mb-4 ${urbanist.className}`}>Key Highlights</h1>
                                 {highlights?.map((item, index) => (
-                                    <div key={index} className=" mt-2 flex justify-start gap-3 items-center">
+                                    <div key={index} className=" text-sm font-semibold  md:text-xl mt-2 flex justify-start gap-3 items-center">
                                         <MdOutlineVerified className="text-xl text-orange-300 items-center" />
-                                        <h2 className="font-semibold ">{item}</h2>
+                                        <h2 className=" ">{item}</h2>
 
                                     </div>
                                 ))}
                             </div>
                             <div>
-                                <h1 className={`text-xl font-bold mb-4 ${urbanist.className} `}>Why Consider This Property?</h1>
+                                <h1 className={`text-sm md:text-xl font-bold mb-4 ${urbanist.className} `}>Why Consider This Property?</h1>
                                 {considerations?.map((item, index) => (
-                                    <div key={index} className="  mt-2 flex justify-start gap-3 items-center">
+                                    <div key={index} className=" text-sm font-semibold  md:text-xl mt-2 flex justify-start gap-3 items-center">
                                         <MdOutlineVerified className="text-xl text-orange-300 items-center" />
-                                        <h2 className="font-semibold ">{item}</h2>
+                                        <h2 className=" ">{item}</h2>
 
                                     </div>
                                 ))}
@@ -243,7 +243,7 @@ export default function PropertyHeroSection({
 
                         </div>
                         <div className="mt-5">
-                            <h1 className={`text-xl font-bold mb-4 ${urbanist.className}`}>World-class Amenities</h1>
+                            <h1 className={`text-xl md:text-2xl lg:text-2xl sm:text-2xl font-bold mb-4 ${urbanist.className}`}>World-class Amenities</h1>
                             <div className="grid md:grid-cols-3 gap-4 mt-3">
                                 {amenities?.map((item, index) => (
                                     <div key={index} className=" bg-[#0c0c0c] text-white rounded p-4  flex justify-center gap-3 items-center">
@@ -291,7 +291,7 @@ export default function PropertyHeroSection({
 
                         </div>
                         <div className="mt-5">
-                            <h1 className={`text-xl font-bold mb-4 ${urbanist.className}`}>Location & Connectivity</h1>
+                            <h1 className={`text-xl md:text-2xl lg:text-2xl sm:text-2xl font-bold mb-4 ${urbanist.className}`}>Location & Connectivity</h1>
                             <div className="grid md:grid-cols-2 gap-4 mt-4">
                                 {nearby.map((item, index) => (
                                     <div key={index} className="bg-[#0c0c0c] text-white rounded-xl p-4 flex justify-between  items-center gap-3 ">
@@ -381,7 +381,7 @@ export default function PropertyHeroSection({
                                     <p className="text-xs text-gray-400">
                                         Senior Property Consultant
                                     </p>
-                                    <p className="text-yellow-400 text-sm">⭐ 4.8 Rating</p>
+                                    <p className="text-yellow-400 text-sm">⭐ <span className="text-white text-sm">4.8 Rating</span></p>
                                 </div>
                             </div>
 
