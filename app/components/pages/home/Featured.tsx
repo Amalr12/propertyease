@@ -99,7 +99,7 @@ export default function Featured() {
     return (
 
         <>
-            <div className=" sm:pe-20">
+            <div className="m-5 sm:pe-20">
 
                 <div className="grid md:grid-cols-[4fr_1fr] justify-between items-start sm:items-center gap-6 sm:gap-0 m-5">
                     <div>
@@ -125,7 +125,7 @@ export default function Featured() {
                 </div>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 px-4 sm:px-6 lg:px-8 
-                py-6 sm:py-8 md:py-10">
+                py-6 sm:py-8 md:py-10 m-5">
                 {currentItems.map((item) => (
                     <div
                         key={item.id}

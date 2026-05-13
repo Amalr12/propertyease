@@ -7,7 +7,7 @@ export default function FooterBottom() {
         <div className="bg-black grid md:grid-cols-2 text-white p-4 items-center">
 
             <div className={`flex flex-col md:flex-row items-center gap-2 md:gap-6 text-center md:text-left ${onest.className}`}>
-                <div><h1 className="text-sm md:text-base">@2026 The Better Agency. All Rights Reserved.</h1></div>
+                <div><h1 className="text-sm md:text-base">@2026 Propertyease. All Rights Reserved.</h1></div>
              <div>   <h1 className="text-sm md:text-base">  Terms & Conditions</h1></div>
 
             </div>
