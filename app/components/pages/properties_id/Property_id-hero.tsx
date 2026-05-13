@@ -372,7 +372,7 @@ export default function PropertyHeroSection({
                         <div className="bg-black text-white rounded-xl p-6 shadow-lg mt-5">
                             <h2 className="font-semibold mb-4">Listed by Agent</h2>
 
-                            <div className="flex items-center gap-3">
+                            <div className="flex items-center gap-3 relative">
                                 <div className="flex items-center justify-center w-10 h-10 border border-yellow-600 rounded-full mb-3">
                                     <FaUser className="text-yellow-500 text-lg" />
                                 </div>
@@ -385,9 +385,11 @@ export default function PropertyHeroSection({
                                 </div>
                             </div>
 
-                            <button className="w-full mt-4 bg-gray-800 py-2 rounded-lg">
-                                📞 +91 98765 43210
-                            </button>
+                            <Link href={"tel:+9190723 37174"}>
+                                <button className="w-full mt-4 bg-gray-800 py-2 rounded-lg">
+                                    📞 +91 90723 37174
+                                </button>
+                            </Link >
 
                             <Link href={"mailto:amaldaspr1998@gmail.com?subject=Property%20Inquiry&body=Hi,%20I%20am%20interested%20in%20this%20property."}>
                                 <button className="w-full mt-3 bg-gray-800 py-2 rounded-lg">
@@ -402,10 +404,15 @@ export default function PropertyHeroSection({
 
             </div>
             {modalStatus &&
-                <div id="dialog" aria-labelledby="dialog-title" className={`${onest.className} absolute  inset-0 max-h-none overflow-y-auto backdrop:bg-transparent z-50  bg-black/40 backdrop-blur-sm `}>
-                    <div className="fixed inset-0 bg-gray-900/50 transition-opacity "></div>
-                    <div className="flex min-h-full items-end justify-center p-4 text-center focus:outline-none sm:items-center sm:p-0">
-                        <div className="relative transform overflow-hidden rounded-lg bg-gray-800 text-left shadow-xl outline -outline-offset-1 outline-white/10 transition-all ">
+                <div id="dialog" aria-labelledby="dialog-title" className={`${onest.className} fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex flex-col`}>
+                    <div className="fixed inset-0 bg-gray-900/50 transition-opacity pointer-events-none"></div>
+                    <div
+                        className="flex flex-1 w-full h-full p-0 sm:p-0 items-start justify-center sm:items-center sm:justify-center overflow-y-auto"
+                    >
+                        <div
+                            className="relative w-full max-w-md mx-auto mt-4 sm:mt-0 transform overflow-hidden rounded-lg bg-gray-800 text-left shadow-xl outline -outline-offset-1 outline-white/10 transition-all"
+                            style={{ zIndex: 60 }}
+                        >
 
                             <div className="bg-black w-full max-w-md p-6 rounded-2xl text-white">
 
@@ -571,73 +578,77 @@ export default function PropertyHeroSection({
                     </div>
                 </div>}
             {enquiryModal && (
-                <div className="absolute inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center">
-
-                    <div className="bg-black w-full max-w-md p-6 rounded-2xl text-white relative">
-                        <div className="flex justify-end">
-                            <button
-                                onClick={() => setEnquiryModal(false)}
-                                className="absolute top-4 flex justify-end text-xl"
-                            >
-                                <ImCancelCircle
-
-                                    className="text-xl cursor-pointer"
-                                />
-                            </button>
-                        </div>
-
-                        <div className="flex justify-center mb-4">
-                            <div className="bg-orange-500/20 p-4 rounded-full">
-                                <FaRegCalendar className="text-2xl text-orange-500" />
+                <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex flex-col">
+                    <div className="fixed inset-0 bg-gray-900/50 transition-opacity pointer-events-none"></div>
+                    <div
+                        className="flex flex-1 w-full h-full p-0 sm:p-0 items-start justify-center sm:items-center sm:justify-center overflow-y-auto"
+                    >
+                        <div
+                            className="bg-black w-full max-w-md p-6 rounded-2xl text-white relative mx-auto mt-4 sm:mt-0"
+                            style={{ zIndex: 60 }}
+                        >
+                            <div className="flex justify-end">
+                                <button
+                                    onClick={() => setEnquiryModal(false)}
+                                    className="absolute top-4 flex justify-end text-xl"
+                                >
+                                    <ImCancelCircle className="text-xl cursor-pointer" />
+                                </button>
                             </div>
-                        </div>
-                        <div className="text-center mb-6">
-                            <h2 className="text-xl font-semibold">Enquire Now</h2>
-                            <p className="text-gray-400 text-sm mt-1">
-                                Send your questions about this property
-                            </p>
-                        </div>
-                        <input
-                            type="text"
-                            name="name"
-                            placeholder="Your Name"
-                            value={formData.name}
-                            onChange={handleChange}
-                            className="w-full bg-gray-800 p-3 rounded-lg mb-3"
-                        />
 
-                        <div className="flex gap-2 mb-3">
+                            <div className="flex justify-center mb-4">
+                                <div className="bg-orange-500/20 p-4 rounded-full">
+                                    <FaRegCalendar className="text-2xl text-orange-500" />
+                                </div>
+                            </div>
+                            <div className="text-center mb-6">
+                                <h2 className="text-xl font-semibold">Enquire Now</h2>
+                                <p className="text-gray-400 text-sm mt-1">
+                                    Send your questions about this property
+                                </p>
+                            </div>
                             <input
                                 type="text"
-                                name="phone"
-                                placeholder="+91 00000 00000"
-                                value={formData.phone}
+                                name="name"
+                                placeholder="Your Name"
+                                value={formData.name}
                                 onChange={handleChange}
-                                className="w-1/2 bg-gray-800 p-3 rounded-lg"
+                                className="w-full bg-gray-800 p-3 rounded-lg mb-3"
                             />
-                            <input
-                                type="email"
-                                placeholder="name@email.com"
-                                value={formData.email}
+
+                            <div className="flex gap-2 mb-3">
+                                <input
+                                    type="text"
+                                    name="phone"
+                                    placeholder="+91 00000 00000"
+                                    value={formData.phone}
+                                    onChange={handleChange}
+                                    className="w-1/2 bg-gray-800 p-3 rounded-lg"
+                                />
+                                <input
+                                    type="email"
+                                    placeholder="name@email.com"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    className="w-1/2 bg-gray-800 p-3 rounded-lg"
+                                />
+                            </div>
+
+                            <textarea
+                                placeholder="Message (optional)"
+                                value={formData.message}
                                 onChange={handleChange}
-                                className="w-1/2 bg-gray-800 p-3 rounded-lg"
+                                className="w-full bg-gray-800 p-3 rounded-lg mb-4"
                             />
+
+                            <button onClick={sendToWhatsApp} className="w-full py-3 rounded-lg bg-linear-to-r from-orange-500 to-yellow-500 font-medium">
+                                Submit Inquiry
+                            </button>
+
+                            <p className="text-xs text-gray-400 mt-3 text-center">
+                                By clicking submit, you agree to our Terms & Privacy Policy
+                            </p>
                         </div>
-
-                        <textarea
-                            placeholder="Message (optional)"
-                            value={formData.message}
-                            onChange={handleChange}
-                            className="w-full bg-gray-800 p-3 rounded-lg mb-4"
-                        />
-
-                        <button onClick={sendToWhatsApp} className="w-full py-3 rounded-lg bg-linear-to-r from-orange-500 to-yellow-500 font-medium">
-                            Submit Inquiry
-                        </button>
-
-                        <p className="text-xs text-gray-400 mt-3 text-center">
-                            By clicking submit, you agree to our Terms & Privacy Policy
-                        </p>
                     </div>
                 </div>
             )}
