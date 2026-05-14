@@ -26,7 +26,7 @@ export default function AboutUs() {
             <div className="grid md:grid-cols-[1fr_4fr_1fr]">
                 <div></div>
                 <div>
-                    <div className="flex min-h-[10vh] md:min-h-[60vh]  mt-10  pt-5 justify-center rounded-[4rem] relative overflow-hidden" style={{
+                    <div className="flex min-h-[30vh] md:h-[80vh]  mt-10  pt-5 justify-center rounded-[4rem] relative overflow-hidden" style={{
                         backgroundImage: "url('/pexels-mart-production-7415129 1.png')",
                         backgroundSize: "cover",
                         backgroundPosition: "center",
@@ -37,7 +37,7 @@ export default function AboutUs() {
                             <h1 className={`${onest.className}   mt-2  z-10`} style={{ fontWeight: 500, fontSize: "1.3rem", color: "white" }}>
                                 We believe every good deal is founded on a great partnership. Our partnerships are built on trust, honesty and committed collaboration – many of them standing strong for decades.
                             </h1>
-                           <Link href={"/property"}> <button className={`bg-linear-to-r from-orange-500 to-yellow-500 text-white px-4 py-2 rounded mt-5 ${onest.className}`} style={{ fontWeight: 500, fontSize: "1rem" }}>   Available Properties</button></Link>
+                           <Link href={"/property"}> <button className={`bg-linear-to-r from-[#EA8843] to-[#FFB60D] text-white px-4 py-2 rounded mt-5 ${onest.className}`} style={{ fontWeight: 500, fontSize: "1rem" }}>   Available Properties</button></Link>
                              
                          
 

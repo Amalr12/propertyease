@@ -19,7 +19,7 @@ export default function FilterSidebar({ filters, setFilters }: any) {
 
             <div className="flex justify-between items-center">
                 <div className="text-xl flex items-center justify-around">
-                    <CiFilter className="text-orange-500" />
+                    <CiFilter className="text-[#EA8843]" />
                     <h1 >Smart Filters</h1>
                 </div>
 
@@ -65,7 +65,7 @@ export default function FilterSidebar({ filters, setFilters }: any) {
             {/* PRICE */}
             <div>
                 <p> Price Range (Lakhs)</p>
-                <input className="w-full"
+                <input className="w-full bg-[#EA8843] "
                     type="range"
                     min="25"
                     max="200"
@@ -93,7 +93,7 @@ export default function FilterSidebar({ filters, setFilters }: any) {
                                     bhk: b,
                                 }))
                             }
-                            className={`px-3 py-1 rounded ${localFilters.bhk === b ? "bg-orange-500 text-white" : "bg-gray-700"
+                            className={`px-3 py-1 rounded ${localFilters.bhk === b ? "bg-[#EA8843] text-white" : "bg-gray-700"
                                 }`}
                         >
                             {b}
@@ -128,7 +128,7 @@ export default function FilterSidebar({ filters, setFilters }: any) {
             {/* ✅ APPLY BUTTON */}
             <button
                 onClick={() => setFilters(localFilters)}
-                className="w-full bg-linear-to-r from-orange-500 to-yellow-500 py-2 rounded-lg font-semibold"
+                className="w-full bg-linear-to-r from-[#EA8843] to-[#FFB60D] py-2 rounded-lg font-semibold"
             >
                 Apply Filters
             </button>

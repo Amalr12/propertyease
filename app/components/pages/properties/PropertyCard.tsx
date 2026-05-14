@@ -101,7 +101,7 @@ export function PropertyCard({ property, onScheduleClick }: { property: any, onS
                     </button>
 
                     <Link href={`/property/${property.slug}`}>
-                        <button className="flex-1 bg-linear-to-r from-orange-500 to-yellow-500 py-2 px-4 rounded-lg text-white font-semibold">
+                        <button className="flex-1 bg-linear-to-r from-[#EA8843] to-[#FFB60D] py-2 px-4 rounded-lg text-white font-semibold">
                             Details
                         </button>
                     </Link>

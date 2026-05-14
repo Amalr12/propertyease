@@ -174,22 +174,22 @@ export default function ClientSay() {
     const currentItems2 = faqs.slice(startIndex, startIndex + itemsPerPage);
     return (
         <>
-            <div className="">
-                <div className="space-y-4 ps-10 pe-20 m-5 " >
+            <div className="p-5">
+                <div className="space-y-4    " >
                     <h1 className={` mb-2 ${urbanist.className} text-xl`} style={{ fontWeight: "500", fontSize: "1.8rem" }}>What Our Clients Say</h1>
                     <p className={`text-gray-400 text-sm ${onest.className}`} style={{ fontWeight: "400", fontSize: "1rem" }}>Read the success stories and heartfelt testimonials from our valued clients. Discover why they chose Estatein for their real estate needs.</p>
                 </div>
 
-                <div className="grid md:grid-cols-3 gap-2  ps-10 pe-20">
+                <div className="grid  md:grid-cols-3  gap-2 mt-5 ">
 
 
-                    {currentItems.map((item) => (
-                        <div key={item.id} className={`bg-[#0c0c0c] p-4 md:p-6 rounded-xl text-white m-10 mb-2 ${onest.className}`}>
+                    {currentItems.map((item, index) => (
+                        <div key={item.id} className={`bg-[#141414] p-5 md:p-6 rounded-xl text-white  mb-2 ${onest.className}  ${index === 0 ? "block" : "hidden md:block"}`}>
 
 
                             <div className="flex gap-2 mb-4">
                                 {[...Array(item.rating)].map((_, i) => (
-                                    <FaStar key={i} className="text-yellow-500" />
+                                    <FaStar key={i} className="text-[#EB8B3F]" />
                                 ))}
                             </div>
                             <h3 className="text-lg font-semibold mb-2">
@@ -197,7 +197,7 @@ export default function ClientSay() {
                             </h3>
 
 
-                            <p className="text-gray-400 text-sm mb-4">
+                            <p className="text-white text-sm mb-4">
                                 {item.description}
                             </p>
 
@@ -206,7 +206,7 @@ export default function ClientSay() {
                                 <img src={item.image} className="w-10 h-10 rounded-full" />
                                 <div>
                                     <p className="text-sm font-medium">{item.name}</p>
-                                    <p className="text-xs text-gray-500">{item.location}</p>
+                                    <p className="text-xs text-[#999999]">{item.location}</p>
                                 </div>
                             </div>
 
@@ -215,59 +215,121 @@ export default function ClientSay() {
 
 
                 </div>
-                  <div className="bg-gray-300 h-1 w-full  me-5 ms-5"></div>
-                  <div className="flex items-center justify-between  m-4">
-                <div><span>{currentPage + 1} of {totalPages}</span></div>
-                <div className="p-2  m-3 space-x-1">
-                    <button className="hover:bg-black border border-gray-300 text-gray-400 p-3 rounded-full"
-                        onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 0))}
-                        disabled={currentPage === 0}
-                    >
-                        <FaArrowLeft />
-                    </button>
 
-                    <button className="hover:bg-black border border-gray-300 text-gray-400 p-3 rounded-full"
-                        onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages - 1))}
-                        disabled={currentPage === totalPages - 1}
-                    >
-                        <FaArrowRight />
-                    </button>
+                <div
+                    className="
+    flex  sm:flex-row
+    items-center sm:items-center
+    justify-between
 
+    gap-4 sm:gap-2
+
+    border-t border-[#B4B4B4]
+
+    mx-3 sm:mx-5 md:mx-10
+    mt-6 mb-10
+
+    px-2 sm:px-4 md:px-5
+    py-4
+
+    w-auto
+  "
+                >
+                    {/* PAGE COUNT */}
+                    <div className="text-sm sm:text-base text-gray-300">
+                        <span>
+                            {currentPage + 1} of {totalPages}
+                        </span>
+                    </div>
+
+                    {/* BUTTONS */}
+                    <div className="flex items-center justify-between gap-2">
+
+                        <button
+                            className="
+        hover:bg-black
+
+        border border-gray-300
+        text-gray-400
+
+        p-2 sm:p-3
+
+        rounded-full
+
+        transition-all duration-200
+
+        disabled:opacity-40
+        disabled:cursor-not-allowed
+      "
+                            onClick={() =>
+                                setCurrentPage((prev) => Math.max(prev - 1, 0))
+                            }
+                            disabled={currentPage === 0}
+                        >
+                            <FaArrowLeft className="text-sm sm:text-base" />
+                        </button>
+
+                        <button
+                            className="
+        hover:bg-black
+
+        border border-gray-300
+        text-gray-400
+
+        p-2 sm:p-3
+
+        rounded-full
+
+        transition-all duration-200
+
+        disabled:opacity-40
+        disabled:cursor-not-allowed
+      "
+                            onClick={() =>
+                                setCurrentPage((prev) =>
+                                    Math.min(prev + 1, totalPages - 1)
+                                )
+                            }
+                            disabled={currentPage === totalPages - 1}
+                        >
+                            <FaArrowRight className="text-sm sm:text-base" />
+                        </button>
+
+                    </div>
                 </div>
             </div>
-            </div>
-          
-            
 
-           <div className="">
-                <div className="space-y-4 m-5  ps-10 pe-20" >
-                    <h1 className={` mb-2 ${urbanist.className}`} style={{ fontWeight: "500", fontSize: "1.8rem" }}>Frequently Asked Questions</h1>
-                    <p className={`text-gray-400  ${onest.className}`} style={{ fontWeight: "400", fontSize: "1rem" }}>Find answers to common questions about Estatein's services, property listings, and the real estate process. We're here to provide clarity and assist you every step of the way.</p>
+
+
+            <div className="p-5">
+                <div className="space-y-4 " >
+                    <h1 className={` mb-2 ${urbanist.className} text-[]`} style={{ fontWeight: "500", fontSize: "1.8rem" }}>Frequently Asked Questions</h1>
+                    <p className={`text-[#000000]  ${onest.className}`} style={{ fontWeight: "400", fontSize: "1rem" }}>Find answers to common questions about Estatein's services, property listings, and the real estate process. We're here to provide clarity and assist you every step of the way.</p>
                 </div>
-                <div className="grid md:grid-cols-3 gap-2 p-5 ms-5 me-5">
+                <div className="grid md:grid-cols-3 gap-2 mt-5 ">
                     {currentItems2.map((item) => (
                         <div
                             key={item.id}
-                            className={`bg-[#0c0c0c] ${onest.className} text-white m-10 rounded-xl p-6 flex flex-col justify-between hover:shadow-lg transition`}
+                            className={`bg-[#0c0c0c] ${onest.className} text-white  rounded-xl p-6 flex flex-col justify-between hover:shadow-lg transition`}
                         >
                             <div>
                                 <h2 className="text-lg font-semibold mb-3">
                                     {item.question}
                                 </h2>
-    
+
                                 <p className="text-gray-400 text-sm mb-6">
                                     {item.answer}
                                 </p>
                             </div>
-    
-                            <button className={`bg-linear-to-r from-orange-500 to-yellow-500 text-white px-4 py-2 rounded mt-5 ${onest.className}`}>
+
+                            <button className={`bg-linear-to-r from-[#EA8843] to-[#FFB60D] text-white px-4 py-2 rounded mt-5 ${onest.className}`}>
                                 Read More
                             </button>
                         </div>
                     ))}
                 </div>
-           </div>
-              <div className="bg-gray-300 h-1 w-full  me-5 ms-5"></div>
+            </div>
+
             <div className="flex items-center justify-between  m-4">
                 <div><span>{currentPage + 1} of {totalPages}</span></div>
                 <div className="p-2  m-3 space-x-1">
@@ -289,28 +351,37 @@ export default function ClientSay() {
             </div>
 
             <div>
-                <div className="grid md:grid-cols-[4fr_1fr] items-center m-5">
-                                   <div className="m-5 p-10"><h1 className={` mb-2 ${urbanist.className}`} style={{ fontWeight: "600", fontSize: "1.8rem" }}>
-                                       Start Your Real Estate Journey Today
-                                   </h1>
-                                       <p className={`text-gray-400  ${urbanist.className}`} style={{ fontWeight: "400", fontSize: "1rem" }}>Your dream property is just a click away. Whether you're looking for a new home, a strategic investment, or expert real estate advice, Estatein is here to assist you every step of the way. Take the first step towards your real estate goals and explore our available properties or get in touch with our team for personalized assistance.</p>
-                                   </div>
-                                   <div className="m-2 text-center">
-               
-                                       <Link href={"/property"}>
-                                           <button className={`bg-linear-to-r from-orange-500 to-yellow-500 text-white px-4 py-2 rounded mt-5 ${onest.className}`}>
-                                               Explore Properties
-                                           </button>
-                                       </Link>
-               
-                                   </div>
-                               </div>
-                <div className="flex justify-between m-0">
+
+                 <div className="flex justify-between m-0">
                     <div>
-                        <Image className="" src="/abstractdesign.png" alt="" width={200} height={200} />
+                        <Image className="flex md:hidden" src="/abstractdesign.png" alt="" width={200} height={200} />
                     </div>
                     <div>
-                          <Image src="/img-removebg-preview.png" alt="" width={200} height={200} />
+                        <Image className="hidden" src="/img-removebg-preview2.png" alt="" width={200} height={200} />
+                    </div>
+                </div>
+                <div className="grid md:grid-cols-[4fr_1fr] items-center ">
+                    <div className="p-5"><h1 className={` mb-2 ${urbanist.className}`} style={{ fontWeight: "600", fontSize: "1.8rem" }}>
+                        Start Your Real Estate Journey Today
+                    </h1>
+                        <p className={`text-gray-400  ${urbanist.className}`} style={{ fontWeight: "400", fontSize: "1rem" }}>Your dream property is just a click away. Whether you're looking for a new home, a strategic investment, or expert real estate advice, Estatein is here to assist you every step of the way. Take the first step towards your real estate goals and explore our available properties or get in touch with our team for personalized assistance.</p>
+                    </div>
+                    <div className="m-2 text-center">
+
+                        <Link href={"/property"}>
+                            <button className={`bg-linear-to-r from-[#EA8843] to-[#FFB60D] text-white px-4 py-2 rounded mt-5 ${onest.className}`}>
+                                Explore Properties
+                            </button>
+                        </Link>
+
+                    </div>
+                </div>
+                <div className="flex justify-between m-0">
+                    <div>
+                        <Image  className="hidden md:flex" src="/abstractdesign.png" alt="" width={200} height={200} />
+                    </div>
+                    <div>
+                        <Image src="/img-removebg-preview.png" alt="" width={200} height={200} />
                     </div>
                 </div>
             </div>

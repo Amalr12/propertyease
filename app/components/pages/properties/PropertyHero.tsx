@@ -205,7 +205,7 @@ export default function PropertyHero() {
                                 const query = new URLSearchParams(queryObj).toString();
 
                                 router.push(`/property?${query}`);
-                            }} className="bg-linear-to-r from-orange-500 to-yellow-500 text-white px-3 sm:px-4 py-2 rounded-lg flex items-center justify-center sm:justify-start gap-1 sm:gap-2 text-sm sm:text-base">
+                            }} className="bg-linear-to-r from-[#EA8843] to-[#FFB60D] text-white px-3 sm:px-4 py-2 rounded-lg flex items-center justify-center sm:justify-start gap-1 sm:gap-2 text-sm sm:text-base">
                                 <IoSearch className="text-white text-lg sm:text-xl" /> <span className=" sm:inline">Find Property</span>
                             </button>
                         </div>

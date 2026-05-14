@@ -232,7 +232,7 @@ export default function ScheduleVist({
                                     />
 
 
-                                    <button onClick={sendToWhatsApp} className="w-full py-3 rounded-lg bg-linear-to-r from-orange-500 to-yellow-500 font-medium shadow-lg">
+                                    <button onClick={sendToWhatsApp} className="w-full py-3 rounded-lg bg-linear-to-r from-[#EA8843] to-[#FFB60D] font-medium shadow-lg">
                                         {visitType === "consultation"
                                             ? "Call Now"
                                             : "Confirm Booking"}
