@@ -50,7 +50,7 @@ export default function Navbar() {
     <div
       className={`${onest.className} hidden md:flex items-center gap-4 text-white`}
     >
-     <Link href={"/contact"}> <button className="border border-white text-white bg-linear-to-r from-orange-500 to-yellow-500  hover:text-black px-4 py-2 rounded">Contact Us</button></Link>
+     <Link href={"/contact"}> <button className="border border-white text-white bg-linear-to-r from-[#EA8843] to-[#FFB60D]  hover:text-black px-4 py-2 rounded">Contact Us</button></Link>
 
       
     </div>
@@ -61,13 +61,13 @@ export default function Navbar() {
     <div className="absolute top-full left-0 w-full bg-black text-white flex flex-col items-center gap-4 py-6 md:hidden shadow-lg">
       
      <Link href={"/contact"}>
-        <button className="border border-white text-white bg-linear-to-r from-orange-500 to-yellow-500  hover:text-black px-4 py-2 rounded" onClick={() => setOpen(false)}>
+        <button className="border border-white text-white bg-linear-to-r from-[#EA8843] to-[#FFB60D]  hover:text-black px-4 py-2 rounded" onClick={() => setOpen(false)}>
           Contact Us
         </button>
      </Link>
 
       <button
-        className="bg-linear-to-r from-orange-500 to-yellow-500 px-4 py-2 rounded"
+        className="bg-linear-to-r from-[#EA8843] to-[#FFB60D] px-4 py-2 rounded"
         onClick={() => setOpen(false)}
       >
         Available Properties

@@ -346,7 +346,12 @@ export default function PropertyHeroSection({
                         </div>
 
                     </div>
-                    <div className={`${onest.className} space-y-3 `}>
+                    <div className={`${onest.className} space-y-3 h-fit
+
+    md:sticky
+    md:top-5
+
+    self-start`}>
 
                         <div className="bg-black text-white rounded-xl p-6 shadow-lg ">
                             <p className="text-gray-400 text-sm">PROPERTY PRICE</p>
@@ -355,7 +360,7 @@ export default function PropertyHeroSection({
                                 Estimated EMI: ₹25K/month
                             </p>
 
-                            <button onClick={() => setEnquiryModal(true)} className="w-full mt-4 bg-linear-to-r from-orange-500 to-yellow-500 py-2 rounded-lg">
+                            <button onClick={() => setEnquiryModal(true)} className="w-full mt-4 bg-linear-to-r from-[#EA8843] to-[#FFB60D] py-2 rounded-lg">
                                 Send Enquiry
                             </button>
 
@@ -641,7 +646,7 @@ export default function PropertyHeroSection({
                                 className="w-full bg-gray-800 p-3 rounded-lg mb-4"
                             />
 
-                            <button onClick={sendToWhatsApp} className="w-full py-3 rounded-lg bg-linear-to-r from-orange-500 to-yellow-500 font-medium">
+                            <button onClick={sendToWhatsApp} className="w-full py-3 rounded-lg bg-linear-to-r from-[#EA8843] to-[#FFB60D] font-medium">
                                 Submit Inquiry
                             </button>
 

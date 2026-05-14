@@ -116,7 +116,7 @@ export default function Featured() {
                     </div>
                     <div>
                         <button
-                            className={`bg-linear-to-r from-orange-500 to-yellow-500 text-white  rounded px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 text-xs sm:text-sm md:text-base w-full sm:w-auto transition hover:opacity-90 mt-2 sm:mt-0 ${onest.className}`}
+                            className={`bg-linear-to-r from-[#EA8843] to-[#FFB60D] text-white  rounded px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 text-xs sm:text-sm md:text-base w-full sm:w-auto transition hover:opacity-90 mt-2 sm:mt-0 ${onest.className}`}
                             style={{ fontWeight: 500 }}
                         >
                             View All Properties
@@ -156,10 +156,10 @@ export default function Featured() {
                                 </span>
                             ))}
                         </div>
-                        <div className="flex flex-col sm:flex-row justify-between items-center gap-2 mt-auto">
+                        <div className="flex flex-col sm:flex-row md:flex-row md:justify-between lg:justify-between  items-center gap-2 mt-auto">
                             <span className="text-white font-semibold text-sm sm:text-base">{item.price}</span>
                             <button
-                                className={`${onest.className} bg-linear-to-r from-orange-500 to-yellow-500 text-white rounded px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 text-xs sm:text-sm md:text-base w-full sm:w-auto transition hover:opacity-90 mt-2 sm:mt-0`}
+                                className={`${onest.className} bg-linear-to-r from-[#EA8843] to-[#FFB60D] text-white rounded px-4 py-2 sm:px-5 sm:py-2.5 md:px-2 md:py-3 text-xs sm:text-sm md:text-[0.5rem] w-full sm:w-auto transition hover:opacity-90 mt-2 sm:mt-0`}
                                 style={{ fontWeight: 500 }}
                             >
                                 {item.buttonText}
@@ -168,8 +168,8 @@ export default function Featured() {
                     </div>
                 ))}
             </div>
-            <div className="bg-gray-300 h-1 w-full m-4"></div>
-            <div className="flex items-center justify-between  m-4">
+        
+            <div className="md:flex hidden items-center justify-between  border-[#B4B4B4] border-t m-10 md:mx-10 p-5 ">
                 <div><span>{currentPage + 1} of {totalPages}</span></div>
                 <div className="p-2  m-3 space-x-1">
                     <button className="hover:bg-black border border-gray-300 text-gray-400 p-3 rounded-full"

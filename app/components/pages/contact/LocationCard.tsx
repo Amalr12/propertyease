@@ -45,7 +45,7 @@ export default function LocationCard({ type, title, description }: LocationCardP
                     </div>
 
                   
-                    <button className="w-full bg-linear-to-r from-orange-500 to-yellow-500 py-2 rounded-md text-sm font-medium hover:opacity-90">
+                    <button className="w-full bg-linear-to-r from-[#EA8843] to-[#FFB60D] py-2 rounded-md text-sm font-medium hover:opacity-90">
                         Get Direction
                     </button>
                 </div>
