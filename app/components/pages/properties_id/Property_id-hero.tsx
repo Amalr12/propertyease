@@ -148,35 +148,38 @@ export default function PropertyHeroSection({
                             </div>
                         </div>
 
-                        <div className="mt-4 ">
+                        <div className="mt-2 mb-2">
 
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <div className="flex gap-6 overflow-x-auto scrollbar-hide w-auto">
 
                                 {images.map((img, index) => (
                                     <div
                                         key={index}
                                         onClick={() => setCurrentIndex(index)}
                                         className={`
-                    relative overflow-hidden rounded-xl cursor-pointer
-                    transition-all duration-300 group
-                    ${currentIndex === index
-                                                ? "ring-2 ring-orange-500 shadow-xl scale-[1.02]"
-                                                : "hover:shadow-lg hover:scale-[1.01]"
+        relative shrink-0
+        w-[31%] sm:w-[32%] md:w-[31.5%]
+        overflow-hidden rounded-xl cursor-pointer
+        transition-all duration-300 group
+        
+        ${currentIndex === index
+                                                ? "ring-2 ring-orange-500 shadow-xl"
+                                                : "hover:shadow-lg"
                                             }
-                `}
+      `}
                                     >
                                         <Image
                                             src={img}
-                                            width={500}
-                                            height={200}
+                                            width={300}
+                                            height={120}
                                             alt="thumbnail"
-                                            className={`
-                        w-full
-                        h-30 
-                        object-cover
-                        transition-transform duration-300
-                        group-hover:scale-105
-                    `}
+                                            className="
+          w-full
+          h-20 sm:h-24 md:h-28
+          object-cover
+          transition-transform duration-300
+          group-hover:scale-105
+        "
                                         />
 
                                         {/* ACTIVE OVERLAY */}
@@ -189,7 +192,7 @@ export default function PropertyHeroSection({
                             </div>
                         </div>
                         <div className={`bg-black text-white rounded-xl mt-6 p-6 sm:p-6 ${urbanist.className}`}>
-                            <div className="grid md:grid-cols-4 sm:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 text-center divide-x divide-gray-700">
+                            <div className="grid md:grid-cols-4 sm:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 text-center ">
                                 <div className="flex flex-col justify-center">
                                     <FaBed className="text-orange-500 text-2xl mx-auto mb-2" />
                                     <p className="text-white font-semibold text-lg sm:text-xl">{bhk}</p>
@@ -272,17 +275,17 @@ export default function PropertyHeroSection({
                                         height={550}
                                         className="
                     w-full
-                    max-w-[75]
-                    sm:max-w-[125]
-                    md:max-w-[162.5]
-                    lg:max-w-[187.5]
+                    max-w-40
+                    sm:max-w-50
+                    md:max-w-80
+                    lg:max-w-100
                     h-auto
                     object-contain
                     rounded-xl
                     cursor-pointer
                     border border-gray-300
                     shadow-lg
-                    transition-transform duration-300 hover:scale-[1.02]
+                    transition-transform duration-300 hover:scale-[1.02] mt-5
                 "
                                         priority
                                     />
@@ -582,81 +585,7 @@ export default function PropertyHeroSection({
 
                     </div>
                 </div>}
-            {enquiryModal && (
-                <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex flex-col">
-                    <div className="fixed inset-0 bg-gray-900/50 transition-opacity pointer-events-none"></div>
-                    <div
-                        className="flex flex-1 w-full h-full p-0 sm:p-0 items-start justify-center sm:items-center sm:justify-center overflow-y-auto"
-                    >
-                        <div
-                            className="bg-black w-full max-w-md p-6 rounded-2xl text-white relative mx-auto mt-4 sm:mt-0"
-                            style={{ zIndex: 60 }}
-                        >
-                            <div className="flex justify-end">
-                                <button
-                                    onClick={() => setEnquiryModal(false)}
-                                    className="absolute top-4 flex justify-end text-xl"
-                                >
-                                    <ImCancelCircle className="text-xl cursor-pointer" />
-                                </button>
-                            </div>
-
-                            <div className="flex justify-center mb-4">
-                                <div className="bg-orange-500/20 p-4 rounded-full">
-                                    <FaRegCalendar className="text-2xl text-orange-500" />
-                                </div>
-                            </div>
-                            <div className="text-center mb-6">
-                                <h2 className="text-xl font-semibold">Enquire Now</h2>
-                                <p className="text-gray-400 text-sm mt-1">
-                                    Send your questions about this property
-                                </p>
-                            </div>
-                            <input
-                                type="text"
-                                name="name"
-                                placeholder="Your Name"
-                                value={formData.name}
-                                onChange={handleChange}
-                                className="w-full bg-gray-800 p-3 rounded-lg mb-3"
-                            />
-
-                            <div className="flex gap-2 mb-3">
-                                <input
-                                    type="text"
-                                    name="phone"
-                                    placeholder="+91 00000 00000"
-                                    value={formData.phone}
-                                    onChange={handleChange}
-                                    className="w-1/2 bg-gray-800 p-3 rounded-lg"
-                                />
-                                <input
-                                    type="email"
-                                    placeholder="name@email.com"
-                                    value={formData.email}
-                                    onChange={handleChange}
-                                    className="w-1/2 bg-gray-800 p-3 rounded-lg"
-                                />
-                            </div>
-
-                            <textarea
-                                placeholder="Message (optional)"
-                                value={formData.message}
-                                onChange={handleChange}
-                                className="w-full bg-gray-800 p-3 rounded-lg mb-4"
-                            />
-
-                            <button onClick={sendToWhatsApp} className="w-full py-3 rounded-lg bg-linear-to-r from-[#EA8843] to-[#FFB60D] font-medium">
-                                Submit Inquiry
-                            </button>
-
-                            <p className="text-xs text-gray-400 mt-3 text-center">
-                                By clicking submit, you agree to our Terms & Privacy Policy
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            )}
+          
 
 
         </>

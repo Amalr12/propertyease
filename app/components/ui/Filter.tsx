@@ -15,7 +15,7 @@ export default function FilterSidebar({ filters, setFilters }: any) {
     }, [filters]);
 
     return (
-        <div className={`bg-[#0c0c0c] text-white p-5 rounded-2xl space-y-4 ${onest.className}`}>
+        <div className={`bg-[#0c0c0c] text-white sticky p-5 rounded-2xl space-y-4 ${onest.className}`}>
 
             <div className="flex justify-between items-center">
                 <div className="text-xl flex items-center justify-around">
@@ -44,8 +44,10 @@ export default function FilterSidebar({ filters, setFilters }: any) {
             <div>
                 <p>Property Type</p>
                 {["Apartment", "Villa", "Plot"].map((type) => (
-                    <label key={type} className="flex text-gray-500 items-center ms-2">
-                        <input className="bg-gray-500 m-2"
+                    <label key={type} className="flex accent-gray-500 text-gray-500 items-center ms-2">
+                        <input className=" w-4 h-4
+          accent-gray-400
+          cursor-pointer m-2"
                             type="checkbox"
                             checked={localFilters.types.includes(type)}
                             onChange={() =>
@@ -65,7 +67,7 @@ export default function FilterSidebar({ filters, setFilters }: any) {
             {/* PRICE */}
             <div>
                 <p> Price Range (Lakhs)</p>
-                <input className="w-full bg-[#EA8843] "
+                <input className="w-full accent-[#EA8843] cursor-pointer  "
                     type="range"
                     min="25"
                     max="200"
@@ -93,7 +95,7 @@ export default function FilterSidebar({ filters, setFilters }: any) {
                                     bhk: b,
                                 }))
                             }
-                            className={`px-3 py-1 rounded ${localFilters.bhk === b ? "bg-[#EA8843] text-white" : "bg-gray-700"
+                            className={`px-3 py-1 rounded ${localFilters.bhk === b ? "bg-[#EA8843] text-white" : "bg-gray-700 hover:bg-orange-800 hover:text-white"
                                 }`}
                         >
                             {b}
@@ -106,9 +108,9 @@ export default function FilterSidebar({ filters, setFilters }: any) {
             <div>
                 <p>Amenities</p>
                 {["Parking", "Pool", "Gym", "Park"].map((item) => (
-                    <label key={item} className="flex  text-gray-500 items-center ms-2">
+                    <label key={item} className="flex  text-gray-500 accent-gray-500 items-center ms-2">
                         <input
-                        className="m-2"
+                        className="accent-gray-500 m-2"
                             type="checkbox"
                             checked={localFilters.amenities.includes(item)}
                             onChange={() =>

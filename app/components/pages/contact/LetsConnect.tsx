@@ -33,12 +33,12 @@ export default function LetsConnect() {
     };
     return (
         <>
-            <div className=" p-5 md:p-10 ps-10 m-10">
+            <div className=" p-5 md:p-10 ps-10 mt-5">
                 <h1 className={` ${urbanist.className} font-medium text-xl sm:text-2xl md:text-3xl lg:text-4xl`} style={{ fontWeight: "600", fontStyle: "semibold" }}>Lets Connect</h1>
                 <p className={`${urbanist.className}  text-sm md:text-xl  mb-5`}>We're excited to connect with you and learn more about your real estate goals. Use the form below to get in touch with Estatein. Whether you're a prospective client, partner, or simply curious about our services, we're here to answer your questions and provide the assistance you need.</p>
 
                 <form ref={form}
-                    onSubmit={sendEmail} className={`${urbanist.className} max-w-6xl mx-auto bg-white border border-gray-300 rounded-xl p-4 sm:p-6 md:p-8 lg:p-10 
+                    onSubmit={sendEmail} className={`${urbanist.className} max-w-8xl  bg-white border border-gray-300 rounded-xl p-4 sm:p-6 md:p-8 lg:p-8 
               mt-10 mb-10`}>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 space-y-6">
                         <div className="space-y-5 mb-4">

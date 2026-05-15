@@ -11,7 +11,7 @@ export default function Values() {
               text-transparent pointer-events-none overflow-auto select-none max-w-screen  `} style={{ fontWeight: 500, fontSize: "20rem", WebkitTextStroke: "2px rgba(0,0,0,0.2)", color: "transparent" }}>
                     Values
                 </h1>
-                <div className="relative z-10 grid md:grid-cols-[2fr_4fr]  mt-50">
+                <div className="relative z-10 grid md:grid-cols-[2fr_4fr]  mt-50 p-5">
                     <div className="">
                         <h1 className={`${urbanist.className}`} style={{ fontWeight: 500, fontSize: "1.8rem" }} >Our Values</h1>
                         <h1 className={`${onest.className}`} style={{ fontWeight: 500, fontSize: "1rem" }}>Our story is one of continuous growth and evolution. We started as a small team with big dreams, determined to create a real estate platform that transcended the ordinary.</h1>

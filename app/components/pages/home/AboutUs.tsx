@@ -26,20 +26,48 @@ export default function AboutUs() {
             <div className="grid md:grid-cols-[1fr_4fr_1fr]">
                 <div></div>
                 <div>
-                    <div className="flex min-h-[30vh] md:h-[80vh]  mt-10  pt-5 justify-center rounded-[4rem] relative overflow-hidden" style={{
-                        backgroundImage: "url('/pexels-mart-production-7415129 1.png')",
-                        backgroundSize: "cover",
-                        backgroundPosition: "center",
-                    }}>
-                        <div className="absolute inset-0 bg-linear-to-b from-black/80 to-transparent"></div>
+                    <div
+                        className="relative mt-10 mx-auto w-full max-w-6xl 
+  min-h-125 md:min-h-145  rounded-[3rem] overflow-hidden 
+  flex items-start"
+                        style={{
+                            backgroundImage: "url('/pexels-mart-production-7415129 1.png')",
+                            backgroundSize: "cover",
+                            backgroundPosition: "center",
+                        }}
+                    >
+                        {/* Dark Overlay */}
+                        <div className="absolute inset-0 bg-black/45"></div>
 
-                        <div className="relative z-10 p-5 flex flex-col items-center justify-center">
-                            <h1 className={`${onest.className}   mt-2  z-10`} style={{ fontWeight: 500, fontSize: "1.3rem", color: "white" }}>
-                                We believe every good deal is founded on a great partnership. Our partnerships are built on trust, honesty and committed collaboration – many of them standing strong for decades.
-                            </h1>
-                           <Link href={"/property"}> <button className={`bg-linear-to-r from-[#EA8843] to-[#FFB60D] text-white px-4 py-2 rounded mt-5 ${onest.className}`} style={{ fontWeight: 500, fontSize: "1rem" }}>   Available Properties</button></Link>
-                             
-                         
+                        {/* Content */}
+                        <div className="relative z-10 flex flex-col justify-between h-full w-full p-8 md:p-14">
+
+                            {/* Text */}
+                            <div className="max-w-3xl">
+                                <h1
+                                    className={`${onest.className} text-white leading-tight 
+        text-14px md:text-27px  lg:text-27px  sm:text-14px  font-medium`}
+                                >
+                                    We believe every good deal is founded on a great partnership.
+                                    Our partnerships are built on trust, honesty and committed
+                                    collaboration – many of them standing strong for decades.
+                                </h1>
+                            </div>
+
+                            {/* Button */}
+                            <div className="mt-50 flex items-center justify-center">
+                                <Link href="/property">
+                                    <button
+                                        className={`${onest.className} 
+          bg-linear-to-r from-[#EA8843] to-[#FFB60D]
+          text-white px-6 py-3 rounded-xl
+          text-sm md:text-base font-medium
+          hover:scale-105 transition`}
+                                    >
+                                        Available Properties
+                                    </button>
+                                </Link>
+                            </div>
 
                         </div>
                     </div>
