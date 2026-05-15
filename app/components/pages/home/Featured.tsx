@@ -1,5 +1,6 @@
 "use client";
 import { onest, urbanist } from "@/app/fonts/fonts";
+import Link from "next/link";
 import { useState } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 const featuredProperties = [
@@ -8,6 +9,7 @@ const featuredProperties = [
         title: "Seaside Serenity Villa",
         description: "A stunning 4-bedroom, 3-bathroom villa in a peaceful suburban neighborhood.",
         image: "/feat1.png",
+        slug: "villa-thrissur",
         features: [
             { icon: "bed", label: "4-Bedroom" },
             { icon: "bath", label: "3-Bathroom" },
@@ -21,6 +23,7 @@ const featuredProperties = [
         title: "Metropolitan Haven",
         description: "A chic and fully-furnished 2-bedroom apartment with panoramic city views.",
         image: "/feat2.png",
+         slug: "apartment-thrissur",
         features: [
             { icon: "bed", label: "2-Bedroom" },
             { icon: "bath", label: "2-Bathroom" },
@@ -36,6 +39,7 @@ const featuredProperties = [
         title: "Rustic Retreat Cottage",
         description: "An elegant 3-bedroom, 2.5-bathroom townhouse in a gated community.",
         image: "/feat3.png",
+          slug: "villa-ernakulam",
         features: [
             { icon: "bed", label: "3-Bedroom" },
             { icon: "bath", label: "3-Bathroom" },
@@ -49,6 +53,7 @@ const featuredProperties = [
         title: "Seaside Serenity Villa",
         description: "A stunning 4-bedroom, 3-bathroom villa in a peaceful suburban neighborhood.",
         image: "/feat1.png",
+        slug: "plot-ernakulam",
         features: [
             { icon: "bed", label: "4-Bedroom" },
             { icon: "bath", label: "3-Bathroom" },
@@ -62,6 +67,7 @@ const featuredProperties = [
         title: "Metropolitan Haven",
         description: "A chic and fully-furnished 2-bedroom apartment with panoramic city views.",
         image: "/feat2.png",
+        slug: "apartment-ernakulam",
         features: [
             { icon: "bed", label: "2-Bedroom" },
             { icon: "bath", label: "2-Bathroom" },
@@ -77,6 +83,7 @@ const featuredProperties = [
         title: "Rustic Retreat Cottage",
         description: "An elegant 3-bedroom, 2.5-bathroom townhouse in a gated community.",
         image: "/feat3.png",
+        slug: "plot-thrissur",
         features: [
             { icon: "bed", label: "3-Bedroom" },
             { icon: "bath", label: "3-Bathroom" },
@@ -99,7 +106,7 @@ export default function Featured() {
     return (
 
         <>
-            <div className="m-5 sm:pe-20">
+            <div className=" sm:pe-20 ">
 
                 <div className="grid md:grid-cols-[4fr_1fr] justify-between items-start sm:items-center gap-6 sm:gap-0 m-5">
                     <div>
@@ -124,8 +131,8 @@ export default function Featured() {
                     </div>
                 </div>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 px-4 sm:px-6 lg:px-8 
-                py-6 sm:py-8 md:py-10 m-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 px-3 sm:px-6 lg:px-4 
+                py-6 sm:py-8 md:py-10 ">
                 {currentItems.map((item) => (
                     <div
                         key={item.id}
@@ -158,18 +165,20 @@ export default function Featured() {
                         </div>
                         <div className="flex flex-col sm:flex-row md:flex-row md:justify-between lg:justify-between  items-center gap-2 mt-auto">
                             <span className="text-white font-semibold text-sm sm:text-base">{item.price}</span>
-                            <button
-                                className={`${onest.className} bg-linear-to-r from-[#EA8843] to-[#FFB60D] text-white rounded px-4 py-2 sm:px-5 sm:py-2.5 md:px-2 md:py-3 text-xs sm:text-sm md:text-[0.5rem] w-full sm:w-auto transition hover:opacity-90 mt-2 sm:mt-0`}
-                                style={{ fontWeight: 500 }}
-                            >
-                                {item.buttonText}
-                            </button>
+                           <Link href={`/property/${item.slug}`}>
+                                <button
+                                    className={`${onest.className} bg-linear-to-r from-[#EA8843] to-[#FFB60D] text-white rounded px-4 py-2 sm:px-5 sm:py-2.5 md:px-2 md:py-3 text-xs sm:text-sm md:text-[14.65px] w-full sm:w-auto transition hover:opacity-90 mt-2 sm:mt-0`}
+                                    style={{ fontWeight: 500 }}
+                                >
+                                    {item.buttonText}
+                                </button>
+                           </Link>
                         </div>
                     </div>
                 ))}
             </div>
         
-            <div className="md:flex hidden items-center justify-between  border-[#B4B4B4] border-t m-10 md:mx-10 p-5 ">
+            <div className="md:flex hidden items-center justify-between  border-[#B4B4B4] border-t  p-5 m-5">
                 <div><span>{currentPage + 1} of {totalPages}</span></div>
                 <div className="p-2  m-3 space-x-1">
                     <button className="hover:bg-black border border-gray-300 text-gray-400 p-3 rounded-full"

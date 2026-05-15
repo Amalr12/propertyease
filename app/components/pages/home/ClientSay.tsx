@@ -218,21 +218,7 @@ export default function ClientSay() {
 
                 <div
                     className="
-    flex  sm:flex-row
-    items-center sm:items-center
-    justify-between
-
-    gap-4 sm:gap-2
-
-    border-t border-[#B4B4B4]
-
-    mx-3 sm:mx-5 md:mx-10
-    mt-6 mb-10
-
-    px-2 sm:px-4 md:px-5
-    py-4
-
-    w-auto
+   md:flex hidden items-center justify-between  border-[#B4B4B4] border-t  p-5 mt-5
   "
                 >
                     {/* PAGE COUNT */}
@@ -301,7 +287,7 @@ export default function ClientSay() {
 
 
 
-            <div className="p-5">
+            <div className="m-5">
                 <div className="space-y-4 " >
                     <h1 className={` mb-2 ${urbanist.className} text-[]`} style={{ fontWeight: "500", fontSize: "1.8rem" }}>Frequently Asked Questions</h1>
                     <p className={`text-[#000000]  ${onest.className}`} style={{ fontWeight: "400", fontSize: "1rem" }}>Find answers to common questions about Estatein's services, property listings, and the real estate process. We're here to provide clarity and assist you every step of the way.</p>
@@ -330,7 +316,7 @@ export default function ClientSay() {
                 </div>
             </div>
 
-            <div className="flex items-center justify-between  m-4">
+            <div className="md:flex hidden items-center justify-between  border-[#B4B4B4] border-t  p-5 mt-5">
                 <div><span>{currentPage + 1} of {totalPages}</span></div>
                 <div className="p-2  m-3 space-x-1">
                     <button className="hover:bg-black border border-gray-300 text-gray-400 p-3 rounded-full"
@@ -352,9 +338,9 @@ export default function ClientSay() {
 
             <div>
 
-                 <div className="flex justify-between m-0">
+                <div className="flex justify-between m-0">
                     <div>
-                        <Image className="flex md:hidden" src="/abstractdesign.png" alt="" width={200} height={200} />
+                        <Image className="flex md:hidden" src="/img-removebg-preview.png" alt="" width={200} height={200} />
                     </div>
                     <div>
                         <Image className="hidden" src="/img-removebg-preview2.png" alt="" width={200} height={200} />
@@ -378,10 +364,10 @@ export default function ClientSay() {
                 </div>
                 <div className="flex justify-between m-0">
                     <div>
-                        <Image  className="hidden md:flex" src="/abstractdesign.png" alt="" width={200} height={200} />
+                        <Image className="hidden md:flex" src="/abstractdesign.png" alt="" width={200} height={200} />
                     </div>
                     <div>
-                        <Image src="/img-removebg-preview.png" alt="" width={200} height={200} />
+                        <Image src="/abd.png" alt="" width={200} height={200} />
                     </div>
                 </div>
             </div>

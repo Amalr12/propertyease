@@ -6,19 +6,19 @@ import Image from "next/image";
 export default function Contact() {
     return (
         <>
-           <div className="">
-                <ContactHome/>
-                <LetsConnect/>
-                <OfficeLocation/>
-           </div>
-            <div className="flex justify-between  m-0">
-                    <div>
-                        <Image className="" src="/abstractdesign.png" alt="" width={200} height={200} />
-                    </div>
-                    <div>
-                        <Image src="/img-removebg-preview.png" alt="" width={200} height={200} />
-                    </div>
+            <div className="">
+                <ContactHome />
+                <LetsConnect />
+                <OfficeLocation />
+            </div>
+            <div className="flex justify-between m-0">
+                <div>
+                    <Image className="hidden md:flex" src="/abstractdesign.png" alt="" width={200} height={200} />
                 </div>
+                <div>
+                    <Image src="/abd.png" alt="" width={200} height={200} />
+                </div>
+            </div>
         </>
     );
 }

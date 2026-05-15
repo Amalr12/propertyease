@@ -43,7 +43,7 @@ export default function RootLayout({
        
       
 
-      <body className="min-h-full flex flex-col {urbanist.className}">
+      <body className="min-h-full  flex flex-col {urbanist.className}">
         <Navbar />
         {children}
         <FooterTop/>

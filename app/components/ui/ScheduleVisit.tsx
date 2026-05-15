@@ -78,10 +78,10 @@ export default function ScheduleVist({
         <>
 
 
-            <div id="dialog" aria-labelledby="dialog-title" className={`${onest.className} absolute  inset-0 max-h-none overflow-y-auto backdrop:bg-transparent z-50  bg-black/40 backdrop-blur-sm `}>
-                <div className="fixed inset-0 bg-gray-900/50 transition-opacity "></div>
-                <div className="flex  mt-10 items-end justify-center p-4 text-center focus:outline-none sm:items-center sm:p-0">
-                    <div className="relative transform overflow-hidden rounded-lg bg-gray-800 text-left shadow-xl outline -outline-offset-1 outline-white/10 transition-all sm:w-full  sm:max-w-lg">
+            <div id="dialog" aria-labelledby="dialog-title" className={`${onest.className} fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm`}> 
+                <div className="fixed inset-0 bg-gray-900/50 transition-opacity"></div>
+                <div className="flex items-center justify-center w-full h-full p-4 text-center focus:outline-none">
+                    <div className="relative transform overflow-hidden">
 
                         <div className="bg-black w-full max-w-md p-6 rounded-2xl text-white z-50">
 

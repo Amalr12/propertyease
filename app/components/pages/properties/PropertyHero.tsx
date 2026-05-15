@@ -1,7 +1,7 @@
 "use client";
 import { onest, urbanist } from "@/app/fonts/fonts";
-import { useMemo, useState } from "react";
-import { FaLocationDot } from "react-icons/fa6";
+import { useMemo, useEffect, useRef, useState } from "react";
+import { FaIndianRupeeSign, FaLocationDot } from "react-icons/fa6";
 import { FiChevronDown } from "react-icons/fi";
 import { IoCubeSharp, IoSearch } from "react-icons/io5";
 import { MdDateRange } from "react-icons/md";
@@ -31,14 +31,48 @@ const yearOptions = ["Before 2000", "2000 - 2010", "2010 - 2020", "After 2020"];
 
 
 export default function PropertyHero() {
+      const [open, setOpen] = useState(false);
+      const [open2, setOpen2] = useState(false);
+      const [open3, setOpen3] = useState(false);
+      const [open4, setOpen4] = useState(false);
+      const [open5, setOpen5] = useState(false);
+
+      const districtDropdownRef = useRef<HTMLDivElement>(null);
+      const bhkDropdownRef = useRef<HTMLDivElement>(null);
+      const priceDropdownRef = useRef<HTMLDivElement>(null);
+      const sizeDropdownRef = useRef<HTMLDivElement>(null);
+      const yearDropdownRef = useRef<HTMLDivElement>(null);
+    
+      // Close dropdowns on outside click
+      useEffect(() => {
+        function handleClickOutside(event: MouseEvent) {
+          if (open && districtDropdownRef.current && !districtDropdownRef.current.contains(event.target as Node)) {
+            setOpen(false);
+          }
+          if (open2 && bhkDropdownRef.current && !bhkDropdownRef.current.contains(event.target as Node)) {
+            setOpen2(false);
+          }
+          if (open3 && priceDropdownRef.current && !priceDropdownRef.current.contains(event.target as Node)) {
+            setOpen3(false);
+          }
+          if (open4 && sizeDropdownRef.current && !sizeDropdownRef.current.contains(event.target as Node)) {
+            setOpen4(false);
+          }
+          if (open5 && yearDropdownRef.current && !yearDropdownRef.current.contains(event.target as Node)) {
+            setOpen5(false);
+          }
+        }
+        if (open || open2 || open3 || open4 || open5) {
+          document.addEventListener("mousedown", handleClickOutside);
+        }
+        return () => {
+          document.removeEventListener("mousedown", handleClickOutside);
+        };
+      }, [open, open2, open3, open4, open5]);
     const [sortOrder, setSortOrder] = useState<"low" | "high">("low");
     const [selectedProperty, setSelectedProperty] = useState<any>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [open, setOpen] = useState(false);
-    const [open2, setOpen2] = useState(false);
-    const [open3, setOpen3] = useState(false);
-    const [open4, setOpen4] = useState(false);
-    const [open5, setOpen5] = useState(false);
+   
     const router = useRouter();
     const [searchText, setSearchText] = useState("");
 
@@ -181,222 +215,348 @@ export default function PropertyHero() {
                         </p>
                     </div>
 
-                    <div className="  grid grid-cols-1 md:grid-cols-[1fr_4fr_1fr] gap-4 mt-10 pt-10 justify-center z-10">
-                        <div></div>
-                        <div className="bg-black/90 rounded-t-xl rounded-b-none p-2 sm:p-3 grid grid-cols-1 sm:grid-cols-[8fr_2fr] gap-2 sm:gap-3 shadow-lg">
-                            <input value={searchText}
-                                onChange={(e) => setSearchText(e.target.value)} type="text" placeholder="Search For a Location" className="bg-black rounded-xl text-white outline-none px-2 sm:px-4 py-2 text-sm sm:text-base"
-                            />
-
-                            <button onClick={() => {
-                                const queryObj: Record<string, string> = {};
-
-                                if (searchText) {
-                                    queryObj.district = searchText;
-                                } else if (distsSelected) {
-                                    queryObj.district = distsSelected;
-                                }
-
-                                if (bhkSelected) queryObj.bhk = bhkSelected;
-                                if (priceSelected) queryObj.price = priceSelected;
-                                if (sizeSelected) queryObj.size = sizeSelected;
-                                if (yearSelected) queryObj.year = yearSelected;
-
-                                const query = new URLSearchParams(queryObj).toString();
-
-                                router.push(`/property?${query}`);
-                            }} className="bg-linear-to-r from-[#EA8843] to-[#FFB60D] text-white px-3 sm:px-4 py-2 rounded-lg flex items-center justify-center sm:justify-start gap-1 sm:gap-2 text-sm sm:text-base">
-                                <IoSearch className="text-white text-lg sm:text-xl" /> <span className=" sm:inline">Find Property</span>
-                            </button>
-                        </div>
-                        <div></div>
-                    </div>
-
-                    <div className="grid md:grid-cols-[1fr_8fr_1fr]   justify-center">
-                        <div></div>
-                        <div className=" bg-black/90 rounded-xl p-3 flex flex-wrap md:flex-nowrap gap-3 shadow-xl">
-
-
-                            <div className="flex items-center gap-2 bg-black px-4 py-2 rounded-lg border border-gray-700 flex-1">
-                                <span ><FaLocationDot className="text-xl text-gray-300" /></span>
-                                <div className="relative w-full max-w-xs">
-
-
-                                    <div
-                                        onClick={() => setOpen(!open)}
-                                        className="flex items-center justify-between bg-black text-white px-4 py-2 "
-                                    >
-                                        <span className="text-gray-300 text-sm">
-                                            {distsSelected || "Select District"}
-                                        </span>
-                                        <FiChevronDown
-                                            className={`transition-transform ${open ? "rotate-180" : ""}`}
-                                        />
+                   <div className="relative z-20 px-3 md:px-5 mt-16 md:mt-28 lg:mt-29">
+                        <div className="  grid grid-cols-1 md:grid-cols-[1fr_4fr_1fr] gap-4    justify-center">
+                                    <div></div>
+                                    <div className="bg-black/90 rounded-t-xl rounded-b-none p-2 sm:p-3 grid grid-cols-1 sm:grid-cols-[8fr_2fr] gap-2 sm:gap-3 shadow-lg">
+                                      <input value={searchText}
+                                        onChange={(e) => setSearchText(e.target.value)} type="text" placeholder="Search For a Location" className="bg-black rounded-xl text-white outline-none px-2 sm:px-4 py-2 text-sm sm:text-base"
+                                      />
+                      
+                                      <button onClick={() => {
+                                        const queryObj: Record<string, string> = {};
+                      
+                                        if (searchText) {
+                                          queryObj.district = searchText;
+                                        } else if (distsSelected) {
+                                          queryObj.district = distsSelected;
+                                        }
+                      
+                                        if (bhkSelected) queryObj.bhk = bhkSelected;
+                                        if (priceSelected) queryObj.price = priceSelected;
+                                        if (sizeSelected) queryObj.size = sizeSelected;
+                                        if (yearSelected) queryObj.year = yearSelected;
+                      
+                                        const query = new URLSearchParams(queryObj).toString();
+                      
+                                        router.push(`/property?${query}`);
+                                      }} className="bg-linear-to-r from-[#EA8843] to-[#FFB60D] text-white px-3 sm:px-4 py-2 rounded-lg flex items-center justify-center sm:justify-start gap-1 sm:gap-2 text-sm sm:text-base">
+                                        <IoSearch className="text-white text-lg sm:text-xl" /> <span className=" sm:inline">Find Property</span>
+                                      </button>
                                     </div>
-
-                                    {/* Dropdown List */}
-                                    {open && (
-                                        <div className="absolute left-0 w-full mt-2 bg-black text-white rounded-lg shadow-lg border  border-gray-700 z-50">
-                                            {districts.map((district, index) => (
+                                    <div></div>
+                                  </div>
+                      
+                                  <div className="grid
+                      grid-cols-1
+                      md:grid-cols-[0.5fr_9fr_0.5fr]
+                      lg:grid-cols-[1fr_8fr_1fr]
+                      justify-center
+                      
+                      px-2 sm:px-4 md:px-3 lg:px-0
+                      mb-10
+                      w-full">
+                                    <div></div>
+                      
+                                    <div className="bg-black/90
+                      rounded-2xl
+                      p-2 sm:p-3 md:p-3 lg:p-4
+                      flex flex-col
+                      sm:flex-col
+                      md:flex-row
+                      flex-wrap md:flex-nowrap
+                      gap-2 md:gap-3
+                      shadow-xl
+                      w-full
+                      overflow-visible z-10">
+                      
+                      
+                                      <div
+                                        className="flex text-center gap-2 bg-black px-2 sm:px-3 md:px-2 lg:px-4 py-2 rounded-xl border border-gray-700 w-full md:flex-1 min-w-0"
+                                        ref={districtDropdownRef}
+                                      >
+                                        <span ><FaLocationDot className="text-xl text-gray-300" /></span>
+                                        <div className="relative w-full min-w-0">
+                      
+                      
+                                          <div
+                                            onClick={() => setOpen(!open)}
+                                            className="flex items-center justify-between
+                      
+                      bg-black text-white
+                      
+                      px-1 sm:px-2 md:px-1 lg:px-3
+                      py-1
+                      
+                      w-full
+                      cursor-pointer"
+                                          >
+                                            <span className="text-gray-300
+                      
+                      text-[11px]
+                      sm:text-xs
+                      md:text-[10px]
+                      lg:text-sm
+                      
+                      truncate
+                      leading-tight">
+                                              {distsSelected || "Select District"}
+                                            </span>
+                                            <FiChevronDown
+                                              className={`transition-transform ${open ? "rotate-180" : ""}`}
+                                            />
+                                          </div>
+                      
+                                          {/* Dropdown List */}
+                                          {open && (
+                                            <div className="absolute left-0 w-full mt-2 bg-black text-white rounded-lg shadow-lg border border-gray-700 z-999 max-h-60 overflow-y-auto">
+                                              {districts.map((district, index) => (
                                                 <div
-                                                    key={index}
-                                                    onClick={() => {
-                                                        distsSetSelected(district);
-                                                        setOpen(false);
-                                                    }}
-                                                    className="px-4 py-2 hover:bg-gray-800 cursor-pointer text-sm"
+                                                  key={index}
+                                                  onClick={() => {
+                                                    distsSetSelected(district);
+                                                    setOpen(false);
+                                                  }}
+                                                  className="px-3 py-2
+                      
+                      hover:bg-gray-800
+                      cursor-pointer
+                      
+                      text-[11px]
+                      sm:text-xs
+                      md:text-[10px]
+                      lg:text-sm"
                                                 >
-                                                    {district}
+                                                  {district}
                                                 </div>
-                                            ))}
+                                              ))}
+                                            </div>
+                                          )}
                                         </div>
-                                    )}
-                                </div>
-                            </div>
-
-                            <div className="flex items-center gap-2 bg-black px-4 py-1 rounded-lg border border-gray-700 flex-1">
-                                <span><RiBuilding2Line className="text-xl text-gray-300" /></span>
-                                <div className="relative w-full max-w-xs">
-
-                                    {/* Button */}
-                                    <div
-                                        onClick={() => setOpen2(!open2)}
-                                        className="flex items-center justify-between bg-black text-white px-4 py-2 cursor-pointer "
-                                    >
-                                        <span className="text-gray-300 text-sm">
-                                            {bhkSelected || "Select BHK"}
-                                        </span>
-                                        <FiChevronDown
-                                            className={`transition-transform ${open2 ? "rotate-180" : ""}`}
-                                        />
+                                      </div>
+                      
+                                      <div
+                                        className="flex text-center items-center gap-2 bg-black px-2 sm:px-3 md:px-2 lg:px-4 py-2 rounded-xl border border-gray-700 w-full md:flex-1 min-w-0"
+                                        ref={bhkDropdownRef}
+                                      >
+                                        <span><RiBuilding2Line className="text-xl text-gray-300" /></span>
+                                        <div className="relative w-full min-w-0">
+                      
+                                          {/* Button */}
+                                          <div
+                                            onClick={() => setOpen2(!open2)}
+                                            className="flex items-center justify-between
+                      
+                      bg-black text-white
+                      
+                      px-1 sm:px-2 md:px-1 lg:px-3
+                      py-1
+                      
+                      w-full
+                      cursor-pointer "
+                                          >
+                                            <span className="text-gray-300
+                      
+                      text-[11px]
+                      sm:text-xs
+                      md:text-[10px]
+                      lg:text-sm
+                      
+                      truncate
+                      leading-tight">
+                                              {bhkSelected || "Select BHK"}
+                                            </span>
+                                            <FiChevronDown
+                                              className={`transition-transform ${open2 ? "rotate-180" : ""}`}
+                                            />
+                                          </div>
+                      
+                                          {/* Dropdown List */}
+                                          {open2 && (
+                                            <div className="absolute left-0 w-full mt-2 bg-black text-white rounded-lg shadow-lg border border-gray-700 z-999 max-h-60 overflow-y-auto">
+                                              {bhkOptions.map((bhkoptions, index) => (
+                                                <div
+                                                  key={index}
+                                                  onClick={() => {
+                                                    bhkSetSelected(bhkoptions);
+                                                    setOpen2(false);
+                                                  }}
+                                                  className="px-3 py-2 hover:bg-gray-800 cursor-pointer text-[11px] sm:text-xs md:text-[10px] lg:text-sm"
+                                                >
+                                                  {bhkoptions}
+                                                </div>
+                                              ))}
+                                            </div>
+                                          )}
+                                        </div>
+                                      </div>
+                      
+                                      <div
+                                        className="flex text-center items-center gap-2 bg-black px-2 sm:px-3 md:px-2 lg:px-4 py-2 rounded-xl border border-gray-700 w-full md:flex-1 min-w-0"
+                                        ref={priceDropdownRef}
+                                      >
+                                        <span><FaIndianRupeeSign className="text-xl text-gray-300" /></span>
+                                        <div className="relative w-full min-w-0">
+                      
+                      
+                                          <div
+                                            onClick={() => setOpen3(!open3)}
+                                            className="flex items-center justify-between
+                      
+                      bg-black text-white
+                      
+                      px-1 sm:px-2 md:px-1 lg:px-3
+                      py-1
+                      
+                      w-full
+                      cursor-pointer "
+                                          >
+                                            <span className="text-gray-300
+                      
+                      text-[11px]
+                      sm:text-xs
+                      md:text-[10px]
+                      lg:text-sm
+                      
+                      truncate
+                      leading-tight">
+                                              {priceSelected || "Select Price"}
+                                            </span>
+                                            <FiChevronDown
+                                              className={`transition-transform ${open3 ? "rotate-180" : ""}`}
+                                            />
+                                          </div>
+                                          {open3 && (
+                                            <div className="absolute left-0 w-full mt-2 bg-black text-white rounded-lg shadow-lg border border-gray-700 z-999 max-h-60 overflow-y-auto">
+                                              {priceOptions.map((priceoption, index) => (
+                                                <div
+                                                  key={index}
+                                                  onClick={() => {
+                                                    priceSetSelected(priceoption);
+                                                    setOpen3(false);
+                                                  }}
+                                                  className="px-3 py-2 hover:bg-gray-800 cursor-pointer text-[11px] sm:text-xs md:text-[10px] lg:text-sm"
+                                                >
+                                                  {priceoption}
+                                                </div>
+                                              ))}
+                                            </div>
+                                          )}
+                                        </div>
+                                      </div>
+                      
+                      
+                      
+                                      <div
+                                        className="flex text-center items-center gap-2 bg-black px-2 sm:px-3 md:px-2 lg:px-4 py-2 rounded-xl border border-gray-700 w-full md:flex-1 min-w-0"
+                                        ref={sizeDropdownRef}
+                                      >
+                                        <span><IoCubeSharp className="text-xl text-gray-300" /></span>
+                                        <div className="relative w-full min-w-0">
+                                          <div
+                                            onClick={() => setOpen4(!open4)}
+                                            className="flex items-center justify-between
+                      
+                      bg-black text-white
+                      
+                      px-1 sm:px-2 md:px-1 lg:px-3
+                      py-1
+                      
+                      w-full
+                      cursor-pointer "
+                                          >
+                                            <span className="text-gray-300
+                      
+                      text-[11px]
+                      sm:text-xs
+                      md:text-[10px]
+                      lg:text-sm
+                      
+                      truncate
+                      leading-tight text-center flex">
+                                              {sizeSelected || "Select Size"}
+                                            </span>
+                                            <FiChevronDown
+                                              className={`transition-transform ${open4 ? "rotate-180" : ""}`}
+                                            />
+                                          </div>
+                                          {open4 && (
+                                            <div className="absolute left-0 w-full mt-2 bg-black text-white rounded-lg shadow-lg border border-gray-700 z-999 max-h-60 overflow-y-auto">
+                                              {sizeOptions.map((sizeoption, index) => (
+                                                <div
+                                                  key={index}
+                                                  onClick={() => {
+                                                    sizeSetSelected(sizeoption);
+                                                    setOpen4(false);
+                                                  }}
+                                                  className="px-3 py-2 hover:bg-gray-800 cursor-pointer text-[11px] sm:text-xs md:text-[10px] lg:text-sm "
+                                                >
+                                                  {sizeoption}
+                                                </div>
+                                              ))}
+                                            </div>
+                                          )}
+                                        </div>
+                                      </div>
+                      
+                                      <div
+                                        className="flex text-center items-center gap-2 bg-black px-2 sm:px-3 md:px-2 lg:px-4 py-2 rounded-xl border border-gray-700 w-full md:flex-1 min-w-0"
+                                        ref={yearDropdownRef}
+                                      >
+                                        <span><MdDateRange className="text-xl text-gray-300" /></span>
+                                        <div className="relative w-full min-w-0">
+                                          <div
+                                            onClick={() => setOpen5(!open5)}
+                                            className="flex items-center justify-between
+                      
+                      bg-black text-white
+                      
+                      px-1 sm:px-2 md:px-1 lg:px-3
+                      py-1
+                      
+                      w-full
+                      cursor-pointer 
+                      "
+                      
+                                          >
+                                            <span className="text-gray-300
+                      
+                      text-[11px]
+                      sm:text-xs
+                      md:text-[10px]
+                      lg:text-sm
+                      
+                      truncate
+                      leading-tight">
+                                              {yearSelected || "Select Year"}
+                                            </span>
+                                            <FiChevronDown
+                                              className={`transition-transform ${open5 ? "rotate-180" : ""}`}
+                                            />
+                                          </div>
+                                          {open5 && (
+                                            <div className="absolute left-0 w-full mt-2 bg-black text-white rounded-lg shadow-lg border border-gray-700 z-999 max-h-60 overflow-y-auto">
+                                              {yearOptions.map((yearoption, index) => (
+                                                <div
+                                                  key={index}
+                                                  onClick={() => {
+                                                    yearSetSelected(yearoption);
+                                                    setOpen5(false);
+                                                  }}
+                                                  className="px-3 py-2 hover:bg-gray-800 cursor-pointer text-[11px] sm:text-xs md:text-[10px] lg:text-sm"
+                                                >
+                                                  {yearoption}
+                                                </div>
+                                              ))}
+                                            </div>
+                                          )}
+                                        </div>
+                                      </div>
+                      
                                     </div>
-
-                                    {/* Dropdown List */}
-                                    {open2 && (
-                                        <div className="absolute left-0 w-full mt-2 bg-black text-white rounded-lg shadow-lg border border-gray-700 z-50">
-                                            {bhkOptions.map((bhkoptions, index) => (
-                                                <div
-                                                    key={index}
-                                                    onClick={() => {
-                                                        bhkSetSelected(bhkoptions);
-                                                        setOpen2(false);
-                                                    }}
-                                                    className="px-4 py-2 hover:bg-gray-800 cursor-pointer text-sm"
-                                                >
-                                                    {bhkoptions}
-                                                </div>
-                                            ))}
-                                        </div>
-                                    )}
-                                </div>
-                            </div>
-
-                            <div className="flex items-center gap-2 bg-black px-4 py-1 rounded-lg border border-gray-700 flex-1">
-                                <span><RiBuilding2Line className="text-xl text-gray-300" /></span>
-                                <div className="relative w-full max-w-xs">
-
-
-                                    <div
-                                        onClick={() => setOpen3(!open3)}
-                                        className="flex items-center justify-between bg-black text-white px-4 py-2 "
-                                    >
-                                        <span className="text-gray-300 text-sm">
-                                            {priceSelected || "Select Price"}
-                                        </span>
-                                        <FiChevronDown
-                                            className={`transition-transform ${open3 ? "rotate-180" : ""}`}
-                                        />
-                                    </div>
-                                    {open3 && (
-                                        <div className="absolute left-0 w-full mt-2 bg-black text-white rounded-lg shadow-lg border border-gray-700 z-50">
-                                            {priceOptions.map((priceoption, index) => (
-                                                <div
-                                                    key={index}
-                                                    onClick={() => {
-                                                        priceSetSelected(priceoption);
-                                                        setOpen3(false);
-                                                    }}
-                                                    className="px-4 py-2 hover:bg-gray-800 cursor-pointer text-sm"
-                                                >
-                                                    {priceoption}
-                                                </div>
-                                            ))}
-                                        </div>
-                                    )}
-                                </div>
-                            </div>
-
-
-
-                            <div className="flex items-center gap-2 bg-black px-4 py-2 rounded-lg border border-gray-700 flex-1">
-                                <span><IoCubeSharp className="text-xl text-gray-300" /></span>
-                                <div className="relative w-full max-w-xs">
-                                    <div
-                                        onClick={() => setOpen4(!open4)}
-                                        className="flex items-center justify-between bg-black text-white px-4 py-2 "
-                                    >
-                                        <span className="text-gray-300 text-sm">
-                                            {sizeSelected || "Select Size"}
-                                        </span>
-                                        <FiChevronDown
-                                            className={`transition-transform ${open4 ? "rotate-180" : ""}`}
-                                        />
-                                    </div>
-                                    {open4 && (
-                                        <div className="absolute left-0 w-full mt-2 bg-black text-white rounded-lg shadow-lg border border-gray-700 z-50">
-                                            {sizeOptions.map((sizeoption, index) => (
-                                                <div
-                                                    key={index}
-                                                    onClick={() => {
-                                                        sizeSetSelected(sizeoption);
-                                                        setOpen4(false);
-                                                    }}
-                                                    className="px-4 py-2 hover:bg-gray-800 cursor-pointer text-sm"
-                                                >
-                                                    {sizeoption}
-                                                </div>
-                                            ))}
-                                        </div>
-                                    )}
-                                </div>
-                            </div>
-
-                            <div className="flex items-center gap-2 bg-black px-4 py-2 rounded-lg border border-gray-700 flex-1">
-                                <span><MdDateRange className="text-xl text-gray-300" /></span>
-                                <div className="relative w-full max-w-xs">
-                                    <div
-                                        onClick={() => setOpen5(!open5)}
-                                        className="flex items-center justify-between bg-black text-white px-4 py-2 "
-                                    >
-                                        <span className="text-gray-300 text-sm">
-                                            {yearSelected || "Select Year"}
-                                        </span>
-                                        <FiChevronDown
-                                            className={`transition-transform ${open5 ? "rotate-180" : ""}`}
-                                        />
-                                    </div>
-                                    {open5 && (
-                                        <div className="absolute left-0 w-full mt-2 bg-black text-white rounded-lg shadow-lg border border-gray-700 z-50">
-                                            {yearOptions.map((yearoption, index) => (
-                                                <div
-                                                    key={index}
-                                                    onClick={() => {
-                                                        yearSetSelected(yearoption);
-                                                        setOpen5(false);
-                                                    }}
-                                                    className="px-4 py-2 hover:bg-gray-800 cursor-pointer text-sm"
-                                                >
-                                                    {yearoption}
-                                                </div>
-                                            ))}
-                                        </div>
-                                    )}
-                                </div>
-                            </div>
-
-                        </div>
-                        <div></div>
-                    </div>
+                                    <div></div>
+                                  </div>
+                   </div>
                 </div>
 
                 <div className="max-w-6xl mx-auto p-5 md:flex block justify-between items-center ">

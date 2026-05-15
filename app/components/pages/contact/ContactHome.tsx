@@ -1,13 +1,14 @@
 import { onest, urbanist } from "@/app/fonts/fonts";
+import Image from "next/image";
 import { AiFillFire } from "react-icons/ai";
 import { FaPhone } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
-import { MdEmail } from "react-icons/md";
+import { MdEmail, MdOutlineArrowOutward } from "react-icons/md";
 export default function ContactHome() {
     return (
         <>
             <div
-                className="relative flex flex-col justify-center h-full md:min-h-screen rounded-b-[3rem] "
+                className="relative flex flex-col justify-center h-full md:min-h-screen rounded-b-[4rem] rounded-t-none "
                 style={{
                     backgroundImage: "url('/contactbg.png')",
                     backgroundSize: "cover",
@@ -50,38 +51,51 @@ export default function ContactHome() {
                     <div className=" p-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 m-0 bg-black">
 
                         {/* Card */}
-                        <div className="bg-[#0c0c0c] rounded-xl flex flex-col items-center justify-center p-5 hover:scale-105 transition">
-                            <div className="flex items-center justify-center w-10 h-10 border border-yellow-600 rounded-full mb-3">
-                                <MdEmail className="text-yellow-500 text-lg" />
+                        <div className="bg-[#0c0c0c] rounded-xl  p-3 hover:scale-105 transition">
+                            <div className="flex justify-end text-2xl">
+                                <MdOutlineArrowOutward className="text-gray-600" />
                             </div>
-                            <p className="text-gray-300 text-sm text-center">info@propertyease.com</p>
+                            <div className="flex flex-col items-center justify-center p-3">
+                                <Image src={"/Icon Contact1.png"} alt="home" width={50} height={50} className="mb-2" />
+
+                                <p className="text-gray-300 text-sm text-center">info@propertyease.com</p>
+                            </div>
                         </div>
-
-                        <div className="bg-[#0c0c0c] rounded-xl flex flex-col items-center justify-center p-5 hover:scale-105 transition">
-                            <div className="flex items-center justify-center w-10 h-10 border border-yellow-600 rounded-full mb-3">
-                                <FaPhone className="text-yellow-500 text-lg" />
+                         <div className="bg-[#0c0c0c] rounded-xl  p-3 hover:scale-105 transition">
+                            <div className="flex justify-end text-2xl">
+                                <MdOutlineArrowOutward className="text-gray-600" />
                             </div>
-                            <p className="text-gray-300 text-sm text-center">+1 (123) 456-7890</p>
+                            <div className="flex flex-col items-center justify-center p-3">
+                                <Image src={"/Icon Contact2.png"} alt="home" width={50} height={50} className="mb-2" />
+
+                                <p className="text-gray-300 text-sm text-center">+1 (123) 456-7890</p>
+                            </div>
                         </div>
-
-                        <div className="bg-[#0c0c0c] rounded-xl flex flex-col items-center justify-center p-5 hover:scale-105 transition">
-                            <div className="flex items-center justify-center w-10 h-10 border border-yellow-600 rounded-full mb-3">
-                                <FaLocationDot className="text-yellow-500 text-lg" />
+                         <div className="bg-[#0c0c0c] rounded-xl  p-3 hover:scale-105 transition">
+                            <div className="flex justify-end text-2xl">
+                                <MdOutlineArrowOutward className="text-gray-600" />
                             </div>
-                            <p className="text-gray-300 text-sm text-center">Main Headquarters</p>
+                            <div className="flex flex-col items-center justify-center p-3">
+                                <Image src={"/Icon Contact3.png"} alt="home" width={50} height={50} className="mb-2" />
+
+                                <p className="text-gray-300 text-sm text-center">Main Headquarters</p>
+                            </div>
                         </div>
-
-                        <div className="bg-[#0c0c0c] rounded-xl flex flex-col items-center justify-center p-5 hover:scale-105 transition">
-                            <div className="flex items-center justify-center w-10 h-10 border border-yellow-600 rounded-full mb-3">
-                                <AiFillFire className="text-yellow-500 text-lg" />
+                         <div className="bg-[#0c0c0c] rounded-xl  p-3 hover:scale-105 transition">
+                            <div className="flex justify-end text-2xl">
+                                <MdOutlineArrowOutward className="text-gray-600" />
                             </div>
+                            <div className="flex flex-col items-center justify-center p-3">
+                                <Image src={"/Icon Contact4.png"} alt="home" width={50} height={50} className="mb-2" />
 
-                            <div className="flex gap-3 flex-wrap justify-center text-gray-300 text-sm">
+                                 <div className="flex gap-3 flex-wrap justify-center text-gray-300 text-sm">
                                 <span className="hover:text-yellow-500 cursor-pointer">Instagram</span>
                                 <span className="hover:text-yellow-500 cursor-pointer">LinkedIn</span>
                                 <span className="hover:text-yellow-500 cursor-pointer">Facebook</span>
                             </div>
+                            </div>
                         </div>
+
 
                     </div>
                 </div>

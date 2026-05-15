@@ -59,8 +59,8 @@ export default function WhyChooseUs() {
 
 
 
-            <div className="md:mx-10">
-                <div className="grid md:grid-cols-3 gap-6 p-5 md:mx-10 ">
+            <div className="">
+                <div className="grid md:grid-cols-3 gap-6 p-5  ">
 
                     {currentItems.map((item, index) => (
                         <div key={index} className="bg-[#0c0c0c] rounded flex flex-col items-center justify-center p-2">
@@ -87,7 +87,7 @@ export default function WhyChooseUs() {
             </div>
 
 
-            <div className="flex items-center justify-between  border-[#B4B4B4] border-t m-10 md:mx-10 p-5">
+            <div className="flex items-center justify-between  border-[#B4B4B4] border-t  p-5 m-5">
                 <div><span>{currentPage + 1} of {totalPages}</span></div>
                 <div className="p-2  m-3 space-x-1">
                     <button className="hover:bg-black border border-gray-300 text-gray-400 p-3 rounded-full"
