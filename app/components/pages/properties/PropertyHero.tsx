@@ -218,7 +218,7 @@ export default function PropertyHero() {
                    <div className="relative z-20 px-3 md:px-5 mt-16 md:mt-28 lg:mt-29">
                         <div className="  grid grid-cols-1 md:grid-cols-[1fr_4fr_1fr] gap-4    justify-center">
                                     <div></div>
-                                    <div className="bg-black/90 rounded-t-xl rounded-b-none p-2 sm:p-3 grid grid-cols-1 sm:grid-cols-[8fr_2fr] gap-2 sm:gap-3 shadow-lg">
+                                    <div className={`${urbanist.className} bg-black/90 rounded-t-xl rounded-b-none p-2 sm:p-3 grid grid-cols-1 sm:grid-cols-[8fr_2fr] gap-2 sm:gap-3 shadow-lg`}>
                                       <input value={searchText}
                                         onChange={(e) => setSearchText(e.target.value)} type="text" placeholder="Search For a Location" className="bg-black rounded-xl text-white outline-none px-2 sm:px-4 py-2 text-sm sm:text-base"
                                       />
@@ -258,21 +258,21 @@ export default function PropertyHero() {
                       w-full">
                                     <div></div>
                       
-                                    <div className="bg-black/90
-                      rounded-2xl
-                      p-2 sm:p-3 md:p-3 lg:p-4
-                      flex flex-col
-                      sm:flex-col
-                      md:flex-row
-                      flex-wrap md:flex-nowrap
-                      gap-2 md:gap-3
-                      shadow-xl
-                      w-full
-                      overflow-visible z-10">
+                                    <div className={`${urbanist.className} bg-black/90
+                                    rounded-2xl
+                                    p-2 sm:p-3 md:p-3 lg:p-4
+                                    flex flex-col
+                                    sm:flex-col
+                                    md:flex-row
+                                    flex-wrap md:flex-nowrap
+                                    gap-2 md:gap-3
+                                    shadow-xl
+                                    w-full
+                                    overflow-visible z-10`}>
                       
                       
                                       <div
-                                        className="flex text-center gap-2 bg-black px-2 sm:px-3 md:px-2 lg:px-4 py-2 rounded-xl border border-gray-700 w-full md:flex-1 min-w-0"
+                                        className="flex items-center text-center gap-2 bg-black px-2 sm:px-3 md:px-2 lg:px-4 py-2 rounded-xl border border-gray-700 w-full md:flex-1 min-w-0"
                                         ref={districtDropdownRef}
                                       >
                                         <span ><FaLocationDot className="text-xl text-gray-300" /></span>
@@ -285,7 +285,7 @@ export default function PropertyHero() {
                       
                       bg-black text-white
                       
-                      px-1 sm:px-2 md:px-1 lg:px-3
+                     
                       py-1
                       
                       w-full
@@ -349,7 +349,7 @@ export default function PropertyHero() {
                       
                       bg-black text-white
                       
-                      px-1 sm:px-2 md:px-1 lg:px-3
+                 
                       py-1
                       
                       w-full
@@ -405,7 +405,7 @@ export default function PropertyHero() {
                       
                       bg-black text-white
                       
-                      px-1 sm:px-2 md:px-1 lg:px-3
+                  
                       py-1
                       
                       w-full
@@ -459,7 +459,7 @@ export default function PropertyHero() {
                       
                       bg-black text-white
                       
-                      px-1 sm:px-2 md:px-1 lg:px-3
+                     
                       py-1
                       
                       w-full
@@ -511,7 +511,7 @@ export default function PropertyHero() {
                       
                       bg-black text-white
                       
-                      px-1 sm:px-2 md:px-1 lg:px-3
+                   
                       py-1
                       
                       w-full

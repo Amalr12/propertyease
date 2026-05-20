@@ -122,12 +122,14 @@ export default function Featured() {
                         </p>
                     </div>
                     <div>
-                        <button
-                            className={`bg-linear-to-r from-[#EA8843] to-[#FFB60D] text-white  rounded px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 text-xs sm:text-sm md:text-base w-full sm:w-auto transition hover:opacity-90 mt-2 sm:mt-0 ${onest.className}`}
-                            style={{ fontWeight: 500 }}
-                        >
-                            View All Properties
-                        </button>
+                       <Link href={"/properties"}>
+                            <button
+                                className={`bg-linear-to-r from-[#EA8843] to-[#FFB60D] text-white  rounded px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 text-xs sm:text-sm md:text-base w-full sm:w-auto transition hover:opacity-90 mt-2 sm:mt-0 ${onest.className}`}
+                                style={{ fontWeight: 500 }}
+                            >
+                                View All Properties
+                            </button>
+                       </Link>
                     </div>
                 </div>
             </div>

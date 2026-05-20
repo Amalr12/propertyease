@@ -1,7 +1,7 @@
 "use client";
 import { onest, urbanist } from "@/app/fonts/fonts";
 import Image from "next/image";
-import { useState,useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FaIndianRupeeSign, FaLocationDot } from "react-icons/fa6";
 import { FiChevronDown } from "react-icons/fi";
 import { IoCubeSharp, IoSearch } from "react-icons/io5";
@@ -126,7 +126,7 @@ export default function Hero() {
           <div className="m-2">
             <div className="  grid grid-cols-1 md:grid-cols-[1fr_4fr_1fr] gap-4 mt-5 pt-10  justify-center">
               <div></div>
-              <div className="bg-black/90 rounded-t-xl rounded-b-none p-2 sm:p-3 grid grid-cols-1 sm:grid-cols-[8fr_2fr] gap-2 sm:gap-3 shadow-lg">
+              <div className={`${urbanist.className} bg-black/90 rounded-t-xl rounded-b-none p-2 sm:p-3 grid grid-cols-1 sm:grid-cols-[8fr_2fr] gap-2 sm:gap-3 shadow-lg`}>
                 <input value={searchText}
                   onChange={(e) => setSearchText(e.target.value)} type="text" placeholder="Search For a Location" className="bg-black rounded-xl text-white outline-none px-2 sm:px-4 py-2 text-sm sm:text-base"
                 />
@@ -166,7 +166,7 @@ mb-10
 w-full">
               <div></div>
 
-              <div className="bg-black/90
+              <div className={`${urbanist.className} bg-black/90
 rounded-2xl
 p-2 sm:p-3 md:p-3 lg:p-4
 flex flex-col
@@ -176,7 +176,7 @@ flex-wrap md:flex-nowrap
 gap-2 md:gap-3
 shadow-xl
 w-full
-overflow-visible z-10">
+overflow-visible z-10`}>
 
 
                 <div
@@ -208,7 +208,7 @@ lg:text-sm
 
 truncate
 leading-tight">
-                        {distsSelected || "Select District"}
+                        {distsSelected || "Location"}
                       </span>
                       <FiChevronDown
                         className={`transition-transform ${open ? "rotate-180" : ""}`}
@@ -272,7 +272,7 @@ lg:text-sm
 
 truncate
 leading-tight">
-                        {bhkSelected || "Select BHK"}
+                        {bhkSelected || "Property Type"}
                       </span>
                       <FiChevronDown
                         className={`transition-transform ${open2 ? "rotate-180" : ""}`}
@@ -328,7 +328,7 @@ lg:text-sm
 
 truncate
 leading-tight">
-                        {priceSelected || "Select Price"}
+                        {priceSelected || "Price Range"}
                       </span>
                       <FiChevronDown
                         className={`transition-transform ${open3 ? "rotate-180" : ""}`}
@@ -382,7 +382,7 @@ lg:text-sm
 
 truncate
 leading-tight text-center flex">
-                        {sizeSelected || "Select Size"}
+                        {sizeSelected || "Property Size"}
                       </span>
                       <FiChevronDown
                         className={`transition-transform ${open4 ? "rotate-180" : ""}`}
@@ -436,7 +436,7 @@ lg:text-sm
 
 truncate
 leading-tight">
-                        {yearSelected || "Select Year"}
+                        {yearSelected || "Build Year"}
                       </span>
                       <FiChevronDown
                         className={`transition-transform ${open5 ? "rotate-180" : ""}`}

@@ -48,7 +48,7 @@ export default function ContactHome() {
 
                 {/* Cards Section */}
                 <div className="relative z-10 w-full  mt-10 md:mt-16 pb-10">
-                    <div className=" p-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 m-0 bg-black">
+                    <div className={ `${urbanist.className} p-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 m-0 bg-black`}>
 
                         {/* Card */}
                         <div className="bg-[#0c0c0c] rounded-xl  p-3 hover:scale-105 transition">
