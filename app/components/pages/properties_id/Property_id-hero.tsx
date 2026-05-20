@@ -2,21 +2,21 @@
 import { PropertyDetails } from "@/app/data/each-properties-data";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { AiOutlineThunderbolt } from "react-icons/ai";
 import { BiRectangle } from "react-icons/bi";
-import { FaBath, FaBed, FaPhoneVolume, FaRegStar, FaRulerCombined, FaStar, FaUser } from "react-icons/fa";
-import { MdEmail, MdKeyboardArrowLeft, MdOutlineVerified } from "react-icons/md";
+import { FaBath, FaBed, FaPhoneVolume, FaRegCommentDots, FaRegStar, FaRulerCombined, FaStar, FaUser } from "react-icons/fa";
+import { MdKeyboardArrowLeft, MdOutlineVerified } from "react-icons/md";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import Featured from "../home/Featured";
 import { ImCancelCircle } from "react-icons/im";
 import { FaRegCalendar } from "react-icons/fa6";
-import { CiHome } from "react-icons/ci";
+import { LuMessageSquare } from "react-icons/lu";
+import { CiHome, CiLocationOn } from "react-icons/ci";
 import { IoVideocam } from "react-icons/io5";
 import { FiPhoneCall } from "react-icons/fi";
-import { useRouter } from "next/navigation";
-import { AnyARecord } from "dns";
 import { onest, urbanist } from "@/app/fonts/fonts";
+import emailjs from '@emailjs/browser';
 
 
 interface Props extends PropertyDetails { onClose?: () => void; }
@@ -80,6 +80,33 @@ export default function PropertyHeroSection({
         const url = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
         window.open(url, "_blank");
+    };
+    const form = useRef<HTMLFormElement | null>(null);
+
+    const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        if (form.current) {
+            emailjs
+                .sendForm(
+                    "service_15x2ykg",
+                    "template_lue537e",
+                    form.current,
+                    "iPVPorUqcP7DOHyWO"
+                )
+                .then(
+                    (result) => {
+                        console.log("SUCCESS!", result.text);
+                        if (result.text == "OK") {
+                            alert("Email sent successfully!");
+                            form.current?.reset();
+                        }
+                    },
+                    (error) => {
+                        console.log("FAILED...", error.text);
+                    }
+                );
+        }
     };
 
     const fullStars = Math.floor(reviews[0].rating);
@@ -150,7 +177,7 @@ export default function PropertyHeroSection({
 
                         <div className="mt-2 mb-2">
 
-                            <div className="flex gap-6 overflow-x-auto scrollbar-hide w-auto">
+                            <div className="flex gap-2  w-auto">
 
                                 {images.map((img, index) => (
                                     <div
@@ -194,22 +221,22 @@ export default function PropertyHeroSection({
                         <div className={`bg-black text-white rounded-xl mt-6 p-6 sm:p-6 ${urbanist.className}`}>
                             <div className="grid md:grid-cols-4 sm:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 text-center ">
                                 <div className="flex flex-col justify-center">
-                                    <FaBed className="text-orange-500 text-2xl mx-auto mb-2" />
+                                    <FaBed className="text-[#EB8B3F] text-2xl mx-auto mb-2" />
                                     <p className="text-white font-semibold text-lg sm:text-xl">{bhk}</p>
                                     <p className="text-xs sm:text-sm text-gray-400 mt-1">Configuration</p>
                                 </div>
                                 <div className="flex flex-col justify-center">
-                                    <FaBath className="text-orange-500 text-2xl mx-auto mb-2" />
+                                    <FaBath className="text-[#EB8B3F] text-2xl mx-auto mb-2" />
                                     <p className="text-white font-semibold text-lg sm:text-xl">{bathrooms}</p>
                                     <p className="text-xs sm:text-sm text-gray-400 mt-1">Bathrooms</p>
                                 </div>
                                 <div className="flex flex-col justify-center">
-                                    <BiRectangle className="text-orange-500 text-2xl mx-auto mb-2" />
+                                    <BiRectangle className="text-[#EB8B3F] text-2xl mx-auto mb-2" />
                                     <p className="text-white font-semibold text-lg sm:text-xl">{size}</p>
                                     <p className="text-xs sm:text-sm text-gray-400 mt-1">Total Area</p>
                                 </div>
                                 <div className="flex flex-col justify-center">
-                                    <AiOutlineThunderbolt className="text-orange-500 text-2xl mx-auto mb-2" />
+                                    <AiOutlineThunderbolt className="text-[#EB8B3F] text-2xl mx-auto mb-2" />
                                     <p className="text-white font-semibold text-lg sm:text-xl">
                                         {status || "Available"}
                                     </p>
@@ -227,7 +254,7 @@ export default function PropertyHeroSection({
                                 <h1 className={`text-sm md:text-xl font-bold mb-4 ${urbanist.className}`}>Key Highlights</h1>
                                 {highlights?.map((item, index) => (
                                     <div key={index} className=" text-sm font-semibold  md:text-xl mt-2 flex justify-start gap-3 items-center">
-                                        <MdOutlineVerified className="text-xl text-orange-300 items-center" />
+                                        <MdOutlineVerified className="text-xl text-[#EB8B3F] items-center" />
                                         <h2 className=" ">{item}</h2>
 
                                     </div>
@@ -237,7 +264,7 @@ export default function PropertyHeroSection({
                                 <h1 className={`text-sm md:text-xl font-bold mb-4 ${urbanist.className} `}>Why Consider This Property?</h1>
                                 {considerations?.map((item, index) => (
                                     <div key={index} className=" text-sm font-semibold  md:text-xl mt-2 flex justify-start gap-3 items-center">
-                                        <MdOutlineVerified className="text-xl text-orange-300 items-center" />
+                                        <MdOutlineVerified className="text-xl text-[#EB8B3F] items-center" />
                                         <h2 className=" ">{item}</h2>
 
                                     </div>
@@ -249,14 +276,14 @@ export default function PropertyHeroSection({
                             <h1 className={`text-xl md:text-2xl lg:text-2xl sm:text-2xl font-bold mb-4 ${urbanist.className}`}>World-class Amenities</h1>
                             <div className="grid md:grid-cols-3 gap-4 mt-3">
                                 {amenities?.map((item, index) => (
-                                    <div key={index} className=" bg-[#0c0c0c] text-white rounded p-4  flex justify-center gap-3 items-center">
-                                        <MdOutlineVerified className="text-xl text-orange-300 items-center" />
+                                    <div key={index} className=" bg-[#0c0c0c] text-white rounded-xl p-4  flex  gap-3 items-center">
+                                        <MdOutlineVerified className="text-xl text-[#EB8B3F] items-center" />
                                         <h2 className="font-semibold ">{item}</h2>
                                     </div>
                                 ))}
                             </div>
                         </div>
-                        <div className="p-3 sm:p-5 flex items-center justify-center relative w-full overflow-hidden">
+                        <div className="w-full p-3 sm:p-5 relative overflow-hidden">
 
                             <TransformWrapper
                                 initialScale={1}
@@ -265,28 +292,26 @@ export default function PropertyHeroSection({
                                 centerOnInit
                             >
                                 <TransformComponent
-                                    wrapperClass="w-full flex justify-center"
-                                    contentClass="w-full flex justify-center"
+                                    wrapperClass="w-full"
+                                    contentClass="w-full"
                                 >
                                     <Image
                                         src={floorPlan}
                                         alt="floorplan"
-                                        width={650}
-                                        height={550}
+                                        width={1200}
+                                        height={800}
                                         className="
-                    w-full
-                    max-w-40
-                    sm:max-w-50
-                    md:max-w-80
-                    lg:max-w-100
-                    h-auto
-                    object-contain
-                    rounded-xl
-                    cursor-pointer
-                    border border-gray-300
-                    shadow-lg
-                    transition-transform duration-300 hover:scale-[1.02] mt-5
-                "
+          w-full
+          h-auto
+          object-cover
+          rounded-xl
+          cursor-pointer
+          border border-gray-300
+          shadow-lg
+          transition-transform duration-300
+          hover:scale-[1.02]
+          mt-5
+        "
                                         priority
                                     />
                                 </TransformComponent>
@@ -299,7 +324,7 @@ export default function PropertyHeroSection({
                                 {nearby.map((item, index) => (
                                     <div key={index} className="bg-[#0c0c0c] text-white rounded-xl p-4 flex justify-between  items-center gap-3 ">
                                         <div className="flex items-center gap-2">
-                                            <MdOutlineVerified className="text-xl text-orange-300 items-center" />
+                                            <CiLocationOn  className="text-xl text-[#EB8B3F] items-center" />
                                             <h2 className="font-semibold">{item.place}</h2>
                                         </div>
                                         <div>
@@ -363,7 +388,7 @@ export default function PropertyHeroSection({
                                 Estimated EMI: ₹25K/month
                             </p>
 
-                            <button onClick={() => setEnquiryModal(true)} className="w-full mt-4 bg-linear-to-r from-[#EA8843] to-[#FFB60D] py-2 rounded-lg">
+                            <button onClick={() => setEnquiryModal(true)} className="cursor-pointer w-full mt-3  bg-linear-to-r from-[#EA8843] to-[#FFB60D] py-2 rounded-lg">
                                 Send Enquiry
                             </button>
 
@@ -429,7 +454,7 @@ export default function PropertyHeroSection({
                                     <ImCancelCircle
                                         onClick={() => {
                                             setModalStatus(false);
-                                            setVisitType(null);
+
                                         }}
                                         className="text-xl cursor-pointer"
                                     />
@@ -585,9 +610,191 @@ export default function PropertyHeroSection({
 
                     </div>
                 </div>}
+            {/* ENQUIRY MODAL */}
+            {enquiryModal && (
+                <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm overflow-y-auto">
+
+                    {/* MODAL WRAPPER */}
+                    <div className="flex min-h-screen items-start md:items-center justify-center p-4 pt-20 md:pt-4">
+
+                        {/* MODAL CARD */}
+                        <div
+                            className={`
           
+          relative
+          w-full
+          max-w-lg
+          rounded-[28px]
+          bg-black
+          border border-neutral-800
+          p-6 sm:p-8
+          shadow-2xl
+          text-white
+          ${onest.className}
+        `}
+                        >
 
+                            {/* CLOSE BUTTON */}
+                            <button
+                                onClick={() => setEnquiryModal(false)}
+                                className="absolute right-5 top-5 text-white/80 hover:text-white transition"
+                            >
+                                <ImCancelCircle className="text-2xl" />
+                            </button>
 
+                            {/* ICON */}
+                            <div className="flex justify-center">
+                                <div className="w-16 h-16 rounded-full bg-orange-500/20 flex items-center justify-center">
+                                    <LuMessageSquare className="text-3xl text-orange-400" />
+                                </div>
+                            </div>
+
+                            {/* TITLE */}
+                            <div className="text-center mt-5">
+                                <h1 className="text-xl font-semibold">
+                                    Enquire Now
+                                </h1>
+
+                                <p className="text-gray-400 text-sm mt-3 leading-relaxed">
+                                    Send your questions about Luxury 3BHK Apartment in Thrissur
+                                </p>
+                            </div>
+
+                            {/* FORM */}
+                            <div className="mt-5 space-y-5">
+
+                                {/* FULL NAME */}
+                                <div>
+                                    <label className="text-[11px] tracking-[0.2em] text-gray-400 uppercase">
+                                        Full Name
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        placeholder="e.g. Rahul Sharma"
+                                        className="
+                mt-2
+                w-full
+                rounded-2xl
+                bg-[#333333]
+                border border-neutral-800
+                px-5 py-4
+                text-sm
+                outline-none
+                focus:border-orange-500
+                transition 
+              "
+                                    />
+                                </div>
+
+                                {/* PHONE + EMAIL */}
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+                                    <div>
+                                        <label className="text-[11px] tracking-[0.2em] text-gray-400 uppercase">
+                                            Phone Number
+                                        </label>
+
+                                        <input
+                                            type="text"
+                                            placeholder="+91 00000 00000"
+                                            className="
+                  mt-2
+                  w-full
+                  rounded-2xl
+                  bg-[#333333]
+                  border border-neutral-800
+                  px-5 py-4
+                  text-sm
+                  outline-none
+                  focus:border-orange-500
+                  transition
+                "
+                                        />
+                                    </div>
+
+                                    <div>
+                                        <label className="text-[11px] tracking-[0.2em] text-gray-400 uppercase">
+                                            Email ID
+                                        </label>
+
+                                        <input
+                                            type="email"
+                                            placeholder="name@email.com"
+                                            className="
+                  mt-2
+                  w-full
+                  rounded-2xl
+                  bg-[#333333]
+                  border border-neutral-800
+                  px-5 py-4
+                  text-sm
+                  outline-none
+                  focus:border-orange-500
+                  transition
+                "
+                                        />
+                                    </div>
+
+                                </div>
+
+                                {/* MESSAGE */}
+                                <div>
+                                    <label className="text-[11px] tracking-[0.2em] text-gray-400 uppercase">
+                                        Message (Optional)
+                                    </label>
+
+                                    <textarea
+                                        rows={5}
+                                        className="
+                mt-2
+                w-full
+                rounded-2xl
+                bg-[#333333]
+                border border-neutral-800
+                px-5 py-4
+                text-sm
+                outline-none
+                resize-none
+                focus:border-orange-500
+                transition
+              "
+                                    />
+                                </div>
+
+                                {/* BUTTON */}
+                                <button
+                                    className="
+              w-full
+              rounded-2xl
+              bg-linear-to-r
+              from-[#EB8B3F]
+              to-[#FFB60D]
+              py-4
+              font-semibold
+              text-white
+              shadow-[0_0_30px_rgba(251,146,60,0.35)]
+              hover:opacity-90
+              transition
+            "
+                                >
+                                    Submit Inquiry
+                                </button>
+
+                                {/* FOOTER */}
+                                <p className="text-center text-[11px] text-gray-500 leading-relaxed">
+                                    By clicking submit, you agree to our Terms of Service and Privacy Policy.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            )}
         </>
     );
+
 }

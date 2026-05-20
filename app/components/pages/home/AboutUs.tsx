@@ -7,7 +7,7 @@ export default function AboutUs() {
                 Our story is one of continuous growth and evolution. We started as a small team with big dreams, determined to create a real estate platform that transcended the ordinary. Over the years, we've expanded our reach, forged valuable partnerships, and gained the trust of countless clients.
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-4 sm:px-8 lg:px-20 my-10 mt-2 m-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-4 sm:px-8 lg:px-20 my-10 mt-2 ">
                 <div className="bg-[#0c0c0c] rounded-xl p-5 space-y-2 text-center sm:text-left">
                     <h1 className={`${urbanist.className} text-white *:`} style={{ fontWeight: "600", fontSize: "1.5rem" }}>200+</h1>
                     <p className={`${onest.className} text-gray-300 `} style={{ fontWeight: 400, fontSize: "1rem" }}>Happy Customers</p>
@@ -23,12 +23,12 @@ export default function AboutUs() {
             </div>
 
 
-            <div className="grid md:grid-cols-[1fr_4fr_1fr]">
+            <div className="grid md:grid-cols-[1fr_4fr_1fr] m-5">
                 <div></div>
                 <div>
                     <div
                         className="relative mt-10 mx-auto w-full max-w-6xl 
-  min-h-125 md:min-h-145  rounded-[3rem] overflow-hidden 
+  min-h-125 md:min-h-135  rounded-[3rem] overflow-hidden 
   flex items-start"
                         style={{
                             backgroundImage: "url('/pexels-mart-production-7415129 1.png')",
@@ -40,7 +40,7 @@ export default function AboutUs() {
                         <div className="absolute inset-0 bg-black/45"></div>
 
                         {/* Content */}
-                        <div className="relative z-10 flex flex-col justify-between h-full w-full p-8 md:p-14">
+                        <div className="relative z-10 flex flex-col justify-between h-full w-full p-8 md:p-14 ">
 
                             {/* Text */}
                             <div className="max-w-3xl">
@@ -55,7 +55,7 @@ export default function AboutUs() {
                             </div>
 
                             {/* Button */}
-                            <div className="mt-50 flex items-center justify-center">
+                            <div className="mt-50 pt-20 flex items-center justify-center w-full">
                                 <Link href="/property">
                                     <button
                                         className={`${onest.className} 
