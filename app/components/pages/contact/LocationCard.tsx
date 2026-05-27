@@ -12,44 +12,71 @@ type LocationCardProps = {
 export default function LocationCard({ type, title, description }: LocationCardProps) {
     return (
         <>
-            <div>
-                <div className={`${urbanist.className} bg-[#0c0c0c] text-white rounded-2xl p-6 md:p-6 flex flex-col justify-between m-3`}>
+           <div className="w-full">
+  <div
+    className={`${urbanist.className} 
+    bg-[#0c0c0c] 
+    text-white 
+    rounded-2xl 
+    p-5 sm:p-6 md:p-8 
+    flex flex-col gap-6`}
+  >
 
-                    <div>
-                        <p className="text-gray-400 text-sm mb-2">{type}</p>
+    {/* TOP CONTENT */}
+    <div>
+      <p className="text-sm text-[#B3B3B3] mb-2">
+        {type}
+      </p>
 
-                        <h3 className="text-lg md:text-xl font-semibold mb-3">
-                            {title}
-                        </h3>
+      <h3 className="text-lg md:text-xl font-semibold mb-3  leading-snug ">
+        {title}
+      </h3>
 
-                        <p className="text-gray-400 text-sm mb-6">
-                            {description}
-                        </p>
-                    </div>
+      <p className="text-[#999999] text-sm mb-6 leading-relaxed max-w-4xl">
+        {description}
+      </p>
+    </div>
 
-                 
-                    <div className="grid md:grid-cols-3 gap-3 mb-6 text-center">
+    {/* CONTACT INFO */}
+    <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4">
 
-                        <div className="flex items-center gap-2 bg-[#1a1a1a] px-2 py-2 rounded-full text-sm">
-                            <MdEmail className="text-white" size={12} /> info@propertyease.com
-                        </div>
+      {/* EMAIL */}
+      <div className="flex items-center justify-center sm:justify-start gap-2 bg-[#141414] border border-[#262626] px-5 py-3 rounded-full w-full sm:w-fit">
+        <MdEmail size={18} className="text-white shrink-0" />
+        <span className="text-sm md:text-base text-white">
+          info@propertyease.com
+        </span>
+      </div>
 
-                        <div className="flex items-center gap-2 bg-[#1a1a1a] px-2 py-2 rounded-full text-sm">
-                            <FaPhone  size={12} /> +1(123)456-7890
-                        </div>
+      {/* PHONE */}
+      <div className="flex items-center justify-center sm:justify-start gap-2 bg-[#141414] border border-[#262626] px-5 py-3 rounded-full w-full sm:w-fit">
+        <FaPhone size={16} className="text-white shrink-0" />
+        <span className="text-sm md:text-base text-white">
+          +1 (123) 456-7890
+        </span>
+      </div>
 
-                        <div className="flex items-center gap-2 bg-[#1a1a1a] px-2 py-2 rounded-full text-sm">
-                            <FaLocationDot size={12} /> Metropolis
-                        </div>
+      {/* LOCATION */}
+      <div className="flex items-center justify-center sm:justify-start gap-2 bg-[#141414] border border-[#262626] px-5 py-3 rounded-full w-full sm:w-fit">
+        <FaLocationDot size={16} className="text-white shrink-0" />
+        <span className="text-sm md:text-base text-white">
+          Metropolis
+        </span>
+      </div>
 
-                    </div>
+    </div>
 
-                  
-                    <button className="w-full bg-linear-to-r from-[#EA8843] to-[#FFB60D] py-2 rounded-md text-sm font-medium hover:opacity-90">
-                        Get Direction
-                    </button>
-                </div>
-            </div>
+    {/* BUTTON */}
+    <button
+      className="w-full bg-linear-to-r from-[#EA8843] to-[#FFB60D] 
+      py-4 rounded-xl text-sm md:text-base font-medium 
+      hover:opacity-90 transition duration-300 cursor-pointer"
+    >
+      Get Direction
+    </button>
+
+  </div>
+</div>
         </>
     );
 }

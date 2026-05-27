@@ -1,5 +1,6 @@
 import { onest, urbanist } from "@/app/fonts/fonts";
 import Image from "next/image";
+import Link from "next/link";
 import { AiFillFire } from "react-icons/ai";
 import { FaPhone } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
@@ -25,7 +26,7 @@ export default function ContactHome() {
                     <h1
                         style={{ fontWeight: "600" }} className={`${urbanist.className} 
       text-white 
-      text-2xl sm:text-3xl md:text-6xl lg:text-5xl 
+      text-2xl sm:text-3xl md:text-4xl lg:text-5xl 
       font-semibold 
       leading-tight 
       mb-4`}
@@ -36,7 +37,7 @@ export default function ContactHome() {
                     <p
                         className={`${urbanist.className} 
       text-gray-300 
-      text-sm sm:text-base md:text-4xl lg:text-xl 
+      text-sm sm:text-base md:text-xl lg:text-xl 
       leading-relaxed 
       max-w-3xl`}
                     >
@@ -47,14 +48,16 @@ export default function ContactHome() {
                 </div>
 
                 {/* Cards Section */}
-                <div className="relative z-10 w-full  mt-10 md:mt-16 pb-10">
-                    <div className={ `${urbanist.className} p-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 m-0 bg-black`}>
+                <div className="relative z-10 w-full  mt-10 md:mt-16 pb-10 mb-10">
+                    <div className={ `${urbanist.className} p-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 m-0 bg-black mb-10`}>
 
                         {/* Card */}
                         <div className="bg-[#0c0c0c] rounded-xl  p-3 hover:scale-105 transition">
-                            <div className="flex justify-end text-2xl">
-                                <MdOutlineArrowOutward className="text-gray-600" />
-                            </div>
+                           <Link href="mailto:info@propertyease.com">
+                                <div className="flex justify-end text-2xl cursor-pointer">
+                                    <MdOutlineArrowOutward className="text-gray-600" />
+                                </div>
+                           </Link>
                             <div className="flex flex-col items-center justify-center p-3">
                                 <Image src={"/Icon Contact1.png"} alt="home" width={50} height={50} className="mb-2" />
 
@@ -62,9 +65,11 @@ export default function ContactHome() {
                             </div>
                         </div>
                          <div className="bg-[#0c0c0c] rounded-xl  p-3 hover:scale-105 transition">
-                            <div className="flex justify-end text-2xl">
-                                <MdOutlineArrowOutward className="text-gray-600" />
-                            </div>
+                            <Link href="tel:+11234567890">
+                                <div className="flex justify-end text-2xl cursor-pointer">
+                                    <MdOutlineArrowOutward className="text-gray-600" />
+                                </div>
+                            </Link>
                             <div className="flex flex-col items-center justify-center p-3">
                                 <Image src={"/Icon Contact2.png"} alt="home" width={50} height={50} className="mb-2" />
 
@@ -72,9 +77,11 @@ export default function ContactHome() {
                             </div>
                         </div>
                          <div className="bg-[#0c0c0c] rounded-xl  p-3 hover:scale-105 transition">
-                            <div className="flex justify-end text-2xl">
-                                <MdOutlineArrowOutward className="text-gray-600" />
-                            </div>
+                            <Link href="https://www.google.com/maps/place/Propertyease+Headquarters">
+                                <div className="flex justify-end text-2xl cursor-pointer">
+                                    <MdOutlineArrowOutward className="text-gray-600" />
+                                </div>
+                            </Link>
                             <div className="flex flex-col items-center justify-center p-3">
                                 <Image src={"/Icon Contact3.png"} alt="home" width={50} height={50} className="mb-2" />
 
@@ -82,16 +89,18 @@ export default function ContactHome() {
                             </div>
                         </div>
                          <div className="bg-[#0c0c0c] rounded-xl  p-3 hover:scale-105 transition">
-                            <div className="flex justify-end text-2xl">
-                                <MdOutlineArrowOutward className="text-gray-600" />
-                            </div>
+                            <Link href="https://www.twitter.com/propertyease/">
+                                <div className="flex justify-end text-2xl cursor-pointer">
+                                    <MdOutlineArrowOutward className="text-gray-600" />
+                                </div>
+                            </Link>
                             <div className="flex flex-col items-center justify-center p-3">
                                 <Image src={"/Icon Contact4.png"} alt="home" width={50} height={50} className="mb-2" />
 
                                  <div className="flex gap-3 flex-wrap justify-center text-gray-300 text-sm">
-                                <span className="hover:text-yellow-500 cursor-pointer">Instagram</span>
-                                <span className="hover:text-yellow-500 cursor-pointer">LinkedIn</span>
-                                <span className="hover:text-yellow-500 cursor-pointer">Facebook</span>
+                              <Link href="https://www.instagram.com/propertyease/">  <span className="hover:text-yellow-500 cursor-pointer">Instagram</span></Link>
+                                <Link href="https://www.linkedin.com/company/propertyease/">  <span className="hover:text-yellow-500 cursor-pointer">LinkedIn</span></Link>
+                                <Link href="https://www.facebook.com/propertyease/">  <span className="hover:text-yellow-500 cursor-pointer">Facebook</span></Link>
                             </div>
                             </div>
                         </div>

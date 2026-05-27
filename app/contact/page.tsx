@@ -16,7 +16,7 @@ export default function Contact() {
                     <Image className="hidden md:flex" src="/abstractdesign.png" alt="" width={200} height={200} />
                 </div>
                 <div>
-                    <Image src="/abd.png" alt="" width={200} height={200} />
+                    <Image src="/design.png" alt="" width={200} height={200} />
                 </div>
             </div>
         </>

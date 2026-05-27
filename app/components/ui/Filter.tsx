@@ -15,7 +15,7 @@ export default function FilterSidebar({ filters, setFilters }: any) {
     }, [filters]);
 
     return (
-        <div className={`bg-[#0c0c0c] text-white sticky p-5 rounded-2xl space-y-4 ${onest.className}`}>
+        <div className={`bg-[#0c0c0c] text-white md:sticky top-5 h-auto overflow-visible p-5 rounded-2xl space-y-4 ${onest.className}`}>
 
             <div className="flex justify-between items-center">
                 <div className="text-xl flex items-center justify-around">
@@ -93,7 +93,7 @@ export default function FilterSidebar({ filters, setFilters }: any) {
                                     bhk: b,
                                 }))
                             }
-                            className={`px-3 py-1 rounded ${localFilters.bhk === b ? "bg-[#EA8843] text-white" : "bg-gray-700 hover:bg-orange-800 hover:text-white"
+                            className={`px-3 py-1 cursor-pointer rounded ${localFilters.bhk === b ? "bg-[#EA8843] text-white" : "bg-gray-700 hover:bg-orange-800 hover:text-white"
                                 }`}
                         >
                             {b}
@@ -128,7 +128,7 @@ export default function FilterSidebar({ filters, setFilters }: any) {
             {/* ✅ APPLY BUTTON */}
             <button
                 onClick={() => setFilters(localFilters)}
-                className="w-full bg-linear-to-r from-[#EA8843] to-[#FFB60D] py-2 rounded-lg font-semibold"
+                className="w-full cursor-pointer bg-linear-to-r from-[#EA8843] to-[#FFB60D] py-2 rounded-lg font-semibold"
             >
                 Apply Filters
             </button>

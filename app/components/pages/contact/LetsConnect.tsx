@@ -2,6 +2,7 @@
 import { urbanist } from "@/app/fonts/fonts";
 import emailjs from '@emailjs/browser';
 import { useRef } from "react";
+import Swal from "sweetalert2";
 
 export default function LetsConnect() {
     const form = useRef<HTMLFormElement | null>(null);
@@ -21,9 +22,14 @@ export default function LetsConnect() {
                     (result) => {
                         console.log("SUCCESS!", result.text);
                         if (result.text == "OK") {
-                            alert("Email sent successfully!");
-                            form.current?.reset();
-                        }
+                                                    Swal.fire({
+                                    title: "Success!",
+                                    text: "Email sent successfully!",
+                                    icon: "success",
+                                    confirmButtonText: "OK",
+                                });
+                                                    form.current?.reset();
+                                                }
                     },
                     (error) => {
                         console.log("FAILED...", error.text);
@@ -40,7 +46,7 @@ export default function LetsConnect() {
                 <form ref={form}
                     onSubmit={sendEmail} className={`${urbanist.className} max-w-8xl  bg-white border border-gray-300 rounded-xl p-4 sm:p-6 md:p-8 lg:p-8 
               mt-10 mb-10`}>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-5 space-y-6">
                         <div className="space-y-5 mb-4">
                             <div className="flex flex-col mb-4">
                                 <label className="mb-2 text-sm font-medium" htmlFor="first_name">
@@ -68,8 +74,10 @@ export default function LetsConnect() {
                                 </label>
                                 <select name="inquiry_type" className="p-2 border border-gray-400 rounded" id="">
                                     <option value="">Select Inquiry Type</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
+                                    <option value="">General Inquiry</option>
+                                    <option value="">Schedule a Visit</option>
+                                    <option value="">Property Purchase</option>
+                                    <option value="">Property Rent</option>
                                 </select>
                             </div>
                         </div>
@@ -87,8 +95,10 @@ export default function LetsConnect() {
                                 </label>
                                 <select className="p-2 border border-gray-400 rounded" name="select" id="">
                                     <option value="">Select</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
+                                    <option value="">Social Media</option>
+                                    <option value="">Referral</option>
+                                    <option value="">Online Search</option>
+                                    <option value="">Other</option>
                                 </select>
                             </div>
                         </div>
@@ -96,7 +106,7 @@ export default function LetsConnect() {
 
 
                     </div>
-                    <div className="mb-6">
+                    <div className="mb-6 mt-3">
                         <label className="block text-sm mb-2">Message</label>
                         <textarea
                             name="message"
@@ -111,7 +121,7 @@ export default function LetsConnect() {
                             I agree with Terms of Use and Privacy Policy
                         </label>
 
-                        <button type="submit" className="bg-linear-to-r from-[#EA8843] to-[#FFB60D] text-white px-4 py-2 rounded-md ">
+                        <button type="submit" className="bg-linear-to-r from-[#EA8843] to-[#FFB60D] text-white px-4 py-2 rounded-md cursor-pointer w-full">
                             Send Your Message
                         </button>
 

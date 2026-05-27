@@ -11,8 +11,6 @@ import Link from "next/link";
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
-
-
   const isHomePage = pathname === "/";
   const isContactPage = pathname === "/contact";
   const isTransparentnav = isHomePage || isContactPage;
@@ -23,7 +21,7 @@ export default function Navbar() {
     {/* Top Row */}
     <div className="flex items-center justify-between">
       <Link href={"/"}>
-        <div className="flex items-center">
+        <div className="flex items-center cursor-pointer">
           <Image src="/icon.png" alt="Logo" width={35} height={35} />
           <h1
             className={onest.className}
@@ -50,7 +48,7 @@ export default function Navbar() {
     <div
       className={`${onest.className} hidden md:flex items-center gap-4 text-white`}
     >
-     <Link href={"/contact"}> <button className="border border-white text-white bg-linear-to-r from-[#EA8843] to-[#FFB60D]  hover:text-black px-4 py-2 rounded">Contact Us</button></Link>
+     <Link href={"/contact"}> <button className="border border-white text-white bg-linear-to-r from-[#EA8843] to-[#FFB60D]  hover:text-black px-4 py-2 rounded cursor-pointer">Contact Us</button></Link>
 
       
     </div>
@@ -61,13 +59,13 @@ export default function Navbar() {
     <div className="absolute top-full left-0 w-full bg-black text-white flex flex-col items-center gap-4 py-6 md:hidden shadow-lg">
       
      <Link href={"/contact"}>
-        <button className="border border-white text-white bg-linear-to-r from-[#EA8843] to-[#FFB60D]  hover:text-black px-4 py-2 rounded" onClick={() => setOpen(false)}>
+        <button className="border border-white text-white bg-linear-to-r from-[#EA8843] to-[#FFB60D]  hover:text-black px-4 py-2 rounded cursor-pointer" onClick={() => setOpen(false)}>
           Contact Us
         </button>
      </Link>
 
       <button
-        className="bg-linear-to-r from-[#EA8843] to-[#FFB60D] px-4 py-2 rounded"
+        className="bg-linear-to-r from-[#EA8843] cursor-pointer to-[#FFB60D] px-4 py-2 rounded"
         onClick={() => setOpen(false)}
       >
         Available Properties

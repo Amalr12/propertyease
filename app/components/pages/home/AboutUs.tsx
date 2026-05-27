@@ -10,15 +10,15 @@ export default function AboutUs() {
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-4 sm:px-8 lg:px-20 my-10 mt-2 ">
                 <div className="bg-[#0c0c0c] rounded-xl p-5 space-y-2 text-center sm:text-left">
                     <h1 className={`${urbanist.className} text-white *:`} style={{ fontWeight: "600", fontSize: "1.5rem" }}>200+</h1>
-                    <p className={`${onest.className} text-gray-300 `} style={{ fontWeight: 400, fontSize: "1rem" }}>Happy Customers</p>
+                    <p className={`${onest.className} text-[#999999] `} style={{ fontWeight: 400, fontSize: "1rem" }}>Happy Customers</p>
                 </div>
                 <div className="bg-[#0c0c0c] rounded-xl p-5 space-y-2 text-center sm:text-left">
                     <h1 className={`${urbanist.className} text-white *:`} style={{ fontWeight: "600", fontSize: "1.5rem" }}>10k+</h1>
-                    <p className={`${onest.className} text-gray-300 `} style={{ fontWeight: 400, fontSize: "1rem" }}>Properties for Clients</p>
+                    <p className={`${onest.className} text-[#999999] `} style={{ fontWeight: 400, fontSize: "1rem" }}>Properties for Clients</p>
                 </div>
                 <div className="bg-[#0c0c0c] rounded-xl p-5 space-y-2 text-center sm:text-left">
                     <h1 className={`${urbanist.className} text-white *:`} style={{ fontWeight: "600", fontSize: "1.5rem" }}>16+</h1>
-                    <p className={`${onest.className} text-gray-300 `} style={{ fontWeight: 400, fontSize: "1rem" }}>Years of Experience</p>
+                    <p className={`${onest.className} text-[#999999] `} style={{ fontWeight: 400, fontSize: "1rem" }}>Years of Experience</p>
                 </div>
             </div>
 
@@ -48,9 +48,7 @@ export default function AboutUs() {
                                     className={`${onest.className} text-white leading-tight 
         text-14px md:text-27px  lg:text-27px  sm:text-14px  font-medium`}
                                 >
-                                    We believe every good deal is founded on a great partnership.
-                                    Our partnerships are built on trust, honesty and committed
-                                    collaboration – many of them standing strong for decades.
+                                  We believe every good deal is founded on a great partnership. Our partnerships are built on trust, honesty and committed collaboration – many of them standing strong for decades.
                                 </h1>
                             </div>
 
@@ -61,7 +59,7 @@ export default function AboutUs() {
                                         className={`${onest.className} 
           bg-linear-to-r from-[#EA8843] to-[#FFB60D]
           text-white px-6 py-3 rounded-xl
-          text-sm md:text-base font-medium
+          text-sm md:text-base font-medium cursor-pointer
           hover:scale-105 transition`}
                                     >
                                         Available Properties
