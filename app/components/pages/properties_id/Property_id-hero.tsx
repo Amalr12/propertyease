@@ -155,9 +155,9 @@ export default function PropertyHeroSection({
       md:inset-0
       md:flex hidden items-center justify-between
       px-5
-      z-20">
+      z-20 ">
 
-                                <div className="border  border-black  hover:bg-black rounded-full p-2 sm:p-3 bg-transparent cursor-pointer ">
+                                <div className="border-2  border-black  hover:bg-black hover:text-white group rounded-full p-2 sm:p-3 bg-transparent cursor-pointer ">
                                     <button
                                         onClick={prevImage}
                                         className="
@@ -185,7 +185,7 @@ export default function PropertyHeroSection({
                                         />
                                     ))}
                                 </div>
-                                <div className="border border-black  hover:bg-black rounded-full p-2 sm:p-3 bg-transparent   cursor-pointer  transition ">
+                                <div className="border-2 border-black  hover:bg-black hover:text-white rounded-full p-2 sm:p-3 bg-transparent   cursor-pointer  transition ">
 
                                     <button
                                         onClick={nextImage}

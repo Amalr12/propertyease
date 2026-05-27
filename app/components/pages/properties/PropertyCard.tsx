@@ -47,7 +47,7 @@ export function PropertyCard({ property, onScheduleClick }: { property: any, onS
         window.open(url, "_blank");
     };
     return (
-        <div className={`bg-[#0c0c0c]  relative text-white rounded-2xl  overflow-hidden shadow-lg w-full max-w-sm ${onest.className}`}>
+        <div className={`bg-[#0c0c0c] relative text-white rounded-2xl overflow-hidden shadow-lg w-full h-full flex flex-col ${onest.className}` }>
 
             {/* HEADER */}
             <div className="flex justify-between items-center p-3">
@@ -73,7 +73,7 @@ export function PropertyCard({ property, onScheduleClick }: { property: any, onS
             </div>
 
             {/* CONTENT */}
-            <div className="p-4 space-y-3 mt-10">
+            <div className="p-4 space-y-3 mt-10 flex flex-col flex-1">
 
                 <h2 className="text-lg font-semibold">{property.title}</h2>
 
@@ -95,7 +95,7 @@ export function PropertyCard({ property, onScheduleClick }: { property: any, onS
                     </div>
                 </div>
 
-                <div className="flex justify-between  text-xs gap-2 pt-5">
+                <div className="flex justify-between text-xs gap-2 pt-5 mt-auto">
                     <button type="button" onClick={() => onScheduleClick(property)} className="flex-1 cursor-pointer bg-gray-800 py-2 px-4 rounded-lg hover:bg-gray-700 transition">
                         Schedule Visit
                     </button>

@@ -97,7 +97,7 @@ const testimonials = [
             "From start to finish, everything was seamless. The team handled every detail with care and ensured we were always informed.",
         name: "Sophia Miller",
         location: "USA, Texas",
-        image: "/user4.png",
+        image: "/user2.png",
         rating: 5
     },
     {
@@ -107,7 +107,7 @@ const testimonials = [
             "Their professionalism and deep market knowledge helped us make the right investment decision.",
         name: "Liam Anderson",
         location: "USA, New York",
-        image: "/user5.png",
+        image: "/user1.png",
         rating: 4
     },
     {
@@ -117,7 +117,7 @@ const testimonials = [
             "The support team was always available to answer our questions. It made the whole process stress-free.",
         name: "Olivia Brown",
         location: "USA, Chicago",
-        image: "/user6.png",
+        image: "/user3.png",
         rating: 5
     },
     {
@@ -127,7 +127,7 @@ const testimonials = [
             "We found the perfect property at a great price thanks to their expert guidance.",
         name: "Noah Wilson",
         location: "USA, Seattle",
-        image: "/user7.png",
+        image: "/user3.png",
         rating: 4
     },
     {
@@ -137,7 +137,7 @@ const testimonials = [
             "The entire experience was smooth and easy to follow. Everything was well organized.",
         name: "Ava Taylor",
         location: "USA, Boston",
-        image: "/user8.png",
+        image: "/user2.png",
         rating: 5
     },
     {
@@ -147,7 +147,7 @@ const testimonials = [
             "They kept us updated at every step and made sure we understood all details clearly.",
         name: "James Thomas",
         location: "USA, Denver",
-        image: "/user9.png",
+        image: "/user1.png",
         rating: 5
     },
     {
@@ -157,7 +157,7 @@ const testimonials = [
             "I would highly recommend Estatein to anyone looking for reliable and professional real estate services.",
         name: "Isabella Martinez",
         location: "USA, Miami",
-        image: "/user10.png",
+        image: "/user2.png",
         rating: 5
     }
 ];

@@ -34,9 +34,9 @@ export default function FilterBar({ filters, onChange }: FilterBarProps) {
   const yearRanges = ["2000 - 2010", "2010 - 2020", "After 2020"];
 
   return (
-    <div className="bg-white rounded-lg shadow p-6 mb-6">
+    <div className="bg-[#0c0c0c] text-white rounded-2xl p-6 shadow-lg h-fit min-h-[85vh]">
       <h2 className="text-xl font-bold mb-6">Filters</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6">
+      <div className="flex flex-col gap-6">
         {/* District */}
         <div>
           <button
