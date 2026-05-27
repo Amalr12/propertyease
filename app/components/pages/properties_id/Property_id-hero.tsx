@@ -149,29 +149,32 @@ export default function PropertyHeroSection({
                             />
 
                             {/* BUTTONS OVER IMAGE */}
-                            <div className="absolute
-      -bottom-24 md:bottom-0
-      left-0 right-0
-      md:inset-0
-      md:flex hidden items-center justify-between
-      px-5
-      z-20 ">
+                            <div className="absolute  -bottom-24 md:bottom-0 left-0 right-0 md:inset-0 md:flex hidden items-center justify-between   px-5   z-20 ">
 
-                                <div className="border-2  border-black  hover:bg-black hover:text-white group rounded-full p-2 sm:p-3 bg-transparent cursor-pointer ">
+                                <div className="border-2
+        border-black
+        hover:bg-black
+        rounded-full
+        cursor-pointer
+        transition-all
+        duration-300
+        group ">
                                     <button
                                         onClick={prevImage}
                                         className="
                    
                     
                     p-2 sm:p-3
-                    rounded-full
-                    transition
-                    duration-200
-                          cursor-pointer
+                   rounded-full
+            cursor-pointer
                     
                 "
                                     >
-                                        <FaArrowLeft className="text-xl text-black hover:text-white" />
+                                        <FaArrowLeft className="text-xl
+                text-black
+                transition-colors
+                duration-300
+                group-hover:text-white" />
                                     </button>
                                 </div>
                                 <div className="flex md:hidden gap-2 bg-white px-4 py-2 rounded-full shadow-md">
@@ -185,7 +188,14 @@ export default function PropertyHeroSection({
                                         />
                                     ))}
                                 </div>
-                                <div className="border-2 border-black  hover:bg-black hover:text-white rounded-full p-2 sm:p-3 bg-transparent   cursor-pointer  transition ">
+                                <div className=" border-2
+        border-black
+        hover:bg-black
+        rounded-full
+        cursor-pointer
+        transition-all
+        duration-300
+        group">
 
                                     <button
                                         onClick={nextImage}
@@ -193,14 +203,15 @@ export default function PropertyHeroSection({
                    
                  
                     p-2 sm:p-3
-                    rounded-full
-                    cursor-pointer
-                    transition
-                    duration-200
-                    hover:text-white
+                     rounded-full
+            cursor-pointer
                 "
                                     >
-                                        <FaArrowRight className="text-xl text-black hover:text-white" />
+                                        <FaArrowRight className="text-xl
+                text-black
+                transition-colors
+                duration-300
+                group-hover:text-white" />
                                     </button>
 
                                 </div>

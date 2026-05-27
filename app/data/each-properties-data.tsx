@@ -150,7 +150,7 @@ export const properties: PropertyDetails[] = [
     bathrooms: "-",
     size: "3000 sqft",
     year: "-",
-    image: "/cardimage4.png",
+    image: "/property.jpg.png",
 
     lat: 10.0300,
     lng: 76.3200,
@@ -160,7 +160,7 @@ export const properties: PropertyDetails[] = [
     considerations: ["Developing area", "No immediate construction"],
     amenities: ["Water", "Electricity"],
 
-    images: ["/cardimage4.png", "/cardimage1.png", "/cardimage2.png"],
+    images: ["/property.jpg.png", "/cardimage1.png", "/cardimage2.png"],
     floorPlan: "/floorplan1.jpg",
 
     nearby: [

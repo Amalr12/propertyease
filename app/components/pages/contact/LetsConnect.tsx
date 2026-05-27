@@ -121,7 +121,7 @@ export default function LetsConnect() {
                             I agree with Terms of Use and Privacy Policy
                         </label>
 
-                        <button type="submit" className="bg-linear-to-r from-[#EA8843] to-[#FFB60D] text-white px-4 py-2 rounded-md cursor-pointer w-full">
+                        <button type="submit" className="bg-linear-to-r from-[#EA8843] to-[#FFB60D] text-white px-4 py-2 rounded-md cursor-pointer md:w-auto lg:w-auto sm:w-auto w-full">
                             Send Your Message
                         </button>
 
