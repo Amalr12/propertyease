@@ -17,11 +17,11 @@ const faqs = [
         question: "What documents do I need to sell my property?",
         answer: "Find out about the necessary documentation required for listing your property with us."
     },
-    {
-        id: 3,
-        question: "How can I contact an agent?",
-        answer: "Discover the different ways you can get in touch with our experienced agents."
-    },
+     {
+        id: 2,
+        question: "What documents do I need to sell my property?",
+        answer: "Find out about the necessary documentation required for listing your property with us."
+     },
     {
         id: 4,
         question: "Is there any brokerage fee?",
@@ -45,7 +45,7 @@ const faqs = [
     {
         id: 8,
         question: "Can I list my property?",
-        answer: "Yes, you can list your property easily by signing up and submitting details."
+        answer: "Yes, you can list your property easily by signing up and submitting details.please contact our support team for assistance."
     },
     {
         id: 9,
@@ -177,7 +177,7 @@ export default function ClientSay() {
             <div className="p-5">
                 <div className="space-y-4    " >
                     <h1 className={` mb-2 ${urbanist.className} text-xl`} style={{ fontWeight: "500", fontSize: "1.8rem" }}>What Our Clients Say</h1>
-                    <p className={`text-gray-400 text-sm ${onest.className}`} style={{ fontWeight: "400", fontSize: "1rem" }}>Read the success stories and heartfelt testimonials from our valued clients. Discover why they chose Estatein for their real estate needs.</p>
+                    <p className={`text-[#000000] text-sm ${onest.className}`} style={{ fontWeight: "400", fontSize: "1rem" }}>Read the success stories and heartfelt testimonials from our valued clients. Discover why they chose Estatein for their real estate needs.</p>
                 </div>
 
                 <div className="grid  md:grid-cols-3  gap-2 mt-5 ">
@@ -218,7 +218,7 @@ export default function ClientSay() {
 
                 <div
                     className="
-   md:flex hidden items-center justify-between  border-[#B4B4B4] border-t  p-5 mt-5
+   flex  items-center justify-between  border-[#B4B4B4] border-t  pt-3 mt-5
   "
                 >
                     {/* PAGE COUNT */}
@@ -233,17 +233,13 @@ export default function ClientSay() {
 
                         <button
                             className="
-        hover:bg-black
-
-        border border-gray-300
-        text-gray-400
-
+        hover:bg-[#191919] border border-black text-black   cursor-pointer hover:text-white
         p-2 sm:p-3
 
         rounded-full
 
         transition-all duration-200
-
+       
         disabled:opacity-40
         disabled:cursor-not-allowed
       "
@@ -257,17 +253,14 @@ export default function ClientSay() {
 
                         <button
                             className="
-        hover:bg-black
-
-        border border-gray-300
-        text-gray-400
+        hover:bg-[#191919] border border-black text-black  hover:text-white
 
         p-2 sm:p-3
 
         rounded-full
 
         transition-all duration-200
-
+cursor-pointer
         disabled:opacity-40
         disabled:cursor-not-allowed
       "
@@ -293,22 +286,22 @@ export default function ClientSay() {
                     <p className={`text-[#000000]  ${onest.className}`} style={{ fontWeight: "400", fontSize: "1rem" }}>Find answers to common questions about Estatein's services, property listings, and the real estate process. We're here to provide clarity and assist you every step of the way.</p>
                 </div>
                 <div className="grid md:grid-cols-3 gap-2 mt-5 ">
-                    {currentItems2.map((item) => (
+                    {currentItems2.map((item, index) => (
                         <div
                             key={item.id}
-                            className={`bg-[#0c0c0c] ${onest.className} text-white  rounded-xl p-6 flex flex-col justify-between hover:shadow-lg transition`}
+                            className={`bg-[#0c0c0c] ${onest.className} text-white  rounded-xl p-6 flex flex-col justify-between hover:shadow-lg transition ${index === 0 ? "block" : "hidden md:block"}`}
                         >
                             <div>
                                 <h2 className="text-lg font-semibold mb-3">
                                     {item.question}
                                 </h2>
 
-                                <p className="text-gray-400 text-sm mb-6">
+                                <p className="text-[#999999] text-sm mb-6">
                                     {item.answer}
                                 </p>
                             </div>
 
-                            <button className={`bg-linear-to-r from-[#EA8843] to-[#FFB60D] text-white px-4 py-2 rounded mt-5 ${onest.className}`}>
+                            <button className={`bg-linear-to-r from-[#EA8843] to-[#FFB60D] text-white w-full cursor-pointer px-4 py-2 rounded mt-5 ${onest.className}`}>
                                 Read More
                             </button>
                         </div>
@@ -316,21 +309,21 @@ export default function ClientSay() {
                 </div>
             </div>
 
-            <div className="md:flex hidden items-center justify-between  border-[#B4B4B4] border-t  p-5 mt-5">
+            <div className="flex items-center justify-between  border-[#B4B4B4] border-t  m-5 ">
                 <div><span>{currentPage + 1} of {totalPages}</span></div>
-                <div className="p-2  m-3 space-x-1">
-                    <button className="hover:bg-black border border-gray-300 text-gray-400 p-3 rounded-full"
+                <div className="pt-2  m-3 space-x-1">
+                    <button className="hover:bg-[#191919] border border-black text-black  p-3 cursor-pointer rounded-full hover:text-white"
                         onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 0))}
                         disabled={currentPage === 0}
                     >
-                        <FaArrowLeft />
+                        <FaArrowLeft className="hover:text-white" />
                     </button>
 
-                    <button className="hover:bg-black border border-gray-300 text-gray-400 p-3 rounded-full"
+                    <button className="hover:bg-[#191919] border border-black text-black  p-3 cursor-pointer rounded-full hover:text-white"
                         onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages - 1))}
                         disabled={currentPage === totalPages - 1}
                     >
-                        <FaArrowRight />
+                        <FaArrowRight className="hover:text-white" />
                     </button>
 
                 </div>
@@ -347,15 +340,15 @@ export default function ClientSay() {
                     </div>
                 </div>
                 <div className="grid md:grid-cols-[4fr_1fr] items-center ">
-                    <div className="p-5"><h1 className={` mb-2 ${urbanist.className}`} style={{ fontWeight: "600", fontSize: "1.8rem" }}>
+                    <div className="p-5 text-[#000000]"><h1 className={` mb-2 ${urbanist.className}`} style={{ fontWeight: "600", fontSize: "1.8rem" }}>
                         Start Your Real Estate Journey Today
                     </h1>
-                        <p className={`text-gray-400  ${urbanist.className}`} style={{ fontWeight: "400", fontSize: "1rem" }}>Your dream property is just a click away. Whether you're looking for a new home, a strategic investment, or expert real estate advice, Estatein is here to assist you every step of the way. Take the first step towards your real estate goals and explore our available properties or get in touch with our team for personalized assistance.</p>
+                        <p className={`  ${urbanist.className}`} style={{ fontWeight: "400", fontSize: "1rem" }}>Your dream property is just a click away. Whether you're looking for a new home, a strategic investment, or expert real estate advice, Estatein is here to assist you every step of the way. Take the first step towards your real estate goals and explore our available properties or get in touch with our team for personalized assistance.</p>
                     </div>
                     <div className="m-2 text-center">
 
                         <Link href={"/property"}>
-                            <button className={`bg-linear-to-r from-[#EA8843] to-[#FFB60D] text-white px-4 py-2 rounded mt-5 ${onest.className}`}>
+                            <button className={`bg-linear-to-r from-[#EA8843] to-[#FFB60D] text-white w-full px-4 py-2 md:px-2 md:py-3 text-xs md:text-sm lg:text-base sm:text-sm rounded mt-5 ${onest.className}`}>
                                 Explore Properties
                             </button>
                         </Link>
@@ -367,7 +360,7 @@ export default function ClientSay() {
                         <Image className="hidden md:flex" src="/abstractdesign.png" alt="" width={200} height={200} />
                     </div>
                     <div>
-                        <Image src="/abd.png" alt="" width={200} height={200} />
+                        <Image src="/design.png" alt="" width={200} height={200} />
                     </div>
                 </div>
             </div>

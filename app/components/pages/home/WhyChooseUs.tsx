@@ -19,23 +19,7 @@ const data = [
         img: "/whychoose3.png",
         title: "Bottom Rate Guarantee",
         desc: "Housiey guarantees the bottom rate or refunds double the difference."
-    },
-    {
-        img: "/whychoose3.png",
-        title: "Bottom Rate Guarantee",
-        desc: "Housiey guarantees the bottom rate or refunds double the difference."
-    },
-    {
-        img: "/whychoose1.png",
-        title: "Free Site Visit",
-        desc: "Free pickup & drop for unlimited site visits across the city."
-    },
-    {
-        img: "/whychoose2.png",
-        title: "No Brokerage Charges",
-        desc: "Get personalized RM managing everything from site visit to booking."
     }
-
 ];
 
 export default function WhyChooseUs() {
@@ -50,9 +34,9 @@ export default function WhyChooseUs() {
     const currentItems = data.slice(startIndex, startIndex + itemsPerPage);
     return (
         <>
-            <div className="space-y-4 p-5 ps-8 md:ps-5 md:pe-20" >
+            <div className="space-y-4 p-5 md:ps-5  md:pe-20" >
                 <h1 className={` mb-2 ${urbanist.className}`} style={{ fontWeight: "500", fontSize: "1.8rem" }}>Why Choose Us?</h1>
-                <p className={`text-gray-400  ${onest.className}`} style={{ fontWeight: "400", fontSize: "1rem" }}>Discover the key advantages of investing with us.</p>
+                <p className={`text-[#121010]  ${onest.className}`} style={{ fontWeight: "400", fontSize: "1rem" }}>Discover the key advantages of investing with us.</p>
             </div>
 
 
@@ -60,7 +44,7 @@ export default function WhyChooseUs() {
 
 
             <div className="">
-                <div className="grid md:grid-cols-3 gap-6 p-5  ">
+                <div className="grid md:grid-cols-3 gap-6 p-5 ">
 
                     {currentItems.map((item, index) => (
                         <div key={index} className="bg-[#0c0c0c] rounded flex flex-col items-center justify-center p-2">
@@ -74,7 +58,7 @@ export default function WhyChooseUs() {
                                     {item.title}
                                 </h1>
 
-                                <p className={`text-gray-300  ${onest.className}`} style={{ fontWeight: "400", fontSize: "0.8rem" }}>
+                                <p className={`text-[#999999]  ${onest.className}`} style={{ fontWeight: "400", fontSize: "0.8rem" }}>
 
                                     {item.desc}
                                 </p>
@@ -87,21 +71,21 @@ export default function WhyChooseUs() {
             </div>
 
 
-            <div className="flex items-center justify-between  border-[#B4B4B4] border-t  p-5 m-5">
-                <div><span>{currentPage + 1} of {totalPages}</span></div>
-                <div className="p-2  m-3 space-x-1">
-                    <button className="hover:bg-black border border-gray-300 text-gray-400 p-3 rounded-full"
+            <div className="md:flex hidden items-center justify-end  border-[#B4B4B4] border-t  pt-5 m-5">
+               
+                <div className="p-2  m-3 space-x-1 ">
+                    <button className="hover:bg-[#191919] border border-black text-black  p-3 cursor-pointer rounded-full hover:text-white"
                         onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 0))}
                         disabled={currentPage === 0}
                     >
-                        <FaArrowLeft />
+                        <FaArrowLeft className="hover:text-white"/>
                     </button>
 
-                    <button className="hover:bg-black border border-gray-300 text-gray-400 p-3 rounded-full"
+                    <button className="hover:bg-[#191919] border border-black text-black  p-3 cursor-pointer rounded-full hover:text-white"
                         onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages - 1))}
                         disabled={currentPage === totalPages - 1}
                     >
-                        <FaArrowRight />
+                        <FaArrowRight className="hover:text-white"/>
                     </button>
 
                 </div>

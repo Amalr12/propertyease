@@ -83,7 +83,7 @@ export function PropertyCard({ property, onScheduleClick }: { property: any, onS
 
                 <div className="border-t border-gray-700"></div>
 
-                <div className="flex justify-between text-sm text-gray-300">
+                <div className="flex justify-between  text-xs text-gray-300">
                     <div className="flex items-center gap-2">
                         <FaBed /> {property.bhk}
                     </div>
@@ -95,13 +95,13 @@ export function PropertyCard({ property, onScheduleClick }: { property: any, onS
                     </div>
                 </div>
 
-                <div className="flex justify-between gap-2 pt-5">
+                <div className="flex justify-between  text-xs gap-2 pt-5">
                     <button type="button" onClick={() => onScheduleClick(property)} className="flex-1 cursor-pointer bg-gray-800 py-2 px-4 rounded-lg hover:bg-gray-700 transition">
                         Schedule Visit
                     </button>
 
                     <Link href={`/property/${property.slug}`}>
-                        <button className="flex-1 bg-linear-to-r from-[#EA8843] to-[#FFB60D] py-2 px-4 rounded-lg text-white font-semibold">
+                        <button className="flex-1 bg-linear-to-r from-[#EA8843] to-[#FFB60D] py-2 px-4 cursor-pointer rounded-lg text-white font-semibold">
                             Details
                         </button>
                     </Link>
@@ -154,7 +154,7 @@ export function PropertyCard({ property, onScheduleClick }: { property: any, onS
 
                                         <button
                                             onClick={() => setVisitType("Live Visit")}
-                                            className="border border-neutral-700 p-4 rounded-xl bg-gray-900 hover:border-orange-500 transition flex items-center gap-4"
+                                            className="border border-neutral-700 p-4 rounded-xl bg-gray-900 hover:border-orange-500 transition flex items-center gap-4 cursor-pointer"
                                         >
                                             <div className="p-3 bg-gray-800 rounded-xl">
                                                 <CiHome className="text-orange-500 text-lg" />
@@ -170,7 +170,7 @@ export function PropertyCard({ property, onScheduleClick }: { property: any, onS
 
                                         <button
                                             onClick={() => setVisitType("VR Visit")}
-                                            className="border border-neutral-700 p-4 rounded-xl bg-gray-900 hover:border-orange-500 transition flex items-center gap-4"
+                                            className="border border-neutral-700 p-4 rounded-xl bg-gray-900 hover:border-orange-500 transition flex items-center gap-4 cursor-pointer"
                                         >
                                             <div className="p-3 bg-gray-800 rounded-xl">
                                                 <IoVideocam className="text-orange-500 text-lg" />
@@ -185,7 +185,7 @@ export function PropertyCard({ property, onScheduleClick }: { property: any, onS
 
                                         <button
                                             onClick={() => setVisitType("consultation")}
-                                            className="border border-neutral-700 p-4 rounded-xl bg-gray-900 hover:border-orange-500 transition flex items-center gap-4"
+                                            className="border border-neutral-700 p-4 rounded-xl bg-gray-900 hover:border-orange-500 transition flex items-center gap-4 cursor-pointer"
                                         >
                                             <div className="p-3 bg-gray-800 rounded-xl">
                                                 <FiPhoneCall className="text-orange-500 text-lg" />
@@ -262,7 +262,7 @@ export function PropertyCard({ property, onScheduleClick }: { property: any, onS
                                         />
 
 
-                                        <button onClick={sendToWhatsApp} className="w-full py-3 rounded-lg bg-linear-to-r from-orange-500 to-yellow-500 font-medium shadow-lg">
+                                        <button onClick={sendToWhatsApp} className="w-full cursor-pointer py-3 rounded-lg bg-linear-to-r from-orange-500 to-yellow-500 font-medium shadow-lg">
                                             {visitType === "consultation"
                                                 ? "Call Now"
                                                 : "Confirm Booking"}

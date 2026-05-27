@@ -18,12 +18,12 @@ export default function Values() {
   [-webkit-text-stroke:2px_rgba(0,0,0,0.2)] `}>
                     Values
                 </h1>
-                <div className="relative z-10 grid md:grid-cols-[2fr_4fr] mt-2 md:mt-50 p-5">
+                <div className="relative z-10 grid md:grid-cols-[2fr_4fr] mt-2 md:mt-50 p-5 mb-2">
                     <div className="">
                         <h1 className={`${urbanist.className}`} style={{ fontWeight: 500, fontSize: "1.8rem" }} >Our Values</h1>
                         <h1 className={`${onest.className}`} style={{ fontWeight: 500, fontSize: "1rem" }}>Our story is one of continuous growth and evolution. We started as a small team with big dreams, determined to create a real estate platform that transcended the ordinary.</h1>
                     </div>
-                    <div className="bg-[#0c0c0c] text-white rounded-2xl p-10 max-w-6xl mx-auto">
+                    <div className="bg-[#0c0c0c] text-white rounded-2xl p-2 max-w-6xl mx-auto">
 
                         <div className="grid md:grid-cols-2 p-2">
 

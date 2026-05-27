@@ -48,7 +48,7 @@ export const properties: PropertyDetails[] = [
     size: "2200 sqft",
     year: "2020",
     status: "Verified",
-    image: "/cardimage1.png",
+    image: "/pexels-ahmetcotur-31817157.jpg",
 
     lat: 10.5276,
     lng: 76.2144,
@@ -58,7 +58,7 @@ export const properties: PropertyDetails[] = [
     considerations: ["High demand area", "Good resale value"],
     amenities: ["Swimming Pool", "Gym", "Club House"],
 
-    images: ["/cardimage1.png", "/cardimage2.png", "/cardimage4.png"],
+    images: [ "/pexels-ahmetcotur-31817157.jpg","/cardimage1.png", "/cardimage2.png"],
     floorPlan: "/floorplan1.png",
 
     nearby: [
@@ -83,7 +83,7 @@ export const properties: PropertyDetails[] = [
     bathrooms: 2,
     size: "900 sqft",
     year: "2015",
-    image: "/cardimage2.png",
+    image: "/imagereader-3-1550604185.avif",
 
     lat: 10.5200,
     lng: 76.2100,
@@ -93,8 +93,8 @@ export const properties: PropertyDetails[] = [
     considerations: ["Older building", "Limited parking"],
     amenities: ["Lift", "Parking"],
 
-    images: ["/cardimage2.png", "/cardimage1.png", "/cardimage4.png"],
-    floorPlan: "/floorplan2.png",
+    images: ["/imagereader-3-1550604185.avif","/cardimage2.png", "/cardimage1.png"],
+    floorPlan: "/floorplan3.jpg",
 
     nearby: [
       { place: "School", distance: "500 m" },
@@ -117,7 +117,7 @@ export const properties: PropertyDetails[] = [
     size: "3200 sqft",
     year: "2022",
     status: "Verified",
-    image: "/cardimage3.png",
+    image: "/premium_photo-1661915661139-5b6a4e4a6fcc.avif.png",
 
     lat: 10.0159,
     lng: 76.3419,
@@ -127,8 +127,8 @@ export const properties: PropertyDetails[] = [
     considerations: ["Premium pricing", "Maintenance cost"],
     amenities: ["Pool", "Gym", "Security"],
 
-    images: ["/cardimage3.png", "/cardimage2.png", "/cardimage1.png"],
-    floorPlan: "/floorplan3.png",
+    images: ["/premium_photo-1661915661139-5b6a4e4a6fcc.avif.png","/cardimage3.png", "/cardimage2.png"],
+    floorPlan: "/floorplan3.jpg",
 
     nearby: [
       { place: "Infopark", distance: "3 km" },
@@ -161,7 +161,7 @@ export const properties: PropertyDetails[] = [
     amenities: ["Water", "Electricity"],
 
     images: ["/cardimage4.png", "/cardimage1.png", "/cardimage2.png"],
-    floorPlan: "/floor4.png",
+    floorPlan: "/floorplan1.jpg",
 
     nearby: [
       { place: "Highway", distance: "1 km" },

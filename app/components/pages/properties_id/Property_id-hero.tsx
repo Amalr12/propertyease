@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRef, useState } from "react";
 import { AiOutlineThunderbolt } from "react-icons/ai";
 import { BiRectangle } from "react-icons/bi";
-import { FaBath, FaBed, FaPhoneVolume, FaRegCommentDots, FaRegStar, FaRulerCombined, FaStar, FaUser } from "react-icons/fa";
+import { FaArrowLeft, FaArrowRight, FaBath, FaBed, FaPhoneAlt, FaPhoneVolume, FaRegCommentDots, FaRegStar, FaRulerCombined, FaStar, FaUser, FaVectorSquare } from "react-icons/fa";
 import { MdKeyboardArrowLeft, MdOutlineVerified } from "react-icons/md";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import Featured from "../home/Featured";
@@ -17,6 +17,7 @@ import { IoVideocam } from "react-icons/io5";
 import { FiPhoneCall } from "react-icons/fi";
 import { onest, urbanist } from "@/app/fonts/fonts";
 import emailjs from '@emailjs/browser';
+import Swal from "sweetalert2";
 
 
 interface Props extends PropertyDetails { onClose?: () => void; }
@@ -36,7 +37,7 @@ export default function PropertyHeroSection({
     highlights,
     amenities,
     considerations,
-    floorPlan, nearby, reviews,
+    floorPlan, nearby, reviews
 }: Props) {
     const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -98,7 +99,12 @@ export default function PropertyHeroSection({
                     (result) => {
                         console.log("SUCCESS!", result.text);
                         if (result.text == "OK") {
-                            alert("Email sent successfully!");
+                            Swal.fire({
+                                title: "Success!",
+                                text: "Email sent successfully!",
+                                icon: "success",
+                                confirmButtonText: "OK",
+                            });
                             form.current?.reset();
                         }
                     },
@@ -126,98 +132,250 @@ export default function PropertyHeroSection({
 
     return (
         <>
-            <div className="bg-gray-100 relative p-4 mt-20 md:mt-50 ">
-                <Link href="/property"><div className="flex justify-start items-center text-xl"><MdKeyboardArrowLeft /> <h1 className="">Back to Listings</h1></div></Link>
-                <div className="grid grid-cols-1 md:grid-cols-[4fr_1fr]  lg:grid-cols-[4fr_1fr] gap-4 items-start p-5 ">
-                    <div className="space-y-10">
-                        <div className="relative w-full rounded-xl overflow-hidden">
-
+            <div className=" relative pt-5 mt-20 md:mt-30 ">
+                <Link href="/property"><div className="flex justify-start items-center text-sm md:text-xl font-bold mb-4"><MdKeyboardArrowLeft /> <h1 className="">Back to Listings</h1></div></Link>
+                <div className="grid grid-cols-1 md:grid-cols-[4fr_1fr]  lg:grid-cols-[4fr_1fr] gap-6 items-start   ">
+                    <div className="space-y-10 md:m-5">
+                        <div className="relative w-full rounded-xl overflow-visible md:overflow-hidden">
                             <Image
                                 src={images[currentIndex]}
                                 alt="property"
-                                width={800}
-                                height={500}
-                                className="w-full h-auto object-cover rounded-xl"
+                                width={1200}
+                                height={800}
+                                quality={100}
                                 priority
+                                sizes="(max-width: 768px) 100vw, 70vw"
+                                className="w-full aspect-video object-cover rounded-xl"
                             />
 
                             {/* BUTTONS OVER IMAGE */}
-                            <div className="absolute inset-0 flex items-center justify-between px-3 sm:px-5 z-20">
+                            <div className="absolute
+      -bottom-24 md:bottom-0
+      left-0 right-0
+      md:inset-0
+      md:flex hidden items-center justify-between
+      px-5
+      z-20">
 
+                                <div className="border  border-black  hover:bg-black rounded-full p-2 sm:p-3 bg-transparent cursor-pointer ">
+                                    <button
+                                        onClick={prevImage}
+                                        className="
+                   
+                    
+                    p-2 sm:p-3
+                    rounded-full
+                    transition
+                    duration-200
+                          cursor-pointer
+                    
+                "
+                                    >
+                                        <FaArrowLeft className="text-xl text-black hover:text-white" />
+                                    </button>
+                                </div>
+                                <div className="flex md:hidden gap-2 bg-white px-4 py-2 rounded-full shadow-md">
+                                    {images.map((_, index) => (
+                                        <div
+                                            key={index}
+                                            className={`h-1.5 rounded-full transition-all duration-300 ${currentIndex === index
+                                                ? "w-6 bg-yellow-500"
+                                                : "w-3 bg-gray-400"
+                                                }`}
+                                        />
+                                    ))}
+                                </div>
+                                <div className="border border-black  hover:bg-black rounded-full p-2 sm:p-3 bg-transparent   cursor-pointer  transition ">
+
+                                    <button
+                                        onClick={nextImage}
+                                        className="
+                   
+                 
+                    p-2 sm:p-3
+                    rounded-full
+                    cursor-pointer
+                    transition
+                    duration-200
+                    hover:text-white
+                "
+                                    >
+                                        <FaArrowRight className="text-xl text-black hover:text-white" />
+                                    </button>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="mt-2 mb-2 ">
+
+                            <div className="w-full overflow-hidden mt-3">
+
+    <div className="grid grid-cols-3 gap-2 md:gap-4 w-full">
+
+        {images.map((img, index) => (
+            <div
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={`
+                    relative
+                    w-full
+                    overflow-hidden
+                    rounded-2xl
+                    cursor-pointer
+                    border
+                    transition-all
+                    duration-300
+                    group
+
+                    ${currentIndex === index
+                        ? "border-orange-500 shadow-xl"
+                        : "border-gray-300 hover:shadow-lg"
+                    }
+                `}
+            >
+                <Image
+                    src={img}
+                    width={500}
+                    height={300}
+                    alt="thumbnail"
+                    className="
+                        w-full
+                        h-22.5
+                        sm:h-30
+                        md:h-40
+                        lg:h-45
+                        object-cover
+                        transition-transform
+                        duration-300
+                        group-hover:scale-105
+                    "
+                />
+
+                {currentIndex === index && (
+                    <div className="absolute inset-0 ring-2 ring-orange-500 rounded-2xl"></div>
+                )}
+            </div>
+        ))}
+
+    </div>
+
+</div>
+                        </div>
+                        <div className="rounded-2xl bg-[#E0E0E0] md:hidden  
+      -bottom-24 md:bottom-0
+      left-0 right-0
+      md:inset-0
+      flex items-center justify-between
+      px-2
+      z-20">
+
+                            <div className="border border-black  hover:bg-black rounded-full p-2 sm:p-3 bg-white/70 cursor-pointer ">
                                 <button
                                     onClick={prevImage}
                                     className="
-                bg-black/50 hover:bg-black/70
-                text-white
-                p-2 sm:p-3
-                rounded-full
-                transition
-                duration-200
-            "
+                   
+                    text-white
+                    p-2 sm:p-3
+                    rounded-full
+                    transition
+                    duration-200
+                    hover:text-white
+                "
                                 >
-                                    ◀
+                                    <FaArrowLeft className="text-xl text-black" />
                                 </button>
+                            </div>
+                            <div className="flex md:hidden gap-2 bg-white px-4 py-2 rounded-full shadow-md">
+                                {images.map((_, index) => (
+                                    <div
+                                        key={index}
+                                        className={`h-1.5 rounded-full transition-all duration-300 ${currentIndex === index
+                                            ? "w-6 bg-yellow-500"
+                                            : "w-3 bg-gray-400"
+                                            }`}
+                                    />
+                                ))}
+                            </div>
+                            <div className="border border-black  hover:bg-black rounded-full p-2 sm:p-3 bg-white/70  cursor-pointer  transition ">
 
                                 <button
                                     onClick={nextImage}
                                     className="
-                bg-black/50 hover:bg-black/70
-                text-white
-                p-2 sm:p-3
-                rounded-full
-                transition
-                duration-200
-            "
+                   
+                    text-white
+                    p-2 sm:p-3
+                    rounded-full
+                    transition
+                    duration-200
+                    hover:text-white
+                "
                                 >
-                                    ▶
+                                    <FaArrowRight className="text-xl text-black" />
                                 </button>
 
                             </div>
                         </div>
+                        <div className="block md:hidden mt-5  ">
 
-                        <div className="mt-2 mb-2">
+                            <div className="border border-black/30 rounded-xl p-5 bg-white space-y-6 mb-5">
 
-                            <div className="flex gap-2  w-auto">
+                                {/* TITLE + DESCRIPTION */}
+                                <div className="space-y-4">
+                                    <h2 className={`text-xl md:text-2xl lg:text-2xl sm:text-2xl font-bold mb-4 ${urbanist.className}`}>
+                                        Description
+                                    </h2>
 
-                                {images.map((img, index) => (
-                                    <div
-                                        key={index}
-                                        onClick={() => setCurrentIndex(index)}
-                                        className={`
-        relative shrink-0
-        w-[31%] sm:w-[32%] md:w-[31.5%]
-        overflow-hidden rounded-xl cursor-pointer
-        transition-all duration-300 group
-        
-        ${currentIndex === index
-                                                ? "ring-2 ring-orange-500 shadow-xl"
-                                                : "hover:shadow-lg"
-                                            }
-      `}
-                                    >
-                                        <Image
-                                            src={img}
-                                            width={300}
-                                            height={120}
-                                            alt="thumbnail"
-                                            className="
-          w-full
-          h-20 sm:h-24 md:h-28
-          object-cover
-          transition-transform duration-300
-          group-hover:scale-105
-        "
-                                        />
+                                    <p className={`text-xs md:text-2xl lg:text-2xl sm:text-2xl font-semibold mb-4 ${urbanist.className}`}>
+                                        Discover your own piece of paradise with the {overview}. With an open floor plan, breathtaking ocean views from
+                                        every room, and {amenities}, this
+                                        property is the epitome of coastal living.
+                                    </p>
+                                </div>
 
-                                        {/* ACTIVE OVERLAY */}
-                                        {currentIndex === index && (
-                                            <div className="absolute inset-0 bg-black/10"></div>
-                                        )}
+                                {/* DIVIDER */}
+                                <hr className="border-t border-black/20 mb-4" />
+
+                                {/* FEATURES */}
+                                <div className={`flex flex-col gap-2 font-semibold mb-4 ${urbanist.className}`}>
+
+                                    {/* BEDROOMS */}
+                                    <div className="">
+                                        <div className="flex items-center gap-2 ">
+                                            <FaBed className="text-black text-xs" />
+                                            <span>Bedrooms</span>
+                                        </div>
+
+                                        <h3 className="text-sm font-semibold">04</h3>
                                     </div>
-                                ))}
+
+                                    {/* BATHROOMS */}
+                                    <div className="">
+                                        <div className="flex items-center gap-2 ">
+                                            <FaBath className="text-black text-xs" />
+                                            <span>Bathrooms</span>
+                                        </div>
+
+                                        <h3 className="text-sm font-semibold">03</h3>
+                                    </div>
+                                </div>
+                                {/* AREA */}
+                                <div className="">
+                                    <div className="flex items-center gap-2 ">
+                                        <FaVectorSquare className="text-black text-xs" />
+                                        <span>Area</span>
+                                    </div>
+
+                                    <h3 className="text-sm font-semibold">
+                                        2,500 Square Feet
+                                    </h3>
+                                </div>
 
                             </div>
+
                         </div>
+
+
                         <div className={`bg-black text-white rounded-xl mt-6 p-6 sm:p-6 ${urbanist.className}`}>
                             <div className="grid md:grid-cols-4 sm:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 text-center ">
                                 <div className="flex flex-col justify-center">
@@ -283,36 +441,35 @@ export default function PropertyHeroSection({
                                 ))}
                             </div>
                         </div>
-                        <div className="w-full p-3 sm:p-5 relative overflow-hidden">
+                        <div className="w-full min-w-full max-w-full mt-5 overflow-hidden rounded">
 
                             <TransformWrapper
                                 initialScale={1}
                                 minScale={1}
                                 maxScale={4}
                                 centerOnInit
+
                             >
                                 <TransformComponent
-                                    wrapperClass="w-full"
-                                    contentClass="w-full"
+                                    wrapperClass="!w-full rounded"
+                                    contentClass="!w-full rounded"
                                 >
                                     <Image
                                         src={floorPlan}
                                         alt="floorplan"
-                                        width={1200}
-                                        height={800}
-                                        className="
-          w-full
-          h-auto
-          object-cover
-          rounded-xl
-          cursor-pointer
-          border border-gray-300
-          shadow-lg
-          transition-transform duration-300
-          hover:scale-[1.02]
-          mt-5
-        "
+                                        width={2000}
+                                        height={1200}
                                         priority
+                                        className="
+                    w-full!
+                    h-auto
+                    object-contain
+                    rounded
+                    border
+                    border-gray-300
+                    shadow-lg
+                "
+
                                     />
                                 </TransformComponent>
                             </TransformWrapper>
@@ -324,7 +481,7 @@ export default function PropertyHeroSection({
                                 {nearby.map((item, index) => (
                                     <div key={index} className="bg-[#0c0c0c] text-white rounded-xl p-4 flex justify-between  items-center gap-3 ">
                                         <div className="flex items-center gap-2">
-                                            <CiLocationOn  className="text-xl text-[#EB8B3F] items-center" />
+                                            <CiLocationOn className="text-xl text-[#EB8B3F] items-center" />
                                             <h2 className="font-semibold">{item.place}</h2>
                                         </div>
                                         <div>
@@ -374,12 +531,7 @@ export default function PropertyHeroSection({
                         </div>
 
                     </div>
-                    <div className={`${onest.className} space-y-3 h-fit
-
-    md:sticky
-    md:top-5
-
-    self-start`}>
+                    <div className={`${onest.className} mt-5 space-y-3 h-fit  md:sticky md:top-5 self-start`}>
 
                         <div className="bg-black text-white rounded-xl p-6 shadow-lg ">
                             <p className="text-gray-400 text-sm">PROPERTY PRICE</p>
@@ -388,11 +540,11 @@ export default function PropertyHeroSection({
                                 Estimated EMI: ₹25K/month
                             </p>
 
-                            <button onClick={() => setEnquiryModal(true)} className="cursor-pointer w-full mt-3  bg-linear-to-r from-[#EA8843] to-[#FFB60D] py-2 rounded-lg">
+                            <button onClick={() => setEnquiryModal(true)} className="cursor-pointer w-full mt-3  bg-linear-to-r from-[#EA8843] to-[#FFB60D] py-2 rounded-lg text-sm ">
                                 Send Enquiry
                             </button>
 
-                            <button type="button" onClick={() => setModalStatus(true)} className="cursor-pointer w-full mt-3  bg-gray-800 py-2 rounded-lg">
+                            <button type="button" onClick={() => setModalStatus(true)} className="text-sm  cursor-pointer w-full mt-3  bg-gray-800 py-2 rounded-lg">
                                 Schedule Visit
                             </button>
 
@@ -406,8 +558,8 @@ export default function PropertyHeroSection({
                             <h2 className="font-semibold mb-4">Listed by Agent</h2>
 
                             <div className="flex items-center gap-3 relative">
-                                <div className="flex items-center justify-center w-10 h-10 border border-yellow-600 rounded-full mb-3">
-                                    <FaUser className="text-yellow-500 text-lg" />
+                                <div className="flex items-center justify-center w-4 h-4 p-1 border border-yellow-600 rounded-full mb-3">
+                                    <FaUser className="text-yellow-500 text-lg h-4 w-4" />
                                 </div>
                                 <div>
                                     <p className="font-medium">Rahul Menon</p>
@@ -419,13 +571,13 @@ export default function PropertyHeroSection({
                             </div>
 
                             <Link href={"tel:+9190723 37174"}>
-                                <button className="w-full mt-4 bg-gray-800 py-2 rounded-lg">
-                                    📞 +91 90723 37174
+                                <button className="w-full mt-4 bg-gray-800 flex justify-center text-sm gap-2 items-center py-2 cursor-pointer rounded-lg">
+                                    <FaPhoneAlt />+91 90723 37174
                                 </button>
                             </Link >
 
                             <Link href={"mailto:amaldaspr1998@gmail.com?subject=Property%20Inquiry&body=Hi,%20I%20am%20interested%20in%20this%20property."}>
-                                <button className="w-full mt-3 bg-gray-800 py-2 rounded-lg">
+                                <button className="w-full cursor-pointer mt-3 bg-gray-800 text-sm gap-2 py-2 rounded-lg">
                                     ✉ Email Agent
                                 </button>
                             </Link>
@@ -443,7 +595,7 @@ export default function PropertyHeroSection({
                         className="flex flex-1 w-full h-full p-0 sm:p-0 items-start justify-center sm:items-center sm:justify-center overflow-y-auto"
                     >
                         <div
-                            className="relative w-full max-w-md mx-auto mt-4 sm:mt-0 transform overflow-hidden rounded-lg bg-gray-800 text-left shadow-xl outline -outline-offset-1 outline-white/10 transition-all"
+                            className="relative w-full max-w-md mx-auto mt-4 sm:mt-0 transform overflow-hidden rounded-2xl text-left shadow-xl outline -outline-offset-1 outline-white/10 transition-all"
                             style={{ zIndex: 60 }}
                         >
 

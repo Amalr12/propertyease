@@ -120,38 +120,105 @@ export default function Hero() {
           </h1>
 
           <div className="flex justify-center mt-5">
-            <Image className="" src="/brokage.png" alt="Logo" width={180} height={150} />
+            <Image className="opacity/80" src="/brokage.png" alt="Logo" width={180} height={150} />
           </div>
 
           <div className="m-2">
             <div className="  grid grid-cols-1 md:grid-cols-[1fr_4fr_1fr] gap-4 mt-5 pt-10  justify-center">
               <div></div>
-              <div className={`${urbanist.className} bg-black/90 rounded-t-xl rounded-b-none p-2 sm:p-3 grid grid-cols-1 sm:grid-cols-[8fr_2fr] gap-2 sm:gap-3 shadow-lg`}>
-                <input value={searchText}
-                  onChange={(e) => setSearchText(e.target.value)} type="text" placeholder="Search For a Location" className="bg-black rounded-xl text-white outline-none px-2 sm:px-4 py-2 text-sm sm:text-base"
-                />
+              <div
+  className={`
+    ${urbanist.className}
+    bg-black/90
+    rounded-2xl
+    md:rounded-t-xl md:rounded-b-none
+    p-2
+    sm:p-3
+    w-full
+    grid
+    grid-cols-1
+    sm:grid-cols-[7fr_3fr]
+    lg:grid-cols-[8fr_2fr]
+    gap-2
+    sm:gap-3
+    shadow-lg
+  `}
+>
 
-                <button onClick={() => {
-                  const queryObj: Record<string, string> = {};
+  {/* SEARCH INPUT */}
+  <input
+    value={searchText}
+    onChange={(e) => setSearchText(e.target.value)}
+    type="text"
+    placeholder="Search For a Location"
+    className="
+      w-full
+      bg-black
+      border border-gray-800
+      rounded-xl
+      text-white
+      placeholder:text-gray-500
+      outline-none
+      px-3
+      sm:px-4
+      py-3
+      text-sm
+      sm:text-base
+      md:text-lg
+    "
+  />
 
-                  if (searchText) {
-                    queryObj.district = searchText;
-                  } else if (distsSelected) {
-                    queryObj.district = distsSelected;
-                  }
+  {/* BUTTON */}
+  <button
+    onClick={() => {
+      const queryObj: Record<string, string> = {};
 
-                  if (bhkSelected) queryObj.bhk = bhkSelected;
-                  if (priceSelected) queryObj.price = priceSelected;
-                  if (sizeSelected) queryObj.size = sizeSelected;
-                  if (yearSelected) queryObj.year = yearSelected;
+      if (searchText) {
+        queryObj.district = searchText;
+      } else if (distsSelected) {
+        queryObj.district = distsSelected;
+      }
 
-                  const query = new URLSearchParams(queryObj).toString();
+      if (bhkSelected) queryObj.bhk = bhkSelected;
+      if (priceSelected) queryObj.price = priceSelected;
+      if (sizeSelected) queryObj.size = sizeSelected;
+      if (yearSelected) queryObj.year = yearSelected;
 
-                  router.push(`/property?${query}`);
-                }} className="bg-linear-to-r from-[#EA8843] to-[#FFB60D] text-white px-3 sm:px-4 py-2 rounded-lg flex items-center justify-center sm:justify-start gap-1 sm:gap-2 text-sm sm:text-base">
-                  <IoSearch className="text-white text-lg sm:text-xl" /> <span className=" sm:inline">Find Property</span>
-                </button>
-              </div>
+      const query = new URLSearchParams(queryObj).toString();
+
+      router.push(`/property?${query}`);
+    }}
+    className="
+      w-full
+      bg-linear-to-r
+      from-[#EA8843]
+      to-[#FFB60D]
+      text-white
+      py-3
+      px-4
+      rounded-xl
+      flex
+      items-center
+      justify-center
+      gap-2
+      cursor-pointer
+      transition-all
+      duration-300
+      hover:opacity-90
+      text-sm
+      sm:text-base
+      md:text-lg
+      font-medium
+    "
+  >
+    <IoSearch className="text-lg sm:text-xl md:text-2xl shrink-0" />
+
+    <span className="whitespace-nowrap">
+      Find Property
+    </span>
+  </button>
+
+</div>
               <div></div>
             </div>
 
