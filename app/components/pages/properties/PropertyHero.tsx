@@ -689,7 +689,7 @@ export default function PropertyHero() {
               </div>
                 {view === "card" ? (
                   
-                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-6 auto-rows-fr">
+                    <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-6 auto-rows-fr">
                         {filtered.length > 0 ? (
                             finalProperties.map((item) => (
                                 <PropertyCard
