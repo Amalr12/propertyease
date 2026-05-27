@@ -15,7 +15,8 @@ export default function FilterSidebar({ filters, setFilters }: any) {
     }, [filters]);
 
     return (
-        <div className={`bg-[#0c0c0c] text-white md:sticky top-5 h-auto overflow-visible p-5 rounded-2xl space-y-4 ${onest.className}`}>
+        <div className={`sticky top-20 z-40 ${onest.className}`}>
+            <div className={`bg-[#0c0c0c] text-white max-h-[700px] overflow-y-auto p-5 rounded-2xl space-y-4`}>
 
             <div className="flex justify-between items-center">
                 <div className="text-xl flex items-center justify-around">
@@ -132,6 +133,7 @@ export default function FilterSidebar({ filters, setFilters }: any) {
             >
                 Apply Filters
             </button>
+            </div>
         </div>
     );
 }

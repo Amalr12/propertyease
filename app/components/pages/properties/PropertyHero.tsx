@@ -680,14 +680,16 @@ export default function PropertyHero() {
                 </div>
 
             </div>
-            <div className="grid md:grid-cols-[2fr_4fr] gap-4 p-5 max-w-6xl mx-auto relative">
+            <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-6 p-5 max-w-7xl mx-auto items-start">
 
                 {/* LEFT FILTER */}
-                <FilterSidebar filters={filters} setFilters={setFilters} />
-
+              <div className="lg:sticky lg:top-24 self-start h-fit">
+                  <FilterSidebar filters={filters} setFilters={setFilters} />
+  
+              </div>
                 {view === "card" ? (
                   
-                    <div className="grid sm:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-6 auto-rows-fr">
                         {filtered.length > 0 ? (
                             finalProperties.map((item) => (
                                 <PropertyCard
