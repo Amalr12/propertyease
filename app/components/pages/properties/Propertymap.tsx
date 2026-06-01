@@ -101,7 +101,7 @@ export default function MapSection({ properties = [] }: any) {
                         position={{ lat: selected.lat, lng: selected.lng }}
                         onCloseClick={() => setSelected(null)}
                     >
-                        <div className="max-w-xs sm:max-w-sm md:max-w-md h-auto min-h-72 max-h-112">
+                        <div className="max-w-sm sm:max-w-sm md:max-w-md h-auto min-h-72 max-h-112">
 
                             <img
                                 src={selected.image}
@@ -118,18 +118,18 @@ export default function MapSection({ properties = [] }: any) {
 
                             <div className="flex justify-between">
                                 <p
-                                    className="text-orange-500 font-bold md:text-2xl text-sm sm:text-sm lg:text-2xl"
+                                    className="text-orange-500 font-bold md:text-2xl text-xs sm:text-sm lg:text-2xl"
                                     style={{ fontWeight: "600" }}
                                 >
                                     {selected.price}
                                 </p>
 
-                                <div className="flex justify-between text-sm">
-                                    <div className="flex items-center gap-2 m-2">
+                                <div className="flex justify-between text-xs">
+                                    <div className="flex items-center gap-1 ">
                                         <FaBed /> {selected.bhk}
                                     </div>
 
-                                    <div className="flex items-center gap-2">
+                                    <div className="flex items-center ms-1 gap-1">
                                         <FaBath /> {selected.bathrooms}
                                     </div>
                                 </div>
@@ -140,13 +140,13 @@ export default function MapSection({ properties = [] }: any) {
                                 <button
                                     onClick={() => setModalStatus(true)}
                                     type="button"
-                                    className="flex-1 md:w-full cursor-pointer bg-gray-800 py-3 px-4 rounded-lg hover:bg-gray-700 transition text-white"
+                                    className="flex-1 md:w-full  w-full cursor-pointer bg-gray-800 py-3 px-4 rounded-lg hover:bg-gray-700 transition text-white"
                                 >
                                     Schedule Visit
                                 </button>
 
                                 <Link href={`/property/${selected.slug}`}>
-                                    <button className="flex-1 md:w-full bg-linear-to-r from-orange-500 to-yellow-500 py-3 px-4 rounded-lg text-black font-semibold">
+                                    <button className="flex-1 md:w-full  w-full mt-2 bg-linear-to-r from-orange-500 to-yellow-500 py-3 px-4 rounded-lg text-black font-semibold">
                                         Details
                                     </button>
                                 </Link>
