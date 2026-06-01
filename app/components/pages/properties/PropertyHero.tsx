@@ -680,10 +680,10 @@ export default function PropertyHero() {
                 </div>
 
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-6 p-5 max-w-7xl mx-auto items-start">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[320px_1fr] gap-6 p-5 max-w-7xl mx-auto items-start">
 
                 {/* LEFT FILTER */}
-              <div className="lg:sticky lg:top-24 self-start h-fit">
+              <div className="lg:sticky md:sticky md:top-24 lg:top-24 self-start h-fit">
                   <FilterSidebar filters={filters} setFilters={setFilters} />
   
               </div>

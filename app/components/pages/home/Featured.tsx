@@ -244,7 +244,14 @@ export default function Featured() {
                             <span className="text-white font-semibold text-sm sm:text-base">{item.price}</span>
                            <Link href={`/property/${item.slug}`}>
                                 <button
-                                    className={`${onest.className} bg-linear-to-r from-[#EA8843] to-[#FFB60D] text-white cursor-pointer rounded px-4 py-2 sm:px-5 sm:py-2.5 md:px-2 md:py-3 text-xs sm:text-sm md:text-sm w-full sm:w-auto transition hover:opacity-90 mt-2 sm:mt-0`}
+                                    className={`${onest.className} bg-linear-to-r from-[#EA8843] to-[#FFB60D] 
+  text-white cursor-pointer rounded 
+  px-4 py-2 sm:px-5 sm:py-2.5 md:px-2 md:py-3 
+  text-xs sm:text-sm md:text-sm 
+  w-full sm:w-auto 
+  transition hover:opacity-90 
+  mt-2 sm:mt-0
+  flex items-center justify-center text-center`}
                                     style={{ fontWeight: 500 }}
                                 >
                                     {item.buttonText}
