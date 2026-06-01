@@ -40,7 +40,7 @@ export default function OfficeLocation() {
                     <div className="m-2 text-center">
 
                         <Link href={"/property"}>
-                            <button className={`bg-linear-to-r from-[#EA8843] to-[#FFB60D] text-white cursor-pointer px-4 py-2 md:px-2 md:py-2 text-xs lg:text-base sm:text-xs md:text-xs rounded mt-5 ${onest.className}`}>
+                            <button className={`bg-linear-to-r from-[#EA8843] to-[#FFB60D] text-white w-full cursor-pointer px-4 py-2 md:px-2 md:py-2 text-xs lg:text-base sm:text-xs md:text-xs rounded mt-5 ${onest.className}`}>
                                 Explore Properties
                             </button>
                         </Link>
