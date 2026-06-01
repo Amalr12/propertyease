@@ -265,7 +265,7 @@ export default function Featured() {
         className="
          flex
             md:hidden
-        w-full m-5
+        w-auto m-5
         md:w-full
         lg:w-auto
         text-center
