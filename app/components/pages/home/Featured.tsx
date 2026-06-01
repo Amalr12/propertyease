@@ -265,14 +265,14 @@ export default function Featured() {
         className="
          flex
             md:hidden
-        w-auto m-5
+        w-full m-5
         md:w-full
         lg:w-auto
-        items-center
+        text-center
      
         "
     >
-        <Link href={"/property"} className="w-full lg:w-auto">
+        <Link href={"/property"} className="w-full text-center lg:w-auto">
 
             <button
                 className={`
@@ -288,7 +288,7 @@ export default function Featured() {
                 lg:px-6
                 text-sm
                 md:text-base
-                flex text-center md:hidden
+                md:hidden
                 w-full
                 lg:w-auto
                 transition-all
@@ -324,7 +324,8 @@ export default function Featured() {
                 </div>
             </div>
             </div>
-           
+             
         </>
     );
 }
+
